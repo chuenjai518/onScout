@@ -73,16 +73,14 @@
 				<hr>
 				<br>
 				<div class="container">
-					<form action="#" th:action="@{/forgetPassword}" th:object="${user}"
-						method="POST">
+					<form  action="#" th:action="@{/forgetPassword}" method="POST">
 						<div class="container">
 							<div class="form-group row ">
 								<label for="Username" class="col-sm-12 col-form-label textcolor">Username
 								</label>
 								<div class="col-sm-12">
 									<input type="text" class="form-control" id="Username"
-										name="username" placeholder="Username" th:field="*{username}"
-										required>
+										name="username" placeholder="Username"  th:value="*{username}" required>
 								</div>
 							</div>
 							<br>

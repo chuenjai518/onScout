@@ -9,6 +9,10 @@ public class User {
 	private String password;
 	private int roleID;
 	
+	public User(){
+		roleID = 0;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
