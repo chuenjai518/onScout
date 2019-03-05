@@ -15,7 +15,7 @@ public class AdminController {
 	
 	@GetMapping("admin")
 	public String index(Model model) {
-		return "admin";
+		return "Admin/admin";
 	}
 	
 	

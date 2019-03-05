@@ -10,6 +10,11 @@
 	border-color: #b89b6d;
 }
 
+.bg-primary {
+    color: #FFF;
+    background-color: #8d4b67 !important;
+}
+
 @font-face {
 	font-family: "Cleveland"; /*a name to be used later*/
 	src: url("http://localhost:8080/cartopia/font/Cleveland.ttf"); /*URL to font*/
@@ -20,7 +25,7 @@
 }
 
 .bg-light {
-	background-color: #0f1834 !important;
+	background-color: #FFF !important;
 }
 /* sidebar */
 #sidebar-wrapper {
@@ -108,9 +113,52 @@
   opacity: 1;
 }
 /* Login */
+/* NAV */
+.navbar{
+	border-style: solid;
+	border-width: thin;
+	border-color: #8d4b67;
+}
+.navbar-brand>img {
+  width: auto;
+  height: 40px;
+  padding:0px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #8d4b67;
+}
 
+.navbar-dark .navbar-brand {
+    color: #8d4b67;
+}
 
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+    color: #8d4b67;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 50px;
+}
 
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+    color: #8d4b67;
+}
+/* NAV */
+/* Font*/
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 100;
+    line-height: 1.2;
+    color: #8d4b67;
+}
+/* Font */
+/* Table */
+.table th, .table td {
+    font-weight: 400;
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+/* Table */
 #admin {
 	background-color: rgb(238, 238, 238);
 }
@@ -118,11 +166,6 @@
 a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
 	{
 	background-color: #142249 !important;
-}
-
-.bg-primary {
-	color: #b89b6d;
-	background-color: #0f1834 !important;
 }
 
 tr {

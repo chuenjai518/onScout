@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<div lang="en" th:replace="General/nav :: head"></div>
+<meta charset="utf-8">
+<title>Admin Page</title>
+<nav th:include="General/nav :: nav"></nav>
+</head>
+<body>
+	<div class="container">
+		<div class="row justify-content-center ">
+			<div class="col-12">
+				<h1>User List</h1>
+			</div>
+			<div class="col-8">
+				<table class="table">
+					<thead class="bg-primary">
+						<tr>
+							<th scope="col">User Name</th>
+							<th scope="col">Role</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr th:each="user : ${userList}" th:onclick="'location.href=/admin/user/read/\''+${user.getUserID()}+'\'"> -->
+						<tr >
+							<th th:text="${user.getUsername)}" scope="row"></th>
+							<td th:text="${user.getRoleID()}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
