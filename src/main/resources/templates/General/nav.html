@@ -25,10 +25,10 @@
 			 <div class="w3-dropdown-hover"  style="background-color: #0f1834;">
    			 <button class="w3-button "style="background-color: #0f1834!important"><img src="/cartopia/images/memberIcon.png" width="30" height="30" alt="" style="background-color: #0f1834;"></button>
 			    <div class="w3-dropdown-content w3-bar-block w3-border" style="background-color: #0f1834!important;right:1em;">
-			      <span th:if="${userID==0}">
-			      <a href="login" class="w3-bar-item w3-button" style="color:#b89b6d;text-align: center !important;">Login</a>
+			      <span th:if="${user.getRoleID() <= 0}">
+			      <a th:href="@{/}" class="w3-bar-item w3-button" style="color:#b89b6d;text-align: center !important;">Login</a>
 			      </span>
-			      <span th:unless="${userID==0}">
+			      <span th:unless="${user.getRoleID() <= 0}">
 			       <a href="#profile" class="w3-bar-item w3-button " style="color:#b89b6d;text-align: center !important;">Profile</a>
 			      <a href="logout" class="w3-bar-item w3-button" style="color:#b89b6d;text-align: center !important;">Logout</a>
 			      </span>
