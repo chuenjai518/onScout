@@ -16,8 +16,12 @@ public class AdminService {
 	AdminDAO adminDAO;
 	
 	public List<User> getAllUser(){
-		
 		return adminDAO.getAllUser();
 	}
+	
+	public User loginProcess(User user) {
+		return adminDAO.loginProcess(user);
+	}
 
+	
 }

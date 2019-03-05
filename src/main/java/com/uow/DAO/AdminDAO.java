@@ -38,4 +38,10 @@ public class AdminDAO {
 			return null;
 		}
 	}
+	
+	public void registerProcess(User user) {
+		String sql = "INSERT INTO User(username, password, roleID) "
+				+ "Values (?,?,?,?,?,?)";
+		db.update(sql, user.getUsername(), user.getPassword(), user.getRoleID());
+	}
 }
