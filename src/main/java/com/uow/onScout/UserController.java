@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uow.Model.User;
 import com.uow.Service.AdminService;
@@ -24,26 +26,53 @@ public class UserController {
 	@Autowired
 	AdminService adminService;
 
-	@GetMapping("/")
-	public String login(Model model) {
-		model.addAttribute("user", new User());
-		return "General/login";
-	}
-	
-	@GetMapping("/forgetPassword")
-	public String forgetPassword(Model model) {
-		return "forgetPassword";
-	}
-
-	@GetMapping("/getAllUser")
+	@GetMapping("getAllUser")
 	public ResponseEntity<List<User>> getAllUser(Model model) {
 
 		List<User> list = adminService.getAllUser();
 		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
 	}
+	
+	@GetMapping("/")
+	public String index(Model model) {
+		return "redirect:/login";
+	}
 
-	// Need change to Post
-	@PostMapping("/loginProcess")
+	@GetMapping("login")
+	public String login(Model model, HttpSession session) {
+		if(session.getAttribute("user") != null) {
+//			// Scout
+//			if (user.getRoleID() == 1) {
+//				return return "General/login";;
+//			} else
+//			// Scouter
+//			if (user.getRoleID() == 2) {
+//				return return "General/login";;
+//			} else
+//			// Admin
+//			{
+//				return return "General/login";;
+//			}
+		}
+		model.addAttribute("user", new User());
+		return "General/login";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(Model model, HttpSession session) {
+		if(session.getAttribute("user") != null) {
+			session.removeAttribute("userID");
+		}
+		return "redirect:/login";
+	}
+		
+	@PostMapping("forgetPassword")
+	public String forgetPassword(Model model, @RequestParam String username) {
+		adminService.forgetPassword(username);
+		return "redirect:/login";
+	}
+
+	@PostMapping("loginProcess")
 	public RedirectView loginProcess(@ModelAttribute User temp, RedirectAttributes model, HttpSession session) {
 		User user = adminService.loginProcess(temp);
 
@@ -65,7 +94,7 @@ public class UserController {
 //		{
 //			return new RedirectView("carparkOwner");
 //		}
-		return new RedirectView("/");
+		return new RedirectView("login");
 
 	}
 	

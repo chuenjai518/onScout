@@ -22,6 +22,10 @@ public class AdminService {
 	public User loginProcess(User user) {
 		return adminDAO.loginProcess(user);
 	}
+	
+	public void forgetPassword(String username) {
+		
+	}
 
 	
 }

@@ -19,12 +19,14 @@
 	<div class = "row justify-content-center">
 	<div id="loginCard" class="card col-sm-8">
 		<div class="card-body">
-			<br> 
+			<br>
 			<span class="loginBrand" href="#">Login</span>
 			<hr>
 			<br>
 			<div class="container">
+
 				<form action="#" method="POST" th:action="@{/loginProcess}" th:object="${user}"> <!-- th:action="@{/loginProcess}" th:object="${user}" -->
+
 					<div class="container">
 						<div class="form-group row ">
 							<label for="inputUsername"
@@ -41,7 +43,7 @@
 							</label>
 							<div class="col-sm-12 col-md-8 col-lg-9">
 								<input type="password" class="form-control" id="inputPassword"
-									placeholder="Password" th:field="*{password}"> <!-- th:field="*{password}" --> 
+									placeholder="Password" th:field="*{password}"> <!-- th:field="*{password}" -->
 							</div>
 						</div>
 						<span class="errorText" th:text="${message != null} ? ${message} : ''"></span><!-- th:text="${message != null} ? ${message} : ''" -->
