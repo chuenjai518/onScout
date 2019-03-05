@@ -20,7 +20,7 @@ public class UserController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-		return "index";
+		return "General/login";
 	}
 	
 	@GetMapping("/getAllUser")

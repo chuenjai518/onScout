@@ -1,0 +1,133 @@
+.background{
+	background-color: #ddd;
+
+}
+
+html{
+  background-color:#ddd;
+}
+
+.centerText{
+	text-align:center;
+}
+
+.leftText{
+	text-align:left;
+}
+
+.text-gold{
+	color:#b89b6d
+}
+
+.text-darkblue{
+	color:#0f1834; 
+}
+
+.text-white{
+	color:white;
+}
+
+a:hover{
+	color: #C4AD87;
+}
+
+.white{
+	background-color: white !important
+}
+.darkblue{
+	background-color: #0f1834 !important; 
+}
+
+.card{
+	background-color: #0f1834;
+}
+
+#cross{
+	height:30px;
+	weight:30px;
+}
+
+.carWarning{
+	color: red;
+}
+
+.bookmarkPhoto{
+	background-repeat: no-repeat;
+	background-size: auto;
+	height: 200px; 
+	object-fit:cover;
+}
+
+.bookmarkCard{
+	
+	border: none;
+}
+.bookmarkTitle{
+	color:#b89b6d;
+	font-size:23px;
+	text-decoration: none;
+	font-weight:bold;
+	padding-bottom: 0px;
+	
+}
+
+.bookmarkTitle:hover{
+	text-decoration: none;
+	
+}
+
+
+
+.reservationPhoto{
+	height: 200px; 
+	
+	object-fit: cover; 
+	padding-top: 10px; 
+	padding-bottom: 10px;
+}
+
+.reservationText{
+	color:red;
+}
+
+
+
+
+
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
