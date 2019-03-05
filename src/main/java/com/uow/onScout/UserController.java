@@ -61,13 +61,14 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout(Model model, HttpSession session) {
 		if(session.getAttribute("user") != null) {
-			session.removeAttribute("userID");
+			session.removeAttribute("user");
 		}
 		return "redirect:/login";
 	}
 		
 	@PostMapping("forgetPassword")
 	public String forgetPassword(Model model, @RequestParam String username) {
+		System.out.println(username);
 		adminService.forgetPassword(username);
 		return "redirect:/login";
 	}

@@ -24,7 +24,7 @@ public class AdminService {
 	}
 	
 	public void forgetPassword(String username) {
-		
+		adminDAO.forgetPassword(username);
 	}
 
 	
