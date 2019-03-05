@@ -27,7 +27,7 @@ public class UserController {
 	@GetMapping("/")
 	public String login(Model model) {
 		model.addAttribute("user", new User());
-		return "login";
+		return "General/login";
 	}
 	
 	@GetMapping("/forgetPassword")

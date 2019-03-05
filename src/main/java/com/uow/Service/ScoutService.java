@@ -7,7 +7,7 @@ import com.uow.DAO.ScoutDAO;
 import com.uow.Model.User;
 
 @Service
-public class ScoutController {
+public class ScoutService {
 	
 	@Autowired
 	ScoutDAO scoutDAO;
