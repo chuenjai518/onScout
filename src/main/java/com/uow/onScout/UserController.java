@@ -26,7 +26,13 @@ public class UserController {
 
 	@GetMapping("/")
 	public String login(Model model) {
+		model.addAttribute("user", new User());
 		return "General/login";
+	}
+	
+	@GetMapping("/forgetPassword")
+	public String forgetPassword(Model model) {
+		return "forgetPassword";
 	}
 
 	@GetMapping("/getAllUser")
@@ -62,4 +68,6 @@ public class UserController {
 		return new RedirectView("/");
 
 	}
+	
+	
 }
