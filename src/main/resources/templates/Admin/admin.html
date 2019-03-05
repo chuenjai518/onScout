@@ -7,24 +7,31 @@
 <nav th:include="General/nav :: nav"></nav>
 </head>
 <body>
+<br>
 	<div class="container">
 		<div class="row justify-content-center ">
 			<div class="col-12">
-				<h1>User List</h1>
+				<h1 style="text-align: center;">User List</h1>
 			</div>
 			<div class="col-8">
-				<table class="table">
+				<table class="table" style="text-align: center;">
 					<thead class="bg-primary">
 						<tr>
+							<th scope="col">Full Name</th>
 							<th scope="col">User Name</th>
 							<th scope="col">Role</th>
+							<th scope="col">Date of Birth</th>
+							<th scope="col">Email</th>
 						</tr>
 					</thead>
 					<tbody>
 						<!-- <tr th:each="user : ${userList}" th:onclick="'location.href=/admin/user/read/\''+${user.getUserID()}+'\'"> -->
-						<tr >
-							<th th:text="${user.getUsername)}" scope="row"></th>
+						<tr th:each="user: ${userList}" >
+							<td th:text="${user.getLastName()}+ ' ' +${user.getFirstName()}" scope="row"></td>
+							<td th:text="${user.getUsername()}"></td>
 							<td th:text="${user.getRoleID()}"></td>
+							<td th:text="${user.getDOB()}"></td>
+							<td th:text="${user.getEmail()}"></td>
 						</tr>
 					</tbody>
 				</table>
