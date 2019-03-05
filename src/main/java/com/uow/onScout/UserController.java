@@ -23,19 +23,24 @@ public class UserController {
 
 	@Autowired
 	AdminService adminService;
-
+	
 	@GetMapping("/")
+	public String index(Model model) {
+		return "redirect:/login";
+	}
+
+	@GetMapping("login")
 	public String login(Model model) {
 		model.addAttribute("user", new User());
 		return "General/login";
 	}
 	
-	@GetMapping("/forgetPassword")
+	@GetMapping("forgetPassword")
 	public String forgetPassword(Model model) {
 		return "forgetPassword";
 	}
 
-	@GetMapping("/getAllUser")
+	@GetMapping("getAllUser")
 	public ResponseEntity<List<User>> getAllUser(Model model) {
 
 		List<User> list = adminService.getAllUser();
@@ -43,7 +48,7 @@ public class UserController {
 	}
 
 	// Need change to Post
-	@PostMapping("/loginProcess")
+	@PostMapping("loginProcess")
 	public RedirectView loginProcess(@ModelAttribute User temp, RedirectAttributes model, HttpSession session) {
 		User user = adminService.loginProcess(temp);
 
@@ -65,7 +70,7 @@ public class UserController {
 //		{
 //			return new RedirectView("carparkOwner");
 //		}
-		return new RedirectView("/");
+		return new RedirectView("login");
 
 	}
 	
