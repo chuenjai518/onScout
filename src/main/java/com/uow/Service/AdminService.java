@@ -27,5 +27,10 @@ public class AdminService {
 		adminDAO.forgetPassword(username);
 	}
 
+	public boolean createUserProcess(User user) {
+		return adminDAO.createUserProcess(user);
+	
+		
+	}
 	
 }

@@ -68,7 +68,6 @@ public class UserController {
 		
 	@PostMapping("forgetPassword")
 	public String forgetPassword(Model model, @RequestParam String username) {
-		System.out.println(username);
 		adminService.forgetPassword(username);
 		return "redirect:/login";
 	}
