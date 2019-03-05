@@ -41,7 +41,12 @@ public class AdminDAO {
 	
 	public void registerProcess(User user) {
 		String sql = "INSERT INTO User(username, password, roleID) "
-				+ "Values (?,?,?,?,?,?)";
+				+ "Values (?,?,?)";
 		db.update(sql, user.getUsername(), user.getPassword(), user.getRoleID());
+	}
+	
+	public void forgetPassword(String username) {
+		String sql = "Update User set password = username Where username = ?";
+		db.update(sql, username);
 	}
 }
