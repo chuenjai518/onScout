@@ -29,8 +29,10 @@ public class AdminService {
 
 	public boolean createUserProcess(User user) {
 		return adminDAO.createUserProcess(user);
+	}
 	
-		
+	public void disableUser(String username) {
+		adminDAO.disableUser(username);
 	}
 	
 }

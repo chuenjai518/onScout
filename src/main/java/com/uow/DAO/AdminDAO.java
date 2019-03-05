@@ -20,13 +20,13 @@ public class AdminDAO {
 	private JdbcTemplate db;
 
 	public List<User> getAllUser() {
-		String sql = "Select username, roleID from User";
+		String sql = "Select username, roleID from User Where disable = 0";
 		RowMapper<User> rowMapper = new UserRowMapper();
 		return this.db.query(sql, rowMapper);
 	}
 
 	public User loginProcess(User user) {
-		String sql = "Select username, roleID from User Where username = ? and password = ?";
+		String sql = "Select username, roleID from User Where username = ? and password = ? and disable = 0";
 		RowMapper<User> rowMapper = new UserRowMapper();
 		try {
 			User temp = db.queryForObject(sql, rowMapper, user.getUsername(), user.getPassword());
@@ -50,6 +50,11 @@ public class AdminDAO {
 
 	public void forgetPassword(String username) {
 		String sql = "Update User set password = username Where username = ?";
+		db.update(sql, username);
+	}
+	
+	public void disableUser(String username) {
+		String sql = "Update User set disable = 1 Where username = ?";
 		db.update(sql, username);
 	}
 

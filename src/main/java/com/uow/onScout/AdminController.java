@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -38,6 +39,12 @@ public class AdminController {
 			return new RedirectView("admin");
 		}
 		return new RedirectView("admin");
+	}
+	
+	@GetMapping("admin/delUser/{username}")
+	public String adminDeleteUser(@PathVariable("username") String username, Model model) {
+		adminService.disableUser(username);
+		return "redirect:/admin";
 	}
 
 }
