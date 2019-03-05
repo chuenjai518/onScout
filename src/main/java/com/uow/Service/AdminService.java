@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.uow.DAO.AdminDAO;
 import com.uow.Model.User;
+import com.uow.Model.UserInfo;
 
 @Service
 public class AdminService {
@@ -15,7 +16,7 @@ public class AdminService {
 	@Autowired
 	AdminDAO adminDAO;
 	
-	public List<User> getAllUser(){
+	public List<UserInfo> getAllUser(){
 		return adminDAO.getAllUser();
 	}
 	

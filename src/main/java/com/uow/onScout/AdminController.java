@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.uow.Model.User;
+import com.uow.Model.UserInfo;
 import com.uow.Service.AdminService;
 
 @Controller
@@ -26,7 +27,7 @@ public class AdminController {
 	@GetMapping("admin")
 	public String index(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
-		List<User> userList = adminService.getAllUser();
+		List<UserInfo> userList = adminService.getAllUser();
 		model.addAttribute("userList", userList);
 		return "Admin/admin";
 	}

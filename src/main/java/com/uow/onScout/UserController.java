@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uow.Model.User;
+import com.uow.Model.UserInfo;
 import com.uow.Service.AdminService;
 
 @Controller
@@ -27,10 +28,9 @@ public class UserController {
 	AdminService adminService;
 
 	@GetMapping("getAllUser")
-	public ResponseEntity<List<User>> getAllUser(Model model) {
-
-		List<User> list = adminService.getAllUser();
-		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
+	public ResponseEntity<List<UserInfo>> getAllUser(Model model) {
+		List<UserInfo> list = adminService.getAllUser();
+		return new ResponseEntity<List<UserInfo>>(list, HttpStatus.OK);
 	}
 	
 	@GetMapping("/")
