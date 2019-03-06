@@ -158,6 +158,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     vertical-align: top;
     border-top: 1px solid #dee2e6;
 }
+a i{
+	color:#8d4b67;
+}
 /* Table */
 #admin {
 	background-color: rgb(238, 238, 238);
@@ -170,6 +173,9 @@ a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
 
 tr {
 	transition: background-color 0.5s ease;
+	border-style: solid;
+    border-width: thin;
+    border-color: #8d4b67;
 }
 
 tbody tr:hover {
