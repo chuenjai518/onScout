@@ -28,6 +28,8 @@ public class AdminController {
 	public String index(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		List<UserInfo> userList = adminService.getAllUser();
+		User user = new User();
+		model.addAttribute("addUser", user);
 		model.addAttribute("userList", userList);
 		return "Admin/admin";
 	}
@@ -37,9 +39,9 @@ public class AdminController {
 		boolean exists = adminService.createUserProcess(user);
 		if (exists) {
 			model.addFlashAttribute("message", "Username is used!");
-			return new RedirectView("admin");
+			return new RedirectView("/onScout/admin");
 		}
-		return new RedirectView("admin");
+		return new RedirectView("/onScout/admin");
 	}
 
 	@GetMapping("admin/delUser/{username}")

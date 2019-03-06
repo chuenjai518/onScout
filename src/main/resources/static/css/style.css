@@ -1,99 +1,100 @@
 .btn-primary {
-	color: #FFF;
-	background-color: #8d4b67;
-	border-color: #8d4b67;
+  color: #fff;
+  background-color: #8d4b67;
+  border-color: #8d4b67;
 }
 
 .btn-secondary {
-	color: #fff;
-	background-color: #b89b6d;
-	border-color: #b89b6d;
+  color: #fff;
+  background-color: #b89b6d;
+  border-color: #b89b6d;
 }
 
 .bg-primary {
-    color: #FFF;
-    background-color: #8d4b67 !important;
+  color: #fff;
+  background-color: #8d4b67 !important;
 }
 
 @font-face {
-	font-family: "Cleveland"; /*a name to be used later*/
-	src: url("http://localhost:8080/cartopia/font/Cleveland.ttf"); /*URL to font*/
+  font-family: "Cleveland"; /*a name to be used later*/
+  src: url("http://localhost:8080/cartopia/font/Cleveland.ttf"); /*URL to font*/
 }
 
 .brandFont {
-	font-family: "Cleveland";
+  font-family: "Cleveland";
 }
 
 .bg-light {
-	background-color: #FFF !important;
+  background-color: #fff !important;
 }
 /* sidebar */
 #sidebar-wrapper {
-	min-height: 100vh;
-	height: 100%;
-	-webkit-transition: margin 0.25s ease-out;
-	-moz-transition: margin 0.25s ease-out;
-	-o-transition: margin 0.25s ease-out;
-	transition: margin 0.25s ease-out;
+  min-height: 100vh;
+  height: 100%;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
 }
 
 #page-content-wrapper .container-fluid {
-	padding-left: 40px;
+  padding-left: 40px;
 }
 
 .sidebar-heading {
-	padding: 0.875rem 1.25rem;
-	font-size: 1.7rem;
-	color: #b89b6d !important;
+  padding: 0.875rem 1.25rem;
+  font-size: 1.7rem;
+  color: #b89b6d !important;
 }
 
 #sidebar-wrapper .list-group {
-	width: 10rem;
+  width: 10rem;
 }
 
 #page-content-wrapper {
-	min-width: 100vw;
+  min-width: 100vw;
 }
 
 #wrapper.toggled #sidebar-wrapper {
-	margin-left: 0;
+  margin-left: 0;
 }
 
-@media ( min-width : 768px) {
-	#sidebar-wrapper {
-		margin-left: 0;
-	}
-	#page-content-wrapper {
-		min-width: 0;
-		width: 100%;
-	}
-	#wrapper.toggled #sidebar-wrapper {
-		margin-left: -15rem;
-	}
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
 }
 
 #sidebar-wrapper .list-group-item-action {
-	color: #b89b6d;
+  color: #b89b6d;
 }
 /* sidebar */
 /* Login */
-.loginBrand{
-	color:#8d4b67;
-	font-size: 60px;
-	text-decoration: none;
+.loginBrand {
+  color: #8d4b67;
+  font-size: 60px;
+  text-decoration: none;
 }
 
-#loginCard, .card {
-	border-width: medium;
-	border-color: #8d4b67;
+#loginCard,
+.card {
+  border-width: medium;
+  border-color: #8d4b67;
 }
 
-#loginImg{    
-	margin-bottom: 10px;
-	width: 30%;
-    height: 30%;
-    max-height: 200px;
-    max-width: 200px;
+#loginImg {
+  margin-bottom: 10px;
+  width: 30%;
+  height: 30%;
+  max-height: 200px;
+  max-width: 200px;
 }
 
 .overlay {
@@ -114,145 +115,167 @@
 }
 /* Login */
 /* NAV */
-.navbar{
-	border-style: solid;
-	border-width: thin;
-	border-color: #8d4b67;
+.navbar {
+  border-style: solid;
+  border-width: thin;
+  border-color: #8d4b67;
 }
-.navbar-brand>img {
+.navbar-brand > img {
   width: auto;
   height: 40px;
-  padding:0px;
+  padding: 0px;
 }
 .navbar-dark .navbar-nav .nav-link {
-    color: #8d4b67;
+  color: #8d4b67;
 }
 
 .navbar-dark .navbar-brand {
-    color: #8d4b67;
+  color: #8d4b67;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
-    color: #8d4b67;
-    border-style: solid;
-    border-width: thin;
-    border-radius: 50px;
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: #8d4b67;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 50px;
 }
 
-.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
-    color: #8d4b67;
+.navbar-dark .navbar-brand:hover,
+.navbar-dark .navbar-brand:focus {
+  color: #8d4b67;
 }
 /* NAV */
 /* Font*/
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    margin-bottom: 0.5rem;
-    font-weight: 100;
-    line-height: 1.2;
-    color: #8d4b67;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 100;
+  line-height: 1.2;
+  color: #8d4b67;
 }
 /* Font */
 /* Table */
-.table th, .table td {
-    font-weight: 400;
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
+.table th,
+.table td {
+  font-weight: 400;
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+a i {
+  color: #8d4b67;
 }
 /* Table */
 #admin {
-	background-color: rgb(238, 238, 238);
+  background-color: rgb(238, 238, 238);
 }
 
-a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
-	{
-	background-color: #142249 !important;
+a.bg-light:hover,
+a.bg-light:focus,
+button.bg-light:hover,
+button.bg-light:focus {
+  background-color: #142249 !important;
 }
 
 tr {
-	transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+  border-style: solid;
+  border-width: thin;
+  border-color: #8d4b67;
 }
 
 tbody tr:hover {
-	background-color: #e7e7e7;
+  background-color: #e7e7e7;
 }
 
-
-.text-gold{
-	color: #b89b6d;
+.text-gold {
+  color: #b89b6d;
 }
 
 .home {
-	background: #ddd;
+  background: #ddd;
 }
 
 .homecarimagesize {
-	width: 200px;
-	height: 100px;
+  width: 200px;
+  height: 100px;
 }
 
 .searchbar {
-	margin-bottom: auto;
-	margin-top: auto;
-	height: 60px;
-	background-color: #0f1834;
-	border-radius: 30px;
-	padding: 10px;
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  background-color: #0f1834;
+  border-radius: 30px;
+  padding: 10px;
 }
 
 .search_input {
-	color: white;
-	border: 0;
-	outline: 0;
-	background: none;
-	width: 0;
-	caret-color: transparent;
-	line-height: 40px;
-	padding: 0 10px;
-	width: 200px;
-	caret-color: red;
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color: transparent;
+  line-height: 40px;
+  padding: 0 10px;
+  width: 200px;
+  caret-color: red;
 }
 
 .search_icon {
-	height: 40px;
-	width: 40px;
-	float: right;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 50%;
-	background: #b89b6d;
-	color: #0f1834;
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #b89b6d;
+  color: #0f1834;
 }
 
 .home-for {
-	font-weight: 700;
-	background-color:#0f1834;
+  font-weight: 700;
+  background-color: #0f1834;
 }
 .form-control {
-
-    display: block;
-    width: 100%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.428571429;
-    color: #555;
-    vertical-align: middle;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 /****** Style Star Rating Widget *****/
 
-.rating { 
+.rating {
   border: none;
   float: right;
-  margin-right:20px;
+  margin-right: 20px;
 }
 
-.rating > input { display: none; } 
-.rating > label:before { 
+.rating > input {
+  display: none;
+}
+.rating > label:before {
   margin: 5px;
   font-size: 1.25em;
   font-family: FontAwesome;
@@ -260,23 +283,27 @@ tbody tr:hover {
   content: "\f005";
 }
 
-.rating > .half:before { 
+.rating > .half:before {
   content: "\f089";
   position: absolute;
 }
 
-.rating > label { 
-  color: #ddd; 
- float: right; 
+.rating > label {
+  color: #ddd;
+  float: right;
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
 
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.rating:not(:checked) > label:hover ~ label {
+  color: #ffd700;
+} /* hover previous stars in list */
 
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+.rating > input:checked ~ label:hover ~ label {
+  color: #ffed85;
+}
