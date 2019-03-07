@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head th:fragment="head">
-    <meta charset="utf-8" />
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
-    <div th:fragment="nav">
-    		<nav id="sidebar-wrapper" class="bg-light border-right">
-    			<div class="sidebar-heading brandFont">Cartopia</div>
-    			  <div id="navItem" class="list-group list-group-flush">
-			        <a href="/cartopia/admin" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-			        <a href="/cartopia/admin/user" class="list-group-item list-group-item-action bg-light">User</a>
-			        <a href="/cartopia/admin/carpark" class="list-group-item list-group-item-action bg-light">Carpark</a>
-			      </div>
-    		</nav>
-    </div>
-  </head>
-</html>
+<div th:fragment="nav">
+	<nav id="sidebar-wrapper" class="bg-light border-right">
+		<div class="sidebar-heading"><img th:src="@{/images/logo.png}"
+				class="sideIcon"></div>
+		<div id="navItem" class="list-group list-group-flush">
+			<a id="sideNavA" href="@{scouter}"
+				class="list-group-item list-group-item-action bg-light">Scout
+				Process</a> <a id="sideNavA" href="@{scouter/scoutProcess"
+				class="list-group-item list-group-item-action bg-light">Scout
+				Management</a> <a id="sideNavA" href="@{scouter/scoutManage"
+				class="list-group-item list-group-item-action bg-light">Edit Own
+				Profile</a> <a id="sideNavA" href="@{scouter/editProfile"
+				class="list-group-item list-group-item-action bg-light">View
+				Award Requirement</a> <a id="sideNavA" href="@{scouter/viewAw"
+				class="list-group-item list-group-item-action bg-light">logout</a>
+		</div>
+	</nav>
+</div>
+
