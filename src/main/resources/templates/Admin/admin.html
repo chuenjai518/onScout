@@ -63,9 +63,8 @@
 						<div class="container">
 							<div class="form-row justify-content-center">
 								<div class="form-group col-md-4">
-								<!-- th:field="*{roleID} " -->
 									<label for="inputState">User type</label> <select
-										 id="userType" class="form-control">
+										th:field="*{roleID} " id="userType" class="form-control">
 										<option th:value="1" selected>Scout</option>
 										<option th:value="2">Scouter</option>
 									</select>
@@ -76,20 +75,20 @@
 								</label>
 								<div class="col-sm-12">
 									<input type="text" class="form-control" id="Username"
-										name="username" placeholder="Username" 
-										required><!-- th:value="*{username}" -->
+										name="username" placeholder="Username" th:value="*{username}"
+										required>
 								</div>
 								<label for="Password" class="col-sm-12 col-form-label textcolor">Password
 								</label>
 								<div class="col-sm-12">
 									<input type="Password" class="form-control" id="Password"
-										name="Password" placeholder="Password" 
-										required><!-- th:value="*{password}" -->
+										name="Password" placeholder="Password" th:value="*{password}"
+										required>
 								</div>
 							</div>
 							<br>
 							<button type="submit" class="btn btn-primary col-sm-12">Submit</button>
-							<a th:href="@{scoutProfile}" class="btn btn-link col-sm-12">Cancel</a>
+							<a th:href="@{admin}" class="btn btn-link col-sm-12">Cancel</a>
 
 						</div>
 						<br> <br>
