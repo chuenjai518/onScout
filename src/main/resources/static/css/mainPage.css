@@ -1,0 +1,42 @@
+.awardRow>div>img {
+	width: 250px;
+	heigth: 250px;
+}
+
+.textSPA{
+	color: #84A681;
+}
+
+.textSSA{
+	color: #55a3ba;
+}
+
+.textSAA{
+	color: #F25252;
+}
+
+.textCSA{
+	color: #a586ae;
+}
+
+.textMain{
+	color: #8d4b67;
+}
+
+/*Hover Award*/
+.tips{
+	position: absolute;
+    display: none;
+    background: white;
+    border: 1px solid #84A681;
+    padding: 5px;
+    z-index: 1000;
+    color: #84A681;
+}
+
+.award:hover .tips{
+	display:block;
+    position:fixed;
+    overflow:hidden;
+}
+/*Hover Award*/
