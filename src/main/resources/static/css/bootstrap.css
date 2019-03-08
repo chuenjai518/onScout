@@ -58,7 +58,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #8d4b67;;
   text-align: left;
   background-color: #fff;
 }
@@ -2427,8 +2427,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #AC7C90;
+  border-color: #AC7C90;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2949,12 +2949,12 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #007bff;
+  color: #8d4b67;
   text-decoration: none;
 }
 
 .btn-link:hover {
-  color: #0056b3;
+  color: #AC7C90;
   text-decoration: underline;
 }
 
@@ -6636,7 +6636,7 @@ button.bg-dark:focus {
 }
 
 .border-primary {
-  border-color: #007bff !important;
+  border-color: #8d4b67 !important;
 }
 
 .border-secondary {
