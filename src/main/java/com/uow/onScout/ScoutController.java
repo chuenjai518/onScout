@@ -14,5 +14,12 @@ public class ScoutController {
 		
 		return "Scout/scoutProfile";
 	}
+	
+	@GetMapping("scout/mainpage")
+	public String mainpage(Model model, HttpSession session) {
+		
+		
+		return "Scout/mainpage";
+	}
 
 }
