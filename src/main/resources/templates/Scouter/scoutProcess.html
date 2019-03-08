@@ -12,7 +12,7 @@
 		<!-- V This is Content V -->
 		<!-- ------------------- -->
 		<div class="container-fluid">
-		<br>
+			<br>
 			<div class="row justify-content-center mb-1">
 				<div class="col-12">
 					<h1 style="text-align: center;">Scout List</h1>
@@ -22,41 +22,41 @@
 				</div>
 			</div>
 			<div class="row justify-content-center ">
-			<div class="col-8">
-				<table class="table" style="text-align: center;">
-					<thead class="bg-primary">
-						<tr>
-							<th scope="col">Scout ID</th>
-							<th scope="col">Name</th>
-							<th scope="col">Gender</th>
-							<th scope="col">Latest Completed Mission</th>
-						</tr>
-					</thead>
-					<tbody>
-						<!-- <tr th:each="user : ${userList}" th:onclick="'location.href=/admin/user/read/\''+${user.getUserID()}+'\'"> -->
-						<tr th:each="user: ${userList}">
-							<td scope="col"><a
-								th:href="@{admin/delUser/}+ ${user.getUsername()}"><i
-									id="logo" class="fas fa-user-minus"></i></a>
-							</th>
-							<td th:text="${user.getLastName()}+ ' ' +${user.getFirstName()}"
-								scope="row"></td>
-							<td th:text="${user.getUsername()}"></td>
-							<td th:text="${user.getRoleID()}"></td>
-							<td th:text="${user.getDOB()}"></td>
-							<td th:text="${user.getEmail()}"></td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="col-8">
+					<table class="table" style="text-align: center;">
+						<thead class="bg-primary">
+							<tr>
+								<th scope="col">Scout ID</th>
+								<th scope="col">Name</th>
+								<th scope="col">Gender</th>
+								<th scope="col">Latest Completed Mission</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- <tr th:each="user : ${userList}" th:onclick="'location.href=/admin/user/read/\''+${user.getUserID()}+'\'"> -->
+							<tr th:each="user: ${userList}">
+								<td scope="col"><a
+									th:href="@{admin/delUser/}+ ${user.getUsername()}"><i
+										id="logo" class="fas fa-user-minus"></i></a>
+								</th>
+								<td th:text="${user.getLastName()}+ ' ' +${user.getFirstName()}"
+									scope="row"></td>
+								<td th:text="${user.getUsername()}"></td>
+								<td th:text="${user.getRoleID()}"></td>
+								<td th:text="${user.getDOB()}"></td>
+								<td th:text="${user.getEmail()}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-		</div>
 
 
-			<!-- ------------------- -->
-			<!-- ^ This is Content ^ -->
-		</div>
-		<div class="text-center overlay" id="addUser">
+		<!-- ------------------- -->
+		<!-- ^ This is Content ^ -->
+	</div>
+	<div class="text-center overlay" id="addUser">
 		<br> <br>
 		<div class="container p-3 rounded col-sm-10 col-md-7 col-lg-6">
 			<div class="shadow border bg-white rounded">
@@ -65,12 +65,14 @@
 				<hr>
 				<br>
 				<div class="container">
-					<form  th:action="@{/scouter/createUser}" method="POST"><!-- th:object="${addUser}" -->
+					<form th:action="@{/scouter/createUser}" method="POST">
+						<!-- th:object="${addUser}" -->
 						<div class="container">
 							<div class="form-row justify-content-center">
 								<div class="form-group col-md-4">
-									<label for="inputState">User type</label> <!-- th:field="*{roleID} " --> <select
-										id="userType" class="form-control">
+									<label for="inputState">User type</label>
+									<!-- th:field="*{roleID} " -->
+									<select id="userType" class="form-control" name="roleID" th:value="*{roleID}">
 										<option th:value="1" selected>Scout</option>
 										<option th:value="2">Scouter</option>
 									</select>
@@ -84,14 +86,10 @@
 										name="username" placeholder="Username" th:value="*{username}"
 										required>
 								</div>
-								<label for="Password" class="col-sm-12 col-form-label textcolor">Password
-								</label>
-								<div class="col-sm-12">
-									<input type="Password" class="form-control" id="Password"
-										name="Password" placeholder="Password" th:value="*{password}"
-										required>
-								</div>
 							</div>
+							<span style="color:red" class="errorText"
+							th:text="${message != null} ? ${message} : ''"></span>
+							<br>
 							<br>
 							<button type="submit" class="btn btn-primary col-sm-12">Submit</button>
 							<a th:href="@{scouter}" class="btn btn-link col-sm-12">Cancel</a>
