@@ -19,4 +19,3 @@ public class ScouterController {
 		
 		return "Scouter/scoutProcess";
 	}
-}
