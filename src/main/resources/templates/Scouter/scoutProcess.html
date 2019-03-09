@@ -33,18 +33,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!-- <tr th:each="user : ${userList}" th:onclick="'location.href=/admin/user/read/\''+${user.getUserID()}+'\'"> -->
-							<tr th:each="user: ${userList}">
-								<td scope="col"><a
-									th:href="@{admin/delUser/}+ ${user.getUsername()}"><i
-										id="logo" class="fas fa-user-minus"></i></a>
-								</th>
+							<!-- th:onclick="'location.href=\''+ @{/scouter/scoutProcessd/{scoutID} (id=${user.getScoutID()})}+'\''" -->
+							<tr th:each="user: ${scoutList}" th:onclick="'location.href=\''+ @{/scouter/scoutProcess/{scoutID} (id=${user.getScoutID()})}+'\''">
 								<td th:text="${user.getLastName()}+ ' ' +${user.getFirstName()}"
 									scope="row"></td>
-								<td th:text="${user.getUsername()}"></td>
-								<td th:text="${user.getRoleID()}"></td>
-								<td th:text="${user.getDOB()}"></td>
-								<td th:text="${user.getEmail()}"></td>
+								<td th:text="${user.getGender()}"></td>
+								<td th:text="${user.getLatestMission()}"></td>
 							</tr>
 						</tbody>
 					</table>

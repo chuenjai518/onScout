@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -26,9 +27,49 @@ public class ScouterController {
 	@GetMapping("scouter")
 	public String index(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
+		//
+		// I need a model scoutList that contain 
+		// -getLastName() - getFirstName() - getGender() - getLatestMission() - getScoutID()
+		//
 		List<UserInfo> userList = scouterService.getAllUser();
 		model.addAttribute("userList", userList);
 		return "Scouter/scoutProcess";
+	}
+	
+	@GetMapping("scouter/scoutProcess/{scoutID}")
+	public String scoutProcess(@PathVariable("scoutID") Integer scoutID, Model model, HttpSession session) {
+		// model.addAttribute("user", (User)session.getAttribute("user"));
+		List<UserInfo> userList = scouterService.getAllUser();
+		model.addAttribute("userList", userList);
+		return "Scouter/scoutProcess";
+	}
+	
+	@GetMapping("scouter/scoutManage")
+	public String scoutManage(Model model, HttpSession session) {
+		// model.addAttribute("user", (User)session.getAttribute("user"));
+		//
+		// I need a model scoutList that contain 
+		// -getLastName() - getFirstName() - getGender() - getEmail()  - getEmergencyContact - getScoutID()
+		//
+		List<UserInfo> userList = scouterService.getAllUser();
+		model.addAttribute("userList", userList);
+		return "Scouter/scoutManage";
+	}
+	
+	@GetMapping("scouter/viewAw")
+	public String viewAw(Model model, HttpSession session) {
+		// model.addAttribute("user", (User)session.getAttribute("user"));
+		List<UserInfo> userList = scouterService.getAllUser();
+		model.addAttribute("userList", userList);
+		return "Scouter/viewAw";
+	}
+
+	@GetMapping("scouter/editProfile")
+	public String editProfile(Model model, HttpSession session) {
+		// model.addAttribute("user", (User)session.getAttribute("user"));
+		List<UserInfo> userList = scouterService.getAllUser();
+		model.addAttribute("userList", userList);
+		return "Scouter/editProfile";
 	}
 	
 	@PostMapping("scouter/createUser")
@@ -38,6 +79,8 @@ public class ScouterController {
 		model.addFlashAttribute("message", "username has been used!");
 		return new RedirectView("/onScout/scouter#addUser");
 	}
+	
+
 	
 	
 }

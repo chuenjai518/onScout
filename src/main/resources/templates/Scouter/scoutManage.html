@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="BIG5">
+<title>Scout Management System</title>
+<div lang="en" th:replace="General/nav :: head"></div>
+
+</head>
+<body>
+	<div class="d-flex" id="wrapper">
+		<nav th:include="General/scouterNav :: nav"></nav>
+		<!-- V This is Content V -->
+		<!-- ------------------- -->
+		<div class="container-fluid">
+			<br>
+			<div class="row justify-content-center mb-1">
+				<div class="col-12">
+					<h1 style="text-align: center;">Scout List</h1>
+				</div>
+				<div class="col-4 offset-9">
+					<a href="#addUser" class="btn btn-primary"> Add Scout </a>
+				</div>
+			</div>
+			<div class="row justify-content-center ">
+				<div class="col-8">
+					<table class="table" style="text-align: center;">
+						<thead class="bg-primary">
+							<tr>
+								<th scope="col">Scout ID</th>
+								<th scope="col">Name</th>
+								<th scope="col">Gender</th>
+								<th scope="col">Email</th>
+								<th scope="col">Emergency Contact</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- th:onclick="'location.href=\''+ @{/scouter/scoutProcessd/{scoutID} (id=${user.getScoutID()})}+'\''" -->
+							<tr th:each="user: ${scoutList}" th:onclick="'location.href=\''+ @{/scouter/scoutManage/{scoutID} (id=${user.getScoutID()})}+'\''">
+								<td th:text="${user.getLastName()}+ ' ' +${user.getFirstName()}"
+									scope="row"></td>
+								<td th:text="${user.getGender()}"></td>
+								<td th:text="${user.getLatestMission()}"></td>
+								<td th:text="${user.getEmail()}"></td>
+								<td th:text="${user.getEmergencyContact()}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- ------------------- -->
+		<!-- ^ This is Content ^ -->
+	</div>
+</body>
+
+
+
+</html>
