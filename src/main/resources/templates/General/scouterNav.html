@@ -3,15 +3,15 @@
 		<div class="sidebar-heading"><img th:src="@{/images/logo.png}"
 				class="sideIcon"></div>
 		<div id="navItem" class="list-group list-group-flush">
-			<a id="sideNavA" href="@{scouter}"
+			<a id="sideNavA" th:href="@{scouterProcess}"
 				class="list-group-item list-group-item-action bg-light">Scout
-				Process</a> <a id="sideNavA" href="@{scouter/scoutManage}"
+				Process</a> <a id="sideNavA" th:href="@{scoutManage}"
 				class="list-group-item list-group-item-action bg-light">Scout
-				Management</a> <a id="sideNavA" href="@{scouter/editProfile}"
+				Management</a> <a id="sideNavA" th:href="@{editProfile}"
 				class="list-group-item list-group-item-action bg-light">Edit Own
-				Profile</a> <a id="sideNavA" href="@{scouter/viewAw}"
+				Profile</a> <a id="sideNavA" th:href="@{viewAw}"
 				class="list-group-item list-group-item-action bg-light">View
-				Award Requirement</a> <a id="sideNavA" href="@{logout}"
+				Award Requirement</a> <a id="sideNavA" th:href="@{logout}"
 				class="list-group-item list-group-item-action bg-light">logout</a>
 		</div>
 	</nav>

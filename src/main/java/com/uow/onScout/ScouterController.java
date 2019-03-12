@@ -24,7 +24,7 @@ public class ScouterController {
 	@Autowired
 	ScouterService scouterService;
 	
-	@GetMapping("scouter")
+	@GetMapping("scouter/scouterProcess")
 	public String index(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		//
