@@ -22,6 +22,12 @@ import com.uow.Service.ScoutService;
 public class ScoutController {
 	
 	ScoutService scoutService;
+
+	@GetMapping("scout")
+	public String redirect(Model model, HttpSession session) {
+
+		return "redirect:/scout/mainpage";
+	}
 	
 	@GetMapping("scoutProfile")
 	public String scoutProfile(Model model, HttpSession session) {
