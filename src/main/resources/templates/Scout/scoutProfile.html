@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<div lang="en" th:replace="General/nav :: head"></div>
+<div lang="en" th:replace="Scout/scoutNav:: head"></div>
 <meta charset="utf-8">
 <title>Scout Profile</title>
 <!-- <nav th:include="General/nav :: nav"></nav> -->
-<nav th:include="General/nav :: nav"></nav>
+<nav th:include="Scout/scoutNav :: nav"></nav>
 </head>
 <body>
 	<br>
@@ -85,7 +85,7 @@
 			</div>
 			<br /> <br />
 			<form class="form-inline">
-				<div class="form-group mb-2">
+				<div class="form-group mb-2 col-sm-12 col-lg-auto">
 
 					<b><label for="ContactNo">Contact Number: </label></b> <input
 						type="text" class="form-control" id="Contact"
@@ -93,13 +93,13 @@
 				</div>
 				&nbsp;
 				&nbsp;
-				<div class="form-group mx-sm-3 mb-2">
+				<div class="form-group mx-sm-3 mb-2 col-sm-12 col-lg-auto">
 					<b><label for="Email">Email: </label></b> <input type="text"
 						class="form-control" id="Email" placeholder="Email..." disabled>
 				</div>
-				<button type="button" onclick="enable()" class="btn btn-primary mb-2">Edit</button>
+				<button type="button" onclick="enable()" class="btn btn-primary mb-2 col-lg-auto col-sm-6">Edit</button>
 				&nbsp;
-				<button id="submit" type="submit" class="btn btn-success mb-2"
+				<button id="submit" type="submit" class="btn btn-success mb-2 col-sm-6 col-lg-auto"
 					disabled>Submit</button>
 			</form>
 			<br />
