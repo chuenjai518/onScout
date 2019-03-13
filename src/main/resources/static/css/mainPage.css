@@ -1,10 +1,54 @@
 .awardRow>div>img {
 	width: 250px;
-	heigth: 250px;
+	height: 250px;
+}
+.Xsize{
+	width: 25px;
+	padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+.SPB{
+	top:10px;
+	position:absolute;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	padding-bottom: 5px !important;
+}
+
+.positionRelative{
+	position:relative;
+}
+.awardSize{
+	width:150px !important;
+	height:150px !important;
+	padding: 0px !important;
+}
+.noUnderline:hover{
+	text-decoration: none;
+}
+
+.noPadding{
+	padding:0px !important;	
+}
+.textJustify{
+	text-align: justify;
+  	padding-left: 5px;
+    padding-right: 5px;
+}
+.infoRadius{
+	border-radius: 5px;
+}
+
+.textIn{
+	color: #F78764;
 }
 
 .textSPA{
 	color: #84A681;
+}
+.bgSPA{
+	background-color: #84A681;
 }
 
 .textSSA{
@@ -41,3 +85,9 @@
 }
 
 /*Pop up*/
+
+/*Panel Start*/
+.panel-group{
+	padding-bottom: 10px;
+}
+/*Panel End*/
