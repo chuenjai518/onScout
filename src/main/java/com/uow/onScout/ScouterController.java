@@ -66,7 +66,7 @@ public class ScouterController {
 		UserInfo userInfo = scouterService.getScoutInfo(username);
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("emerList", emerList);
-		return "Scouter/scoutManage";
+		return "Scouter/scoutInfoDetail";
 	}
 	
 	@GetMapping("scouter/viewAw")
