@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 $(document).ready(function(){
-	
 });
 function enable(){
 	if($('input').prop('disabled') == true){
@@ -14,4 +11,3 @@ function enable(){
 	
 	
 }
->>>>>>> 09f5e91fe8fab36bb2f907398611550dc28729b9
