@@ -23,61 +23,61 @@
 				<div class="col-12 col-lg-6 text-center mt-2"
 					style="font-size: 20px;">
 					<b>Scout ID: </b>
-					<text th:text="${userInfo.getUsername()}"></text>
+					<input type="text" class="form-control" th:value="${userInfo.getUsername()}">
 				</div>
 				<div class="col-12 col-lg-4 text-center mt-2"
 					style="font-size: 20px;">
 					<b>Full Name: </b>
-					<text th:text="${userInfo.getFirstName()}+' '+${userInfo.getLastName()}">
+					<input type="text" class="form-control" th:value="${userInfo.getFirstName()}+' '+${userInfo.getLastName()}">
 				</div>
 			</div>
 			<hr />
 			<div class="container row">
 				<div class="col-12 text-center font-weight-bolder"
-					style="font-size: 20px;" th:text="'Personal Information'"></div>
+					style="font-size: 20px;" th:value="'Personal Information'"></div>
 			</div>
 			<br /> <br />
 			<div class="container row">
 				<div class="col-lg-4 col-12">
 					<b>Date of Birth: </b>
-					<text th:text="${userInfo.getDOB()}"></text>
+					<input type="text" class="form-control" th:value="${userInfo.getDOB()}">
 				</div>
 				
 				<div class="col-lg-5 col-12 text-left">
 					<b>Gender: </b>
-					<text th:text="${userInfo.getGender()}"></text>
+					<input type="text" class="form-control" th:value="${userInfo.getGender()}">
 				</div>
 			</div>
 			<br />
 			<div class="container row">
 				<div class="col-lg-4 col-12">
 					<b>HKID Card No: </b>
-					<text th:text="${userInfo.getHKID()}"></text>
+					<input type="text" class="form-control" th:value="${userInfo.getHKID()}">
 				</div>
 				<div class="col-lg-3 col-12 text-left">
 					<b>Region: </b>
-					<text th:text="${userInfo.getRegion()}"></text>
+					<input type="text" class="form-control" th:value="${userInfo.getRegion()}">
 				</div>
 				<div class="col-lg-5 col-12 text-left">
 					<b>Address: </b>
-					<text th:text="${userInfo.getAddress()}"></text>
+					<input type="text" class="form-control" th:value="${userInfo.getAddress()}">
 				</div>
 			</div>
 			<br /> <br />
 			<hr />
 			<div class="container row">
 				<div class="col-12 text-center  font-weight-bolder"
-					style="font-size: 20px;" th:text="'Scout Information'"></div>
+					style="font-size: 20px;" text="'Scout Information'"></div>
 			</div>
 			<br /> <br />
 			<div class="container row">
 				<div class="col-lg-6 col-12">
 					<b>Unit: </b>
-					<text th:text="userInfo.getRegion()"></text>
+					<input type="text" class="form-control" th:value="${userInfo.getRegion()} + ${userInfo.getDistrict()} + ${userInfo.getScoutGroup()}">
 				</div>
 				<div class="col-lg-6 col-12 text-left">
 					<b>Date of Investiture: </b>
-					<text th:text="'04 - 04 - 2019'"></text>
+					<input type="text" class="form-control" th:value="${userInfo.getDOI()}">
 				</div>
 			</div>
 			<br /> <br />
@@ -85,7 +85,7 @@
 			<div class="container row">
 				<div class="col-lg-2">&nbsp;</div>
 				<div class="col-lg-8 text-center  font-weight-bolder"
-					style="font-size: 20px;" th:text="'Contact Information'"></div>
+					style="font-size: 20px;" th:value="'Contact Information'"></div>
 				<div class="col-lg-2 text-center">
 					<button onclick="enable()" class="btn btn-primary"> Edit Profile </button>
 				</div>
@@ -114,21 +114,21 @@
 			<hr />
 			<div class="container row">
 				<div class="col-12 text-center font-weight-bolder"
-					style="font-size: 20px;" th:text="'Emergency Contact'"></div>
+					style="font-size: 20px;" th:value="'Emergency Contact'"></div>
 			</div>
 			<br /> <br />
 			<div class="container row">
 				<div class="col-lg-4 col-12">
 					<b>Emergency Name: </b>
-					<text th:text="'Chan Chan Chan'"></text>
+					<input type="text" class="form-control" th:value="'Chan Chan Chan'">
 				</div>
 				<div class="col-lg-3 col-12 text-left">
 					<b>Relationship: </b>
-					<text th:text="'Parent'"></text>
+					<input type="text" class="form-control" th:value="'Parent'">
 				</div>
 				<div class="col-lg-5 col-12">
 					<b>Emergnecy Contact Number: </b>
-					<text th:text="'852 - 13121231'"></text>
+					<input type="text" class="form-control" th:value="'852 - 13121231'">
 				</div>
 			</div>
 			<br /> <br />
