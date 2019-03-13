@@ -8,6 +8,6 @@ function enable(){
 		$('input').prop('disabled',true);
 		$('#submit').prop('disabled',true);
 	}
-	
+
 	
 }

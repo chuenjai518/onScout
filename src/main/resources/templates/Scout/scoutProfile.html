@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<div lang="en" th:replace="General/nav :: head"></div>
+<div lang="en" th:replace="Scout/scoutNav:: head"></div>
 <meta charset="utf-8">
 <title>Scout Profile</title>
 <!-- <nav th:include="General/nav :: nav"></nav> -->
-<nav th:include="General/nav :: nav"></nav>
+<nav th:include="Scout/scoutNav :: nav"></nav>
 </head>
 <body>
 	<br>
@@ -50,15 +50,11 @@
 			</div>
 			<br />
 			<div class="container row">
-				<div class="col-lg-4 col-12">
+				<div class="col-lg-6 col-12">
 					<b>HKID Card No: </b>
 					<text th:text="'G829125(4)'"></text>
 				</div>
-				<div class="col-lg-3 col-12 text-left">
-					<b>Region: </b>
-					<text th:text="'KLN'"></text>
-				</div>
-				<div class="col-lg-5 col-12 text-left">
+				<div class="col-lg-6 col-12 text-left">
 					<b>Address: </b>
 					<text th:text="'adasd, ads dasd , asd sd sd ,KLN'"></text>
 				</div>
@@ -86,30 +82,26 @@
 				<div class="col-lg-2">&nbsp;</div>
 				<div class="col-lg-8 text-center  font-weight-bolder"
 					style="font-size: 20px;" th:text="'Contact Information'"></div>
-				<div class="col-lg-2 text-center">
-					<button onclick="enable()" class="btn btn-primary"> Edit Profile </button>
-				</div>
 			</div>
 			<br /> <br />
-			<div class="form-row">
-				<div class="form-group col-md-5">
-					<b><label for="ContactNo">Contact Number</label></b> <input
+			<form class="form-inline">
+				<div class="form-group mb-2 col-sm-12 col-lg-auto">
+
+					<b><label for="ContactNo">Contact Number: </label></b> <input
 						type="text" class="form-control" id="Contact"
-						placeholder="Contact Number..." disabled>
+						placeholder="Contact Number..."  disabled>
 				</div>
-				<div class="form-group col-md-1">&nbsp;</div>
-				<div class="form-group col-md-5">
-					<b><label for="Email">Email</label> </b><input type="text"
+				&nbsp;
+				&nbsp;
+				<div class="form-group mx-sm-3 mb-2 col-sm-12 col-lg-auto">
+					<b><label for="Email">Email: </label></b> <input type="text"
 						class="form-control" id="Email" placeholder="Email..." disabled>
 				</div>
-				<div class="form-group col-md-1">&nbsp;</div>
-			</div>
-				<div class="form-row">
-				<div class="form-group col-md-1">&nbsp;</div>
-					<div class="form-group col-10 text-right">
-						<button id="submit" type="submit" class="btn btn-success" disabled>  Submit  </button>
-					</div>
-				</div>
+				<button type="button" onclick="enable()" class="btn btn-primary mb-2 col-lg-auto col-sm-6">Edit</button>
+				&nbsp;
+				<button id="submit" type="submit" class="btn btn-success mb-2 col-sm-6 col-lg-auto"
+					disabled>Submit</button>
+			</form>
 			<br />
 			<hr />
 			<div class="container row">
