@@ -10,51 +10,83 @@
 </head>
 <body>
 	<div class="container">
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 		<h1 class="text-center textMain font-weight-bold">Scout
 			Progressive Badge</h1>
-		<br>
-		<br>
+		<br> <br>
 		<div class="row awardRow text-center">
-			<div id="1" class="col-3 award">
+			<div id="pathfinderAward" class="col-3 award">
 				<h5 class="textSPA font-weight-bold">Scout Pathfinder Award</h5>
 				<br> <img
-					src="/onScout/images/scoutPathfinderAward_unfinish.png"> <span
-					class="tips" id="tips-1">This is a text.</span>
+					src="/onScout/images/scoutPathfinderAward_unfinish.png">
 			</div>
+
 			<div class="col-3">
-				<h5 class="textSSA font-weight-bold">Scout Standard Award</h5>
+				<h5 id="standardAward" class="textSSA font-weight-bold">Scout
+					Standard Award</h5>
 				<br> <img src="/onScout/images/scoutStandardAward_unfinish.png">
-				<span>This is a text.</span>
 			</div>
 			<div class="col-3">
-				<h5 class="textSAA font-weight-bold">Scout Advanced Award</h5>
+				<h5 id="advancedAward" class="textSAA font-weight-bold">Scout
+					Advanced Award</h5>
 				<br> <img src="/onScout/images/scoutAdvancedAward_unfinish.png">
-				<span>This is a text.</span>
 			</div>
 			<div class="col-3">
-				<h5 class="textCSA font-weight-bold">Chief Scout's Award</h5>
+				<h5 id="chiefAward" class="textCSA font-weight-bold">Chief
+					Scout's Award</h5>
 				<br> <img src="/onScout/images/chiefScout'sAward_unfinish.png">
-				<span>This is a text.</span>
 			</div>
 		</div>
 	</div>
 
-	<script>
-		function showTooltip(e) {
-			var tooltip =   e.target.classList.contains("tips") ? e.target : e.target.querySelector(":scope .tips");
-			tooltip.style.left = (e.pageX + tooltip.clientWidth + 10 < document.body.clientWidth) ? (e.pageX + 10 + "px")
-					: (document.body.clientWidth + 5 - tooltip.clientWidth + "px");
-			tooltip.style.top = (e.pageY + tooltip.clientHeight + 10 < document.body.clientHeight) ? (e.pageY + 10 + "px")
-					: (document.body.clientHeight + 5 - tooltip.clientHeight + "px");
-		}
 
-		var tooltips = document.querySelectorAll('.award');
-		for (var i = 0; i < tooltips.length; i++) {
-			tooltips[i].addEventListener('mousemove', showTooltip);
-		}
+	<div class="text-center popup" id="pathfinderAwardInfo">
+		<br> <br>
+		<div class="container p-3 rounded col-sm-10 col-md-4 col-lg-4">
+			<div class="shadow border bg-white rounded"></div>
+		</div>
+	</div>
+
+	<div class="text-center popup" id="standardAwardInfo">
+		<br> <br>
+		<div class="container p-3 rounded col-sm-10 col-md-4 col-lg-4">
+			<div class="shadow border bg-white rounded"></div>
+		</div>
+
+	</div>
+
+	<div class="text-center popup" id="chiefAwardInfo">
+		<br> <br>
+		<div class="container p-3 rounded col-sm-10 col-md-4 col-lg-4">
+			<div class="shadow border bg-white rounded"></div>
+		</div>
+
+	</div>
+
+	<div class="text-center popup" id="pathfinderAward">
+		<br> <br>
+		<div class="container p-3 rounded col-sm-10 col-md-4 col-lg-4">
+			<div class="shadow border bg-white rounded"></div>
+		</div>
+
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			$("#pathfinderAward").click(function() {
+				$("#pathfinderAwardInfo").show();
+			});
+			$("#standardAward").click(function() {
+				$("#standardAwardInfo").show();
+			});
+			$("#advancedAward").click(function() {
+				$("#advancedAwardInfo").show();
+			});
+			$("#cheifAward").click(function() {
+				$("#chiefInfo").show();
+			});
+
+		});
 	</script>
 </body>
 </html>

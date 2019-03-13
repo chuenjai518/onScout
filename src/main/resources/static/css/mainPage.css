@@ -24,19 +24,20 @@
 }
 
 /*Hover Award*/
-.tips{
-	position: absolute;
-    display: none;
-    background: white;
-    border: 1px solid #84A681;
-    padding: 5px;
-    z-index: 1000;
-    color: #84A681;
+
+/*Hover Award*/
+
+/*Pop up*/
+.popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  display:none;
+ 	
 }
 
-.award:hover .tips{
-	display:block;
-    position:fixed;
-    overflow:hidden;
-}
-/*Hover Award*/
+/*Pop up*/
