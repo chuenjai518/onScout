@@ -17,9 +17,6 @@
 				<div class="col-12">
 					<h1 style="text-align: center;">Scout List</h1>
 				</div>
-				<div class="col-4 offset-9">
-					<a href="#addUser" class="btn btn-primary"> Add Scout </a>
-				</div>
 			</div>
 			<div class="row justify-content-center ">
 				<div class="col-8">
@@ -50,51 +47,7 @@
 		<!-- ------------------- -->
 		<!-- ^ This is Content ^ -->
 	</div>
-	<div class="text-center overlay" id="addUser">
-		<br> <br>
-		<div class="container p-3 rounded col-sm-10 col-md-7 col-lg-6">
-			<div class="shadow border bg-white rounded">
-				<br> <span class="loginBrand">On Scout</span> <br>
-				<h1 class="loginTitle textcolor">Add User</h1>
-				<hr>
-				<br>
-				<div class="container">
-					<form th:action="@{/scouter/createUser}" method="POST">
-						<!-- th:object="${addUser}" -->
-						<div class="container">
-							<div class="form-row justify-content-center">
-								<div class="form-group col-md-4">
-									<label for="inputState">User type</label>
-									<!-- th:field="*{roleID} " -->
-									<select id="userType" class="form-control" name="roleID" th:value="*{roleID}">
-										<option th:value="1" selected>Scout</option>
-										<option th:value="2">Scouter</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group row ">
-								<label for="Username" class="col-sm-12 col-form-label textcolor">Username
-								</label>
-								<div class="col-sm-12">
-									<input type="text" class="form-control" id="Username"
-										name="username" placeholder="Username" th:value="*{username}"
-										required>
-								</div>
-							</div>
-							<span style="color:red" class="errorText"
-							th:text="${message != null} ? ${message} : ''"></span>
-							<br>
-							<br>
-							<button type="submit" class="btn btn-primary col-sm-12">Submit</button>
-							<a th:href="@{scouter}" class="btn btn-link col-sm-12">Cancel</a>
-
-						</div>
-						<br> <br>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </body>
 
 

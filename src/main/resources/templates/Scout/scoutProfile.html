@@ -4,6 +4,7 @@
 <div lang="en" th:replace="General/nav :: head"></div>
 <meta charset="utf-8">
 <title>Scout Profile</title>
+<!-- <nav th:include="General/nav :: nav"></nav> -->
 <nav th:include="General/nav :: nav"></nav>
 </head>
 <body>
@@ -13,69 +14,124 @@
 			<div class="col-12">
 				<h1 style="text-align: center;">Scout Information</h1>
 			</div>
-			<div class="col-8 text-right">
-				<a href="#" class="btn btn-primary"> Edit Profile </a>
-			</div>
 		</div>
 		<div class="container border border-primary m-auto">
 			<div class="container row">
 				<div class="col-12 col-lg-6 text-center mt-2"
-					style="font-size: 20px;" th:text="'Scout ID: 1'"></div>
+					style="font-size: 20px;">
+					<b>Scout ID: </b>
+					<text th:text="'1'"></text>
+				</div>
 				<div class="col-12 col-lg-4 text-center mt-2"
-					style="font-size: 20px;" th:text="'Full Name: Chan scout'"></div>
+					style="font-size: 20px;">
+					<b>Full Name: </b>
+					<text th:text="'Chan scout'">
+				</div>
 			</div>
 			<hr />
 			<div class="container row">
-				<div class="col-12 text-center" style="font-size: 20px;"
-					th:text="'Personal Information'"></div>
+				<div class="col-12 text-center font-weight-bolder"
+					style="font-size: 20px;" th:text="'Personal Information'"></div>
+			</div>
+			<br /> <br />
+			<div class="container row">
+				<div class="col-lg-4 col-12">
+					<b>Date of Birth: </b>
+					<text th:text="'04 - 04 - 2019'"></text>
+				</div>
+				<div class="col-lg-3 col-12 text-left">
+					<b>Age: </b>
+					<text th:text="'18'"></text>
+				</div>
+				<div class="col-lg-5 col-12 text-left">
+					<b>Gender: </b>
+					<text th:text="'F'"></text>
+				</div>
 			</div>
 			<br />
 			<div class="container row">
-				<div class="col-lg-4 col-12" th:text="'Date of Birth: 04 - 04 - 2019'"></div>
-				<div class="col-lg-4 col-12 text-center" th:text="'Age: 18'"></div>
-				<div class="col-lg-4 col-12 text-center" th:text="'Gender: F'"></div>
+				<div class="col-lg-4 col-12">
+					<b>HKID Card No: </b>
+					<text th:text="'G829125(4)'"></text>
+				</div>
+				<div class="col-lg-3 col-12 text-left">
+					<b>Region: </b>
+					<text th:text="'KLN'"></text>
+				</div>
+				<div class="col-lg-5 col-12 text-left">
+					<b>Address: </b>
+					<text th:text="'adasd, ads dasd , asd sd sd ,KLN'"></text>
+				</div>
 			</div>
-			<br />
-			<div class="container row">
-				<div class="col-lg-4 col-12" th:text="'HKID Card No: G829125(4)'"></div>
-				<div class="col-lg-8 col-12 text-center"
-					th:text="'Address: adasd, ads dasd , asd sd sd ,KLN'"></div>
-			</div>
+			<br /> <br />
 			<hr />
 			<div class="container row">
-				<div class="col-12 text-center" style="font-size: 20px;"
-					th:text="'Scout Information'"></div>
+				<div class="col-12 text-center  font-weight-bolder"
+					style="font-size: 20px;" th:text="'Scout Information'"></div>
 			</div>
-			<br />
+			<br /> <br />
 			<div class="container row">
-				<div class="col-lg-4 col-12" th:text="'Unit: XXX'"></div>
-				<div class="col-lg-8 col-12 text-center"
-					th:text="'Date of Investiture: 04 - 04 - 2019'"></div>
+				<div class="col-lg-6 col-12">
+					<b>Unit: </b>
+					<text th:text="'XXXX'"></text>
+				</div>
+				<div class="col-lg-6 col-12 text-left">
+					<b>Date of Investiture: </b>
+					<text th:text="'04 - 04 - 2019'"></text>
+				</div>
 			</div>
+			<br /> <br />
 			<hr />
 			<div class="container row">
-				<div class="col-12 text-center" style="font-size: 20px;"
-					th:text="'Contact Information'"></div>
+				<div class="col-lg-2">&nbsp;</div>
+				<div class="col-lg-8 text-center  font-weight-bolder"
+					style="font-size: 20px;" th:text="'Contact Information'"></div>
+				<div class="col-lg-2 text-center">
+					<button onclick="enable()" class="btn btn-primary"> Edit Profile </button>
+				</div>
 			</div>
-			<div class="container row"></div>
+			<br /> <br />
+			<div class="form-row">
+				<div class="form-group col-md-5">
+					<b><label for="ContactNo">Contact Number</label></b> <input
+						type="text" class="form-control" id="Contact"
+						placeholder="Contact Number..." disabled>
+				</div>
+				<div class="form-group col-md-1">&nbsp;</div>
+				<div class="form-group col-md-5">
+					<b><label for="Email">Email</label> </b><input type="text"
+						class="form-control" id="Email" placeholder="Email..." disabled>
+				</div>
+				<div class="form-group col-md-1">&nbsp;</div>
+			</div>
+				<div class="form-row">
+				<div class="form-group col-md-1">&nbsp;</div>
+					<div class="form-group col-10 text-right">
+						<button id="submit" type="submit" class="btn btn-success" disabled>  Submit  </button>
+					</div>
+				</div>
 			<br />
-			<div class="container row">
-				<div class="col-lg-6 col-12" th:text="'Contact No: 852 - 13121231'"></div>
-				<div class="col-lg-6 col-12"
-					th:text="'Email Address: asdqwwdqw@uowmail.edu.au'"></div>
-			</div>
 			<hr />
 			<div class="container row">
-				<div class="col-12 text-center" style="font-size: 20px;"
-					th:text="'Emergency Contact'"></div>
+				<div class="col-12 text-center font-weight-bolder"
+					style="font-size: 20px;" th:text="'Emergency Contact'"></div>
 			</div>
-			<br />
+			<br /> <br />
 			<div class="container row">
-				<div class="col-lg-4 col-12" th:text="'Emergency Name: Chan Chan Chan'"></div>
-				<div class="col-lg-4 col-12 text-center" th:text="'Relationship: Parent'"></div>
-				<div class="col-lg-4 col-12" th:text="'Emergency Contact No: 852 - 13121231'"></div>
+				<div class="col-lg-4 col-12">
+					<b>Emergency Name: </b>
+					<text th:text="'Chan Chan Chan'"></text>
+				</div>
+				<div class="col-lg-3 col-12 text-left">
+					<b>Relationship: </b>
+					<text th:text="'Parent'"></text>
+				</div>
+				<div class="col-lg-5 col-12">
+					<b>Emergnecy Contact Number: </b>
+					<text th:text="'852 - 13121231'"></text>
+				</div>
 			</div>
-			<br />
+			<br /> <br />
 		</div>
 		<br />
 	</div>
