@@ -14,6 +14,13 @@ import com.uow.Model.User;
 
 @Controller
 public class ScoutController {
+	
+	@GetMapping("scout")
+	public String redirect(Model model, HttpSession session) {
+
+		return "redirect:/scout/mainpage";
+	}
+	
 	@GetMapping("scoutProfile")
 	public String scoutProfile(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
