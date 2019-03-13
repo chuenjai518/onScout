@@ -77,4 +77,8 @@ public class ScouterDAO {
 		String sql = "Update PersonalInfo SET email = ?, phoneNum = ? where username = ?";
 		db.update(sql, email, phoneNum, username);
 	}
+	
+	public void editScoutProfileProcess(UserInfo userinfo) {
+		
+	}
 }
