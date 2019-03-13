@@ -19,6 +19,9 @@ public class UserInfo {
 	private int phoneNum;
 	private String email;
 	private String region;
+	private String district;
+	private String scoutGroup;
+	private Date DOI;
 	
 	public UserInfo(){
 		roleID = 0;
@@ -113,5 +116,29 @@ public class UserInfo {
 
 	public void setRegion(String region) {
 		this.region = region;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getScoutGroup() {
+		return scoutGroup;
+	}
+
+	public void setScoutGroup(String scoutGroup) {
+		this.scoutGroup = scoutGroup;
+	}
+
+	public Date getDOI() {
+		return DOI;
+	}
+
+	public void setDOI(Date dOI) {
+		DOI = dOI;
 	}
 }

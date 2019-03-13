@@ -3,6 +3,7 @@ package com.uow.DAO;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -21,17 +22,31 @@ public class ScouterDAO {
 
 	@Autowired
 	private JdbcTemplate db;
+	
+	public UserInfo getScouterInfo(String username) {
+		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI from User u left join PersonalInfo p on u.username = p.username Where u.username = ? and disable = 0 and roleID = 2";
+		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
+		try{
+			return this.db.queryForObject(sql, rowMapper, username);
+		} catch (EmptyResultDataAccessException e) {
+			return new UserInfo();
+		}
+	}
 
 	public List<UserInfo> getAllUser() {
-		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region from User u left join PersonalInfo p on u.username = p.username Where disable = 0 and roleID = 1";
+		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI from User u left join PersonalInfo p on u.username = p.username Where disable = 0 and roleID = 1";
 		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
 		return this.db.query(sql, rowMapper);
 	}
 	
 	public UserInfo getScoutInfo(String username) {
-		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region from User u left join PersonalInfo p on u.username = p.username Where username = ? and disable = 0 and roleID = 1";
+		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI from User u left join PersonalInfo p on u.username = p.username Where u.username = ? and disable = 0 and roleID = 1";
 		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
+		try {
 		return this.db.queryForObject(sql, rowMapper, username);
+		} catch (EmptyResultDataAccessException e) {
+			return new UserInfo();
+		}
 	}
 
 	public List<ScoutManage> getScoutManageList() {
@@ -56,5 +71,23 @@ public class ScouterDAO {
 			db.update(sql, user.getUsername(), user.getPassword(), user.getRoleID());
 		}
 		return exists;
+	}
+	
+	public void editProfileProcess(String username, String email, int phoneNum) {
+		String sql = "Update PersonalInfo SET email = ?, phoneNum = ? where username = ?";
+		db.update(sql, email, phoneNum, username);
+	}
+	
+	public void editScoutProfileProcess(String username, UserInfo userInfo) {
+		String sql = "Select count(*) From PersonalInfo where username = ?";
+		int count = db.queryForObject(sql, new Object[] { username }, Integer.class);
+		if (count > 0) {
+			sql = "Update PersonalInfo set firstName = ?, lastName = ?, HKID = ?, DOB = ?, gender = ?, address = ?, phoneNum = ?, email = ?, region = ?, district = ?, scoutGroup = ?, DOI = ?";
+			db.update(sql, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(), userInfo.getDOB(), userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(), userInfo.getEmail(), userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(), userInfo.getDOI(), username);
+		}else {
+			sql = "INSERT INTO PersonalInfo(username, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI)" + 
+					"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			db.update(sql, username, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(), userInfo.getDOB(), userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(), userInfo.getEmail(), userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(), userInfo.getDOI());
+		}
 	}
 }
