@@ -12,8 +12,130 @@
 		<nav th:include="General/scouterNav :: nav"></nav>
 		<!-- V This is Content V -->
 		<!-- ------------------- -->
-
-
+		<div class="container-fluid">
+		<div class="row justify-content-center mb-1">
+			<div class="col-12">
+				<h1 style="text-align: center;">Scout Information</h1>
+			</div>
+		</div>
+		<div class="container border border-primary m-auto">
+			<div class="container row">
+				<div class="col-12 col-lg-6 text-center mt-2"
+					style="font-size: 20px;">
+					<b>Scout ID: </b>
+					<input type="text" class="form-control" th:value="${userInfo.getUsername()}">
+				</div>
+				<div class="col-12 col-lg-4 text-center mt-2"
+					style="font-size: 20px;">
+					<b>Full Name: </b>
+					<input type="text" class="form-control" th:value="${userInfo.getFirstName()}+' '+${userInfo.getLastName()}">
+				</div>
+			</div>
+			<hr />
+			<div class="container row">
+				<div class="col-12 text-center font-weight-bolder"
+					style="font-size: 20px;" th:value="'Personal Information'"></div>
+			</div>
+			<br /> <br />
+			<div class="container row">
+				<div class="col-lg-4 col-12">
+					<b>Date of Birth: </b>
+					<input type="text" class="form-control" th:value="${userInfo.getDOB()}">
+				</div>
+				
+				<div class="col-lg-5 col-12 text-left">
+					<b>Gender: </b>
+					<input type="text" class="form-control" th:value="${userInfo.getGender()}">
+				</div>
+			</div>
+			<br />
+			<div class="container row">
+				<div class="col-lg-4 col-12">
+					<b>HKID Card No: </b>
+					<input type="text" class="form-control" th:value="${userInfo.getHKID()}">
+				</div>
+				<div class="col-lg-3 col-12 text-left">
+					<b>Region: </b>
+					<input type="text" class="form-control" th:value="${userInfo.getRegion()}">
+				</div>
+				<div class="col-lg-5 col-12 text-left">
+					<b>Address: </b>
+					<input type="text" class="form-control" th:value="${userInfo.getAddress()}">
+				</div>
+			</div>
+			<br /> <br />
+			<hr />
+			<div class="container row">
+				<div class="col-12 text-center  font-weight-bolder"
+					style="font-size: 20px;" text="'Scout Information'"></div>
+			</div>
+			<br /> <br />
+			<div class="container row">
+				<div class="col-lg-6 col-12">
+					<b>Unit: </b>
+					<input type="text" class="form-control" th:value="${userInfo.getRegion()} + ${userInfo.getDistrict()} + ${userInfo.getScoutGroup()}">
+				</div>
+				<div class="col-lg-6 col-12 text-left">
+					<b>Date of Investiture: </b>
+					<input type="text" class="form-control" th:value="${userInfo.getDOI()}">
+				</div>
+			</div>
+			<br /> <br />
+			<hr />
+			<div class="container row">
+				<div class="col-lg-2">&nbsp;</div>
+				<div class="col-lg-8 text-center  font-weight-bolder"
+					style="font-size: 20px;" th:value="'Contact Information'"></div>
+				<div class="col-lg-2 text-center">
+					<button onclick="enable()" class="btn btn-primary"> Edit Profile </button>
+				</div>
+			</div>
+			<br /> <br />
+			<div class="form-row">
+				<div class="form-group col-md-5">
+					<b><label for="ContactNo">Contact Number</label></b> <input
+						type="text" class="form-control" id="Contact"
+						placeholder="Contact Number..." disabled>
+				</div>
+				<div class="form-group col-md-1">&nbsp;</div>
+				<div class="form-group col-md-5">
+					<b><label for="Email">Email</label> </b><input type="text"
+						class="form-control" id="Email" placeholder="Email..." disabled>
+				</div>
+				<div class="form-group col-md-1">&nbsp;</div>
+			</div>
+				<div class="form-row">
+				<div class="form-group col-md-1">&nbsp;</div>
+					<div class="form-group col-10 text-right">
+						<button id="submit" type="submit" class="btn btn-success" disabled>  Submit  </button>
+					</div>
+				</div>
+			<br />
+			<hr />
+			<div class="container row">
+				<div class="col-12 text-center font-weight-bolder"
+					style="font-size: 20px;" th:value="'Emergency Contact'"></div>
+			</div>
+			<br /> <br />
+			<div class="container row">
+				<div class="col-lg-4 col-12">
+					<b>Emergency Name: </b>
+					<input type="text" class="form-control" th:value="'Chan Chan Chan'">
+				</div>
+				<div class="col-lg-3 col-12 text-left">
+					<b>Relationship: </b>
+					<input type="text" class="form-control" th:value="'Parent'">
+				</div>
+				<div class="col-lg-5 col-12">
+					<b>Emergnecy Contact Number: </b>
+					<input type="text" class="form-control" th:value="'852 - 13121231'">
+				</div>
+			</div>
+			<br /> <br />
+		</div>
+		<br />
+	</div>
+		
 
 		<!-- ------------------- -->
 		<!-- ^ This is Content ^ -->

@@ -40,7 +40,7 @@ public class ScouterDAO {
 	}
 	
 	public UserInfo getScoutInfo(String username) {
-		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI fromUser u left join PersonalInfo p on u.username = p.username Where u.username = ? and disable = 0 and roleID = 1";
+		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI from User u left join PersonalInfo p on u.username = p.username Where u.username = ? and disable = 0 and roleID = 1";
 		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
 		try {
 		return this.db.queryForObject(sql, rowMapper, username);
@@ -76,5 +76,9 @@ public class ScouterDAO {
 	public void editProfileProcess(String username, String email, int phoneNum) {
 		String sql = "Update PersonalInfo SET email = ?, phoneNum = ? where username = ?";
 		db.update(sql, email, phoneNum, username);
+	}
+	
+	public void editScoutProfileProcess(UserInfo userinfo) {
+		
 	}
 }
