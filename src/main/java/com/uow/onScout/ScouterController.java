@@ -81,6 +81,13 @@ public class ScouterController {
 		return "Scouter/scoutInfoDetail";
 	}
 	
+	@PostMapping("scouter/editScoutProfileProcess/{username}")
+	public String editScoutProfileProcess(@PathVariable("username") Integer username, Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
+		scouterService.editScoutProfileProcess((String)session.getAttribute("username"), userInfo);
+		return "redirect:/scouter/editProfile";
+	}
+	
+	
 	@GetMapping("scouter/viewAw")
 	public String viewAw(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));

@@ -78,7 +78,16 @@ public class ScouterDAO {
 		db.update(sql, email, phoneNum, username);
 	}
 	
-	public void editScoutProfileProcess(UserInfo userinfo) {
-		
+	public void editScoutProfileProcess(String username, UserInfo userInfo) {
+		String sql = "Select count(*) From PersonalInfo where username = ?";
+		int count = db.queryForObject(sql, new Object[] { username }, Integer.class);
+		if (count > 0) {
+			sql = "Update PersonalInfo set firstName = ?, lastName = ?, HKID = ?, DOB = ?, gender = ?, address = ?, phoneNum = ?, email = ?, region = ?, district = ?, scoutGroup = ?, DOI = ?";
+			db.update(sql, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(), userInfo.getDOB(), userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(), userInfo.getEmail(), userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(), userInfo.getDOI(), username);
+		}else {
+			sql = "INSERT INTO PersonalInfo(username, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI)" + 
+					"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			db.update(sql, username, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(), userInfo.getDOB(), userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(), userInfo.getEmail(), userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(), userInfo.getDOI());
+		}
 	}
 }

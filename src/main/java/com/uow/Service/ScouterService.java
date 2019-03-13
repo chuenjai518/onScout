@@ -48,4 +48,8 @@ public class ScouterService {
 	public void editProfileProcess(String username, String email, int phoneNum) {
 		scouterDAO.editProfileProcess(username, email, phoneNum);
 	}
+	
+	public void editScoutProfileProcess(String username, UserInfo userinfo) {
+		scouterDAO.editScoutProfileProcess(username, userinfo);
+	}
 }
