@@ -22,6 +22,9 @@ public class UserInfoRowMapper implements RowMapper<UserInfo> {
 		user.setPhoneNum(row.getInt("phoneNum"));
 		user.setEmail(row.getString("email"));
 		user.setRegion(row.getString("region"));
+		user.setDistrict(row.getString("district"));
+		user.setScoutGroup(row.getString("scoutGroup"));
+		user.setDOI(row.getDate("DOI"));
 		
 		return user;
 	}
