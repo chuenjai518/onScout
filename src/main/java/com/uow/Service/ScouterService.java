@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uow.DAO.ScouterDAO;
+import com.uow.Model.EmerContact;
+import com.uow.Model.ScoutManage;
+import com.uow.Model.User;
 import com.uow.Model.UserInfo;
 
 @Service
@@ -17,9 +20,25 @@ public class ScouterService {
 		return scouterDAO.getAllUser();
 	}
 	
-	public boolean createUser(String username, int roleID) {
-		
-		return true;
+	public UserInfo getScoutInfo(String username) {
+		return scouterDAO.getScoutInfo(username);
+	}
+	
+	public List<ScoutManage> getScoutManageList(){
+		return scouterDAO.getScoutManageList();
+	}
+	
+	public List<EmerContact> getEmerContact(String username){
+		return scouterDAO.getEmerContact(username);
+	}
+	
+	
+	public boolean createUserProcess(String username) {
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(username);
+		user.setRoleID(1);
+		return scouterDAO.createUserProcess(user);
 	}
 	
 }

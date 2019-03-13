@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.uow.Model.EmerContact;
+import com.uow.Model.ScoutManage;
 import com.uow.Model.User;
 import com.uow.Model.UserInfo;
 import com.uow.Service.ScouterService;
@@ -24,7 +26,12 @@ public class ScouterController {
 	@Autowired
 	ScouterService scouterService;
 	
-	@GetMapping("scouter/scouterProcess")
+	@GetMapping("scouter/")
+	public String redirect(Model model) {
+		return "redirect:/scouter/scoutProcess";
+	}
+	
+	@GetMapping("scouter/scoutProcess")
 	public String index(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		//
@@ -46,13 +53,19 @@ public class ScouterController {
 	
 	@GetMapping("scouter/scoutManage")
 	public String scoutManage(Model model, HttpSession session) {
-		// model.addAttribute("user", (User)session.getAttribute("user"));
-		//
-		// I need a model scoutList that contain 
-		// -getLastName() - getFirstName() - getGender() - getEmail()  - getEmergencyContact - getScoutID()
-		//
-		List<UserInfo> userList = scouterService.getAllUser();
+
+
+		List<ScoutManage> userList = scouterService.getScoutManageList();
 		model.addAttribute("userList", userList);
+		return "Scouter/scoutManage";
+	}
+	
+	@GetMapping("scouter/scoutManage/{username}")
+	public String scoutManageDetail(@PathVariable("username") String username, Model model, HttpSession session) {
+		List<EmerContact> emerList = scouterService.getEmerContact(username);
+		UserInfo userInfo = scouterService.getScoutInfo(username);
+		model.addAttribute("userInfo", userInfo);
+		model.addAttribute("emerList", emerList);
 		return "Scouter/scoutManage";
 	}
 	
@@ -73,11 +86,13 @@ public class ScouterController {
 	}
 	
 	@PostMapping("scouter/createUser")
-	public RedirectView forgetPassword(RedirectAttributes model, @RequestParam int roleID,  @RequestParam String username) {
-		System.out.println(roleID + username);
-		//scouterService.createUser(username, roleID);
-		model.addFlashAttribute("message", "username has been used!");
-		return new RedirectView("/onScout/scouter#addUser");
+	public RedirectView forgetPassword(RedirectAttributes model, @RequestParam String username) {
+		boolean exists = scouterService.createUserProcess(username);
+		if (exists) {
+			model.addFlashAttribute("message", "Username is used!");
+			return new RedirectView("/onScout/scouter#addUser");
+		}
+		return new RedirectView("/onScout/scoutManage");
 	}
 	
 
