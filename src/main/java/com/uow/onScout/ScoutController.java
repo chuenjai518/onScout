@@ -29,13 +29,13 @@ public class ScoutController {
 		return "redirect:/scout/mainpage";
 	}
 	
-	@GetMapping("scoutProfile")
+	@GetMapping("scoutProfile/{username}")
 	public String scoutProfile(Model model, HttpSession session, @PathVariable("username") String username) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		// Need a model contain all scout information 
 		// 
-		UserInfo scouInfo = scoutService.getScout(username);
-		model.addAttribute("scoutList", scouInfo);
+//		UserInfo scouInfo = scoutService.getScout(username);
+//		model.addAttribute("scoutList", scouInfo);
 		return "Scout/scoutProfile";
 	}
 	
@@ -48,7 +48,7 @@ public class ScoutController {
 	
 
 
-	@GetMapping("scoutPEdit")
+	@GetMapping("scoutPEdit/{username}")
 	public String scoutPEdit(Model model, HttpSession session, @PathVariable("username") String username) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		// Need a model contain all scout information 
