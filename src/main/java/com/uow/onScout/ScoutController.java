@@ -1,5 +1,7 @@
 package com.uow.onScout;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -11,14 +13,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.uow.Model.User;
+import com.uow.Service.ScouterService;
+import com.uow.Model.ScoutInfo;
+import com.uow.Model.ScoutInfoRowMapper;
+import com.uow.Service.ScoutService;
 
 @Controller
 public class ScoutController {
+	
+	ScoutService scoutService;
+	
 	@GetMapping("scoutProfile")
 	public String scoutProfile(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		// Need a model contain all scout information 
 		// 
+		List<ScoutInfo> scout = scoutService.getAllScout();
+		model.addAttribute("scoutList", scout);
 		return "Scout/scoutProfile";
 	}
 	
@@ -35,7 +46,8 @@ public class ScoutController {
 	public String scoutPEdit(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		// Need a model contain all scout information 
-		
+		List<ScoutInfo> scout = scoutService.getAllScout();
+		model.addAttribute("scoutList", scout);
 		return "Scout/scoutPEdit";
 	}
 }
