@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ScoutController {
 	@GetMapping("scoutProfile")
-	public String index(Model model, HttpSession session) {
+	public String scoutProfile(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
-		
+		// Need a model contain all scout information 
+		// 
 		return "Scout/scoutProfile";
 	}
 	
@@ -22,4 +23,11 @@ public class ScoutController {
 		return "Scout/mainpage";
 	}
 
+	@GetMapping("scoutPEdit")
+	public String scoutPEdit(Model model, HttpSession session) {
+		// model.addAttribute("user", (User)session.getAttribute("user"));
+		// Need a model contain all scout information 
+		
+		return "Scout/scoutPEdit";
+	}
 }
