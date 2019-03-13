@@ -53,8 +53,6 @@ public class ScouterController {
 	
 	@GetMapping("scouter/scoutManage")
 	public String scoutManage(Model model, HttpSession session) {
-
-
 		List<ScoutManage> userList = scouterService.getScoutManageList();
 		model.addAttribute("userList", userList);
 		return "Scouter/scoutManage";
