@@ -26,8 +26,22 @@ public class ScouterController {
 	@Autowired
 	ScouterService scouterService;
 	
-	@GetMapping("scouter/")
-	public String redirect(Model model) {
+	
+	public boolean checkScouterLogin(HttpSession session) {
+		boolean login = false;
+		if(session.getAttribute("username") != null) {
+			if((int)session.getAttribute("roleID") == 2) {
+				login = true;
+			}
+		}
+		return login;
+	}
+	
+	@GetMapping("scouter")
+	public String redirect(Model model, HttpSession session) {
+		if(!checkScouterLogin(session)) {
+			return "redirect:/login";
+		}
 		return "redirect:/scouter/scoutProcess";
 	}
 	
@@ -78,9 +92,15 @@ public class ScouterController {
 	@GetMapping("scouter/editProfile")
 	public String editProfile(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
-		List<UserInfo> userList = scouterService.getAllUser();
-		model.addAttribute("userList", userList);
+		UserInfo scouterInfo = scouterService.getScouterInfo((String)session.getAttribute("username"));
+		model.addAttribute("scouterInfo", scouterInfo);
 		return "Scouter/editProfile";
+	}
+	
+	@PostMapping("scouter/editProfileProcess")
+	public String editProfileProcess(Model model, HttpSession session, @RequestParam String email, @RequestParam int phoneNum) {
+		scouterService.editProfileProcess((String)session.getAttribute("username"), email, phoneNum);
+		return "redirect:/scouter/editProfile";
 	}
 	
 	@PostMapping("scouter/createUser")
@@ -92,6 +112,12 @@ public class ScouterController {
 		}
 		return new RedirectView("/onScout/scoutManage");
 	}
+	
+	
+	
+	// ----------------API---------------------
+//	@PostMapping("scouter/api/pathfinder")
+//	public ResponseEntity
 	
 
 	

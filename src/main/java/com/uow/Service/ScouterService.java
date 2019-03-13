@@ -41,4 +41,11 @@ public class ScouterService {
 		return scouterDAO.createUserProcess(user);
 	}
 	
+	public UserInfo getScouterInfo(String username) {
+		return scouterDAO.getScouterInfo(username);
+	}
+	
+	public void editProfileProcess(String username, String email, int phoneNum) {
+		scouterDAO.editProfileProcess(username, email, phoneNum);
+	}
 }

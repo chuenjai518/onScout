@@ -41,18 +41,18 @@ public class UserController {
 	@GetMapping("login")
 	public String login(Model model, HttpSession session) {
 		if(session.getAttribute("user") != null) {
-//			// Scout
-//			if (user.getRoleID() == 1) {
-//				return return "General/login";;
-//			} else
-//			// Scouter
-//			if (user.getRoleID() == 2) {
-//				return return "General/login";;
-//			} else
-//			// Admin
-//			{
-//				return return "General/login";;
-//			}
+			// Scout
+			if ((int)session.getAttribute("roleID") == 1) {
+				return "redirect:/scout";
+			} else
+			// Scouter
+			if ((int)session.getAttribute("roleID") == 2) {
+				return "redirect:/scouter";
+			} else
+			// Admin
+			{
+				return "redirect:/admin";
+			}
 		}
 		model.addAttribute("user", new User());
 		return "General/login";
@@ -80,21 +80,20 @@ public class UserController {
 			model.addFlashAttribute("message", "Incorrect username or password!");
 			return new RedirectView("login");
 		}
-		session.setAttribute("user", user);
-
-//		// Scout
-//		if (user.getRoleID() == 1) {
-//			return new RedirectView("driverPage");
-//		} else
-//		// Scouter
-//		if (user.getRoleID() == 2) {
-//			return new RedirectView("admin");
-//		} else
-//		// Admin
-//		{
-//			return new RedirectView("carparkOwner");
-//		}
-		return new RedirectView("login");
+		session.setAttribute("username", user.getUsername());
+		session.setAttribute("roleID", user.getRoleID());
+		// Scout
+		if (user.getRoleID() == 1) {
+			return new RedirectView("scout");
+		} else
+		// Scouter
+		if (user.getRoleID() == 2) {
+			return new RedirectView("scouter");
+		} else
+		// Admin
+		{
+			return new RedirectView("admin");
+		}
 
 	}
 	
