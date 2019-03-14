@@ -31,4 +31,6 @@ public class ScoutDAO {
 			return new UserInfo();
 		}
 	}
+	
+	
 }
