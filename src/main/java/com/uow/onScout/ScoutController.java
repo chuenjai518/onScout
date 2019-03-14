@@ -36,6 +36,8 @@ public class ScoutController {
 		// 
 		UserInfo scoutInfo = scoutService.getScoutInfo(username);
 		model.addAttribute("scoutInfo", scoutInfo);
+		//Need Emergency contact
+		//Also need post mapping to change form information: Email and phone no. need change
 		return "scout/scoutProfile";
 	}
 	

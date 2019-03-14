@@ -19,13 +19,14 @@
 			<div class="container row">
 				<div class="col-12 col-lg-6 text-center mt-2"
 					style="font-size: 20px;">
-					<b>Scout ID: </b>
-					<text th:text="'1'"></text>
+					<b>Username: </b>
+					<text th:text="${scoutInfo.getUsername()}"></text>
 				</div>
 				<div class="col-12 col-lg-4 text-center mt-2"
 					style="font-size: 20px;">
 					<b>Full Name: </b>
-					<text th:text="'Chan scout'">
+					<text
+						th:text="${scoutInfo.getFirstName()} + ' ' + ${scoutInfo.getLastName()}">
 				</div>
 			</div>
 			<hr />
@@ -35,28 +36,24 @@
 			</div>
 			<br /> <br />
 			<div class="container row">
-				<div class="col-lg-4 col-12">
+				<div class="col-lg-6 col-12">
 					<b>Date of Birth: </b>
-					<text th:text="'04 - 04 - 2019'"></text>
+					<text th:text="${scoutInfo.getDOB()}"></text>
 				</div>
-				<div class="col-lg-3 col-12 text-left">
-					<b>Age: </b>
-					<text th:text="'18'"></text>
-				</div>
-				<div class="col-lg-5 col-12 text-left">
+				<div class="col-lg-6 col-12 text-left">
 					<b>Gender: </b>
-					<text th:text="'F'"></text>
+					<text th:text="${scoutInfo.getGender()}"></text>
 				</div>
 			</div>
 			<br />
 			<div class="container row">
 				<div class="col-lg-6 col-12">
 					<b>HKID Card No: </b>
-					<text th:text="'G829125(4)'"></text>
+					<text th:text="${scoutInfo.getHKID()}"></text>
 				</div>
 				<div class="col-lg-6 col-12 text-left">
 					<b>Address: </b>
-					<text th:text="'adasd, ads dasd , asd sd sd ,KLN'"></text>
+					<text th:text="${scoutInfo.getAddress()}"></text>
 				</div>
 			</div>
 			<br /> <br />
@@ -69,38 +66,42 @@
 			<div class="container row">
 				<div class="col-lg-6 col-12">
 					<b>Unit: </b>
-					<text th:text="'XXXX'"></text>
+					<text
+						th:text="${scoutInfo.getRegion()} + ' ' + ${scoutInfo.getDistrict()} + ' ' + ${scoutInfo.getScoutGroup()}"></text>
 				</div>
 				<div class="col-lg-6 col-12 text-left">
 					<b>Date of Investiture: </b>
-					<text th:text="'04 - 04 - 2019'"></text>
+					<text th:text="${scoutInfo.getDOI()}"></text>
 				</div>
 			</div>
 			<br /> <br />
 			<hr />
 			<div class="container row">
 				<div class="col-lg-2">&nbsp;</div>
-				<div class="col-lg-8 text-center  font-weight-bolder"
+				<div class="col-lg-8 text-center font-weight-bolder"
 					style="font-size: 20px;" th:text="'Contact Information'"></div>
 			</div>
 			<br /> <br />
-			<form class="form-inline">
+			<form class="form-inline" method="POST" th:object="${scoutInfo}" th:action="@{/scout/scoutProfile/} + ${scoutInfo.getUsername()}">
 				<div class="form-group mb-2 col-sm-12 col-lg-auto">
-
+					<!--  th:field="*{phoneNum}" -->
 					<b><label for="ContactNo">Contact Number: </label></b> <input
 						type="text" class="form-control" id="Contact"
-						placeholder="Contact Number..."  disabled>
+						th:value="${scoutInfo.getPhoneNum()}" th:field="*{phoneNum}"
+						placeholder="Contact Number..." disabled>
 				</div>
-				&nbsp;
-				&nbsp;
+				&nbsp; &nbsp;
 				<div class="form-group mx-sm-3 mb-2 col-sm-12 col-lg-auto">
+					<!--  th:field="*{email}"  -->
 					<b><label for="Email">Email: </label></b> <input type="text"
-						class="form-control" id="Email" placeholder="Email..." disabled>
+						class="form-control" id="Email" th:value="${scoutInfo.getEmail()}" th:field="*{email}"
+						placeholder="Email..." disabled>
 				</div>
-				<button type="button" onclick="enable()" class="btn btn-primary mb-2 col-lg-auto col-sm-6">Edit</button>
+				<button type="button" onclick="enable()"
+					class="btn btn-primary mb-2 col-lg-auto col-sm-6">Edit</button>
 				&nbsp;
-				<button id="submit" type="submit" class="btn btn-success mb-2 col-sm-6 col-lg-auto"
-					disabled>Submit</button>
+				<button id="submit" type="submit"
+					class="btn btn-success mb-2 col-sm-6 col-lg-auto" disabled>Submit</button>
 			</form>
 			<br />
 			<hr />
@@ -110,17 +111,28 @@
 			</div>
 			<br /> <br />
 			<div class="container row">
-				<div class="col-lg-4 col-12">
+				<div class="col-lg-6 col-12">
 					<b>Emergency Name: </b>
+					<!-- th:text="${emContact.getEmerName()}" -->
 					<text th:text="'Chan Chan Chan'"></text>
 				</div>
-				<div class="col-lg-3 col-12 text-left">
+				<div class="col-lg-6 col-12 text-left">
 					<b>Relationship: </b>
+					<!-- th:text="${emContact.getEmerRelation()}" -->
 					<text th:text="'Parent'"></text>
 				</div>
-				<div class="col-lg-5 col-12">
-					<b>Emergnecy Contact Number: </b>
-					<text th:text="'852 - 13121231'"></text>
+			</div>
+			<br />
+			<div class="container row">
+				<div class="col-lg-6 col-12">
+					<b>Phone Number: </b>
+					<!-- th:text="${emContact.getEmerTel()}" -->
+					<text th:text="'13121231'"></text>
+				</div>
+				<div class="col-lg-6 col-12">
+					<b>Contact Email: </b>
+					<!-- th:text="${emContact.getEmerAddress()}" -->
+					<text th:text="'wqeq@uow.mail.edu.au'"></text>
 				</div>
 			</div>
 			<br /> <br />
