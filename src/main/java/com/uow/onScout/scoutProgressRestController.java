@@ -23,9 +23,9 @@ public class scoutProgressRestController {
 		return userList;
 	}
 	
-	@RequestMapping("api/getCompletedQuest/{username}")
+	@RequestMapping("api/getSPAFinishDate/{username}")
 	public List<CompletedQuest> getCompletedQuest(@PathVariable String username){
 		
-		return apiService.getCompletedQuest(username);
+		return apiService.getSPAFinishDate(username);
 	}
 }
