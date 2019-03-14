@@ -133,19 +133,30 @@ $(document).ready(function(){
 			</div>
 			<br /> <br />
 			<span th:each="emer: ${emerList}">
-			<div class="container row">
-				<div class="col-lg-4 col-12">
+			<div class="container ">
+			
+				<form>
+				<div class="form-row">
+				<div class="form-group col-lg-2 col-12">
 					<b>Emergency Name: </b>
 					<input type="text" class="form-control" th:value="${emer.getEmerName()}">
 				</div>
-				<div class="col-lg-3 col-12 text-left">
+				<div class="form-group col-lg-2 col-12 text-left">
 					<b>Relationship: </b>
 					<input type="text" class="form-control" th:value="${emer.getEmerRelation()}">
 				</div>
-				<div class="col-lg-5 col-12">
+				<div class="form-group col-lg-4 col-12">
 					<b>Emergency Contact Number: </b>
 					<input  type="text" class="form-control" th:value="${emer.getEmerTel()}">
 				</div>
+				<div class="form-group col-lg-2 mt-2">
+					<button type="button" onclick="enable()" class="btn btn-primary"> Edit Profile </button>
+				</div>
+				<div class="form-group col-lg-2 mt-2">
+						<button id="submit2" type="submit" class="btn btn-success" disabled>  Submit  </button>
+				</div>
+				</div>
+				</form>
 			</div>
 			</span>	
 			<br /> <br />
