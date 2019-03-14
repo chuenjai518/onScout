@@ -52,6 +52,10 @@
 .spaceIn{
 	padding-left:20px !important;
 }
+.spaceIn2{
+	padding-left:40px !important;
+}
+
 
 .textTask{
 
@@ -69,7 +73,7 @@
 	color: #F78764;
 }
 .textBigger{
-	padding-left:3px;
+	padding-left:5px;
 	font-size: 20px;
 }
 
@@ -117,7 +121,5 @@
 /*Pop up*/
 
 /*Panel Start*/
-.panel-group{
-	padding-bottom: 10px;
-}
+
 /*Panel End*/
