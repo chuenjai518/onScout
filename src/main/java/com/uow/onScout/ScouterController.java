@@ -3,15 +3,22 @@ package com.uow.onScout;
 import java.io.File;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +37,12 @@ import com.uow.Service.ScouterService;
 public class ScouterController {
 	@Autowired
 	ScouterService scouterService;
+	
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+	}
 	
 	
 	public boolean checkScouterLogin(HttpSession session) {
@@ -76,7 +89,6 @@ public class ScouterController {
 		model.addAttribute("userList", userList);
 		return "Scouter/scoutManage";
 	}
-	
 	@GetMapping("scouter/scoutManage/{username}")
 	public String scoutManageDetail(@PathVariable("username") String username, Model model, HttpSession session) {
 		List<EmerContact> emerList = scouterService.getEmerContact(username);
@@ -89,9 +101,9 @@ public class ScouterController {
 	
 	@PostMapping("scouter/editScoutProfileProcess/{username}")
 	public String editScoutProfileProcess(@PathVariable("username") String username, Model model, HttpSession session, @ModelAttribute EmerContact emerTel, @ModelAttribute UserInfo userInfo) {
-		scouterService.editScoutProfileProcess((String)session.getAttribute("username"), userInfo);
+		scouterService.editScoutProfileProcess(username, userInfo);
 		System.out.println(userInfo.getEmail());
-		return "redirect:/scouter/editProfile";
+		return "redirect:/scouter/scoutManage";
 	}
 	
 	
