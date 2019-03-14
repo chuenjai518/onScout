@@ -41,12 +41,12 @@ $(document).ready(function(){
 				<div class="col-12 col-sm-6 col-lg-3 text-center mt-2"
 					style="font-size: 20px;">
 					<b>First Name: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getFirstName()}">
+					<input type="text" th:field="*{firstName}" class="form-control" th:value="${userInfo.getFirstName()}">
 				</div>
 				<div class="col-12 col-sm-6 col-lg-3 text-center mt-2"
 					style="font-size: 20px;">
 					<b>Last Name: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getLastName()}">
+					<input type="text" th:field="*{lastName}" class="form-control" th:value="${userInfo.getLastName()}">
 				</div>
 			</div>
 			<hr />
@@ -58,27 +58,24 @@ $(document).ready(function(){
 			<div class="container row">
 				<div class="col-lg-4 col-12">
 					<b>Date of Birth: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getDOB()}">
+					<input type="text" th:field="*{dOB}" class="form-control" th:value="${userInfo.getDOB()}">
 				</div>
 				
 				<div class="col-lg-5 col-12 text-left">
 					<b>Gender: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getGender()}">
+					<input type="text" th:field="*{gender}" class="form-control" th:value="${userInfo.getGender()}">
 				</div>
 			</div>
 			<br />
 			<div class="container row">
 				<div class="col-lg-4 col-12">
 					<b>HKID Card No: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getHKID()}">
+					<input type="text" th:field="*{HKID}" class="form-control" th:value="${userInfo.getHKID()}">
 				</div>
-				<div class="col-lg-3 col-12 text-left">
-					<b>Region: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getRegion()}">
-				</div>
+				
 				<div class="col-lg-5 col-12 text-left">
 					<b>Address: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getAddress()}">
+					<input type="text" th:field="*{address}" class="form-control" th:value="${userInfo.getAddress()}">
 				</div>
 			</div>
 			<br /> <br />
@@ -91,19 +88,19 @@ $(document).ready(function(){
 			<div class="container row">
 				<div class="col-lg-2 col-12">
 					<b>Unit: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getRegion()}">
+					<input type="text" th:field="*{region}" class="form-control" th:value="${userInfo.getRegion()}">
 				</div>
 				<div class="col-lg-2 col-12">
 					<b>District: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getDistrict()}">
+					<input type="text" th:field="*{district}" class="form-control" th:value="${userInfo.getDistrict()}">
 				</div>
 				<div class="col-lg-2 col-12">
 					<b>Scout Gruop: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getScoutGroup()}">
+					<input type="text" th:field="*{scoutGroup}" class="form-control" th:value="${userInfo.getScoutGroup()}">
 				</div>
 				<div class="col-lg-6 col-12 text-left">
 					<b>Date of Investiture: </b>
-					<input type="text" class="form-control" th:value="${userInfo.getDOI()}">
+					<input type="text" th:field="*{dOI}" class="form-control" th:value="${userInfo.getDOI()}">
 				</div>
 			</div>
 			<br /> <br />
@@ -118,7 +115,7 @@ $(document).ready(function(){
 			<div class="container form-row">
 				<div class="form-group col-md-5">
 					<b><label for="ContactNo">Contact Number</label></b> <input
-						type="text" class="form-control" id="Contact"
+						type="text" class="form-control" id="Contact" th:field="*{phoneNum}"
 						th:value="${userInfo.getPhoneNum()}" placeholder="Contact Number..." disabled>
 				</div>
 				<div class="form-group col-md-1">&nbsp;</div>
