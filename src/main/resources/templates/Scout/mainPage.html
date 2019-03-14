@@ -388,11 +388,60 @@
 
 
 										<div id="society" class="panel-collapse collapse in">
-											<div class="container">Lorem ipsum dolor sit amet,
-												consectetur adipisicing elit, sed do eiusmod tempor
-												incididunt ut labore et dolore magna aliqua. Ut enim ad
-												minim veniam, quis nostrud exercitation ullamco laboris nisi
-												ut aliquip ex ea commodo consequat.</div>
+											<!-- task: Service -->
+											<div class="container textSPA textTask">
+												<div id="SPA13100" class="row">
+													<div class="font-weight-bold lineHeight textBigger">
+														<span>Service</span> (Completed on <span class="textIn">14/03/2019</span>)
+													</div>
+												</div>
+
+												<div id="SPA13110" class="row lineHeight">
+													<div class="col-9 spaceIn">Know and demonstrate how
+														to handle accidents, e.g. nose bleed, burns, cuts and
+														thorns, etc.</div>
+													<span class="offset-1 col-2 textIn">14/03/2019</span>
+												</div>
+
+												<div id="SPA13120" class="row noPaddingButtom">
+													<div class="col-9 spaceIn">Participate in a community
+														service of at least 4 hours.</div>
+													<span class="offset-1 col-2 textIn">14/03/2019</span>
+												</div>
+												<div id="SPA13121" class="row noPaddingButtom">
+													<div class="col-9  spaceIn2">
+														Complete service of at least 4 hours approved by the Scout
+														Leader, District, Region or Association headquarters. <br>
+													</div>
+												</div>
+												<div id="SPA13122" class="row lineHeight">
+													<div class="col-9  spaceIn2">
+														Record the details of the service, such as the
+														organization, targets, time and location; and share the
+														personal experience and feeling with other patrol members.
+														<br>
+													</div>
+												</div>
+											</div>
+											<!-- task: Service -->
+											<!-- task: Community -->
+											<div class="container textSPA textTask">
+												<div id="SPA13200" class="row">
+													<div class="font-weight-bold lineHeight textBigger">
+														<span>Community</span> (Completed on <span class="textIn">14/03/2019</span>)
+													</div>
+												</div>
+												<div id="SPA13210" class="row lineHeight">
+													<div class="col-9 spaceIn">Using city-tracking,
+														pictures, photos, sketches, atlas, online maps or other
+														means, introduce to patrol members the community
+														facilities near your home or troop base, e.g. police
+														station, hospital, fire station, district office and
+														public transport etc.</div>
+													<span class="offset-1 col-2 textIn">14/03/2019</span>
+												</div>
+											</div>
+											<!-- task: Community -->
 										</div>
 									</div>
 									<!-- Society -->
@@ -407,65 +456,60 @@
 										</div>
 
 										<div id="environment" class="panel-collapse collapse in">
-											<div class="container">Lorem ipsum dolor sit amet,
-												consectetur adipisicing elit, sed do eiusmod tempor
-												incididunt ut labore et dolore magna aliqua. Ut enim ad
-												minim veniam, quis nostrud exercitation ullamco laboris nisi
-												ut aliquip ex ea commodo consequat.</div>
+
 										</div>
+										<!-- Environment -->
 									</div>
-									<!-- Environment -->
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Pathfinder Award -->
-		<!-- Standard Award -->
-		<div class="text-center popup" id="standardAwardInfo">
-			<br> <br>
-			<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
-				<div class="shadow border bg-white rounded"></div>
+			<!-- Pathfinder Award -->
+			<!-- Standard Award -->
+			<div class="text-center popup" id="standardAwardInfo">
+				<br> <br>
+				<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
+					<div class="shadow border bg-white rounded"></div>
+				</div>
+
 			</div>
+			<!-- Standard Award -->
+			<!-- Advanced Award -->
+			<div class="text-center popup" id="advancedAwardInfo">
+				<br> <br>
+				<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
+					<div class="shadow border bg-white rounded"></div>
+				</div>
 
-		</div>
-		<!-- Standard Award -->
-		<!-- Advanced Award -->
-		<div class="text-center popup" id="advancedAwardInfo">
-			<br> <br>
-			<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
-				<div class="shadow border bg-white rounded"></div>
 			</div>
+			<!-- Advanced Award -->
+			<!-- Chief Award -->
+			<div class="text-center popup" id="chiefAwardInfo">
+				<br> <br>
+				<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
+					<div class="shadow border bg-white rounded"></div>
+				</div>
 
-		</div>
-		<!-- Advanced Award -->
-		<!-- Chief Award -->
-		<div class="text-center popup" id="chiefAwardInfo">
-			<br> <br>
-			<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
-				<div class="shadow border bg-white rounded"></div>
 			</div>
+			<!-- Chief Award -->
+			<script>
+				$(document).ready(function() {
+					$("#pathfinderAward").click(function() {
+						$("#pathfinderAwardInfo").show();
+					});
+					$("#standardAward").click(function() {
+						$("#standardAwardInfo").show();
+					});
+					$("#advancedAward").click(function() {
+						$("#advancedAwardInfo").show();
+					});
+					$("#cheifAward").click(function() {
+						$("#chiefInfo").show();
+					});
 
-		</div>
-		<!-- Chief Award -->
-		<script>
-			$(document).ready(function() {
-				$("#pathfinderAward").click(function() {
-					$("#pathfinderAwardInfo").show();
 				});
-				$("#standardAward").click(function() {
-					$("#standardAwardInfo").show();
-				});
-				$("#advancedAward").click(function() {
-					$("#advancedAwardInfo").show();
-				});
-				$("#cheifAward").click(function() {
-					$("#chiefInfo").show();
-				});
-
-			});
-		</script>
+			</script>
 </body>
 </html>
