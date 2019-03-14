@@ -6,9 +6,12 @@
 <div lang="en" th:replace="General/nav :: head"></div>
 <nav th:include="General/nav :: nav"></nav>
 
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
+<h1 id="testSpan">
+
+		</h1>
 	<div class="container">
 		<br> <br> <br>
 		<h1 class="text-center textMain font-weight-bold">Scout
@@ -17,21 +20,21 @@
 		<div class="row awardRow text-center">
 			<div id="pathfinderAward" class="col-3 award">
 				<h5 class="textSPA font-weight-bold">Scout Pathfinder Award</h5>
-				<br> <img
+				<br> <img id="Award"
 					src="/onScout/images/scoutPathfinderAward_unfinish.png">
 			</div>
 
 			<div id="standardAward" class="col-3">
 				<h5 class="textSSA font-weight-bold">Scout Standard Award</h5>
-				<br> <img src="/onScout/images/scoutStandardAward_unfinish.png">
+				<br> <img id="Award"  src="/onScout/images/scoutStandardAward_unfinish.png">
 			</div>
 			<div id="advancedAward" class="col-3">
 				<h5 class="textSAA font-weight-bold">Scout Advanced Award</h5>
-				<br> <img src="/onScout/images/scoutAdvancedAward_unfinish.png">
+				<br> <img id="Award"  src="/onScout/images/scoutAdvancedAward_unfinish.png">
 			</div>
 			<div id="chiefAward" class="col-3">
 				<h5 class="textCSA font-weight-bold">Chief Scout's Award</h5>
-				<br> <img src="/onScout/images/chiefScout'sAward_unfinish.png">
+				<br> <img id="Award"  src="/onScout/images/chiefScout'sAward_unfinish.png">
 			</div>
 		</div>
 	</div>
@@ -68,7 +71,7 @@
 				</div>
 				<br>
 				<h2 class="textSPA text-center font-weight-bold col-12">Task</h2>
-				<div class="container">
+				<div class="container" style="padding-bottom: 10px;">
 					<div class="row">
 						<div class="offset-1 col-10">
 							<div id="task">
@@ -388,11 +391,60 @@
 
 
 										<div id="society" class="panel-collapse collapse in">
-											<div class="container">Lorem ipsum dolor sit amet,
-												consectetur adipisicing elit, sed do eiusmod tempor
-												incididunt ut labore et dolore magna aliqua. Ut enim ad
-												minim veniam, quis nostrud exercitation ullamco laboris nisi
-												ut aliquip ex ea commodo consequat.</div>
+											<!-- task: Service -->
+											<div class="container textSPA textTask">
+												<div id="SPA13100" class="row">
+													<div class="font-weight-bold lineHeight textBigger">
+														<span>Service</span> (Completed on <span class="textIn">14/03/2019</span>)
+													</div>
+												</div>
+
+												<div id="SPA13110" class="row lineHeight">
+													<div class="col-9 spaceIn">Know and demonstrate how
+														to handle accidents, e.g. nose bleed, burns, cuts and
+														thorns, etc.</div>
+													<span class="offset-1 col-2 textIn">14/03/2019</span>
+												</div>
+
+												<div id="SPA13120" class="row noPaddingButtom">
+													<div class="col-9 spaceIn">Participate in a community
+														service of at least 4 hours.</div>
+													<span class="offset-1 col-2 textIn">14/03/2019</span>
+												</div>
+												<div id="SPA13121" class="row noPaddingButtom">
+													<div class="col-9  spaceIn2">
+														Complete service of at least 4 hours approved by the Scout
+														Leader, District, Region or Association headquarters. <br>
+													</div>
+												</div>
+												<div id="SPA13122" class="row lineHeight">
+													<div class="col-9  spaceIn2">
+														Record the details of the service, such as the
+														organization, targets, time and location; and share the
+														personal experience and feeling with other patrol members.
+														<br>
+													</div>
+												</div>
+											</div>
+											<!-- task: Service -->
+											<!-- task: Community -->
+											<div class="container textSPA textTask">
+												<div id="SPA13200" class="row">
+													<div class="font-weight-bold lineHeight textBigger">
+														<span>Community</span> (Completed on <span class="textIn">14/03/2019</span>)
+													</div>
+												</div>
+												<div id="SPA13210" class="row lineHeight">
+													<div class="col-9 spaceIn">Using city-tracking,
+														pictures, photos, sketches, atlas, online maps or other
+														means, introduce to patrol members the community
+														facilities near your home or troop base, e.g. police
+														station, hospital, fire station, district office and
+														public transport etc.</div>
+													<span class="offset-1 col-2 textIn">14/03/2019</span>
+												</div>
+											</div>
+											<!-- task: Community -->
 										</div>
 									</div>
 									<!-- Society -->
@@ -407,46 +459,87 @@
 										</div>
 
 										<div id="environment" class="panel-collapse collapse in">
-											<div class="container">Lorem ipsum dolor sit amet,
-												consectetur adipisicing elit, sed do eiusmod tempor
-												incididunt ut labore et dolore magna aliqua. Ut enim ad
-												minim veniam, quis nostrud exercitation ullamco laboris nisi
-												ut aliquip ex ea commodo consequat.</div>
+											<!-- task: Nature -->
+											<div class="container textSPA textTask">
+												<div id="SPA14100" class="row">
+													<div class="font-weight-bold lineHeight textBigger">
+														<span>Nature</span> (Completed on <span class="textIn">14/03/2019</span>)
+													</div>
+												</div>
+												<div id="SPA14110" class="row noPaddingButtom">
+													<div class="col-9 spaceIn">Visit an exhibition or a
+														place on the subject of nature environment or habitat</div>
+													<span class="offset-1 col-2 textIn">14/03/2019</span>
+												</div>
+												<div id="SPA14111" class="row lineHeight">
+													<div class="col-9  spaceIn2">
+														Together with patrol memebers, visit a relevant exhibition
+														or place, e.g. Mai Po Nature Conservation Area, Sai Kung
+														Coastal Park, Wetland Park, an organic farm or nature
+														trail etc.<br>
+													</div>
+												</div>
+												</div>
+												<!-- task: Nature -->
+												<!-- task: Meterology -->
+												<div class="container textSPA textTask">
+													<div id="SPA14200" class="row">
+														<div class="font-weight-bold lineHeight textBigger">
+															<span>Meterology</span> (Completed on <span
+																class="textIn">14/03/2019</span>)
+														</div>
+													</div>
+													<div id="SPA14210" class="row noPaddingButtom">
+														<div class="col-9 spaceIn">Understand the difference
+															between weather and climate and list their effects on
+															outdoor activities</div>
+														<span class="offset-1 col-2 textIn">14/03/2019</span>
+													</div>
+													<div id="SPA14211" class="row lineHeight">
+														<div class="col-9  spaceIn2">
+															State the difference between weather and climate and
+															briefly introduce the climate of HK, state the effects of
+															various elements of weather, e.g. temperature, pressure,
+															wind speed, humidity, rainfall, on outdoor scouting
+															activities.<br>
+														</div>
+													</div>
+													<!-- task: Meterology -->
+
+												</div>
+												<!-- Environment -->
+											</div>
 										</div>
 									</div>
-									<!-- Environment -->
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Pathfinder Award -->
-		<!-- Standard Award -->
-		<div class="text-center popup" id="standardAwardInfo">
-			<br> <br>
-			<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
-				<div class="shadow border bg-white rounded"></div>
-			</div>
+					<!-- Pathfinder Award -->
+					<!-- Standard Award -->
+					<div class="text-center popup" id="standardAwardInfo">
+						<br> <br>
+						<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
+							<div class="shadow border bg-white rounded"></div>
+						</div>
 
-		</div>
-		<!-- Standard Award -->
-		<!-- Advanced Award -->
-		<div class="text-center popup" id="advancedAwardInfo">
-			<br> <br>
-			<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
-				<div class="shadow border bg-white rounded"></div>
-			</div>
+					</div>
+					<!-- Standard Award -->
+					<!-- Advanced Award -->
+					<div class="text-center popup" id="advancedAwardInfo">
+						<br> <br>
+						<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
+							<div class="shadow border bg-white rounded"></div>
+						</div>
 
-		</div>
-		<!-- Advanced Award -->
-		<!-- Chief Award -->
-		<div class="text-center popup" id="chiefAwardInfo">
-			<br> <br>
-			<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
-				<div class="shadow border bg-white rounded"></div>
-			</div>
+					</div>
+					<!-- Advanced Award -->
+					<!-- Chief Award -->
+					<div class="text-center popup" id="chiefAwardInfo">
+						<br> <br>
+						<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
+							<div class="shadow border bg-white rounded"></div>
+						</div>
 
 		</div>
 		<!-- Chief Award -->
@@ -467,5 +560,6 @@
 
 			});
 		</script>
+
 </body>
 </html>

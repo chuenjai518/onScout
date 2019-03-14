@@ -17,8 +17,8 @@ public class ApiDAO {
 	@Autowired
 	private JdbcTemplate db;
 	
-	public List<CompletedQuest> getCompletedQuest(String username){
-		String sql = "SELECT questID, FinishDate, username FROM CompletedQuest where username = ?";
+	public List<CompletedQuest> getSPAFinishDate(String username){
+		String sql = "SELECT questID, FinishDate, username FROM CompletedQuest where username = ? and questID > 10000 and questID < 20000";
 		RowMapper<CompletedQuest> rowMapper = new CompletedQuestRowMapper();
 		return this.db.query(sql, rowMapper, username);
 	}

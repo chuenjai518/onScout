@@ -13,7 +13,7 @@ public class ApiService {
 	@Autowired
 	ApiDAO apiDAO;
 	
-	public List<CompletedQuest> getCompletedQuest(String username){
-		return apiDAO.getCompletedQuest(username);
+	public List<CompletedQuest> getSPAFinishDate(String username){
+		return apiDAO.getSPAFinishDate(username);
 	}
 }
