@@ -6,9 +6,12 @@
 <div lang="en" th:replace="General/nav :: head"></div>
 <nav th:include="General/nav :: nav"></nav>
 
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
+<h1 id="testSpan">
+		
+		</h1>
 	<div class="container">
 		<br> <br> <br>
 		<h1 class="text-center textMain font-weight-bold">Scout
@@ -17,21 +20,21 @@
 		<div class="row awardRow text-center">
 			<div id="pathfinderAward" class="col-3 award">
 				<h5 class="textSPA font-weight-bold">Scout Pathfinder Award</h5>
-				<br> <img
+				<br> <img id="Award" 
 					src="/onScout/images/scoutPathfinderAward_unfinish.png">
 			</div>
 
 			<div id="standardAward" class="col-3">
 				<h5 class="textSSA font-weight-bold">Scout Standard Award</h5>
-				<br> <img src="/onScout/images/scoutStandardAward_unfinish.png">
+				<br> <img id="Award"  src="/onScout/images/scoutStandardAward_unfinish.png">
 			</div>
 			<div id="advancedAward" class="col-3">
 				<h5 class="textSAA font-weight-bold">Scout Advanced Award</h5>
-				<br> <img src="/onScout/images/scoutAdvancedAward_unfinish.png">
+				<br> <img id="Award"  src="/onScout/images/scoutAdvancedAward_unfinish.png">
 			</div>
 			<div id="chiefAward" class="col-3">
 				<h5 class="textCSA font-weight-bold">Chief Scout's Award</h5>
-				<br> <img src="/onScout/images/chiefScout'sAward_unfinish.png">
+				<br> <img id="Award"  src="/onScout/images/chiefScout'sAward_unfinish.png">
 			</div>
 		</div>
 	</div>
@@ -467,5 +470,6 @@
 
 			});
 		</script>
+		
 </body>
 </html>
