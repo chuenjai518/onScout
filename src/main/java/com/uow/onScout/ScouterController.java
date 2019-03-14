@@ -76,14 +76,16 @@ public class ScouterController {
 	public String scoutManageDetail(@PathVariable("username") String username, Model model, HttpSession session) {
 		List<EmerContact> emerList = scouterService.getEmerContact(username);
 		UserInfo userInfo = scouterService.getScoutInfo(username);
+	
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("emerList", emerList);
 		return "Scouter/scoutInfoDetail";
 	}
 	
 	@PostMapping("scouter/editScoutProfileProcess/{username}")
-	public String editScoutProfileProcess(@PathVariable("username") Integer username, Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
+	public String editScoutProfileProcess(@PathVariable("username") String username, Model model, HttpSession session, @ModelAttribute EmerContact emerTel, @ModelAttribute UserInfo userInfo) {
 		scouterService.editScoutProfileProcess((String)session.getAttribute("username"), userInfo);
+		System.out.println(userInfo.getEmail());
 		return "redirect:/scouter/editProfile";
 	}
 	
