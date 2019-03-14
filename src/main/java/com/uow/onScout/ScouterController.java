@@ -107,7 +107,7 @@ public class ScouterController {
 	public String editProfile(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		UserInfo scouterInfo = scouterService.getScouterInfo((String)session.getAttribute("username"));
-		model.addAttribute("scouterInfo", scouterInfo);
+		model.addAttribute("userInfo", scouterInfo);
 		return "Scouter/editProfile";
 	}
 	
