@@ -15,6 +15,10 @@
 	padding-right: 5px !important;
 	padding-bottom: 5px !important;
 }
+.infoRadius>h5{
+	padding-bottom: 5px;
+    padding-top: 5px;
+}
 
 .positionRelative{
 	position:relative;
@@ -73,6 +77,7 @@
 
 /*Pop up*/
 .popup {
+  overflow-y:scroll;
   position: fixed;
   top: 0;
   bottom: 0;
