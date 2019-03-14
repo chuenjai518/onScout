@@ -1,7 +1,11 @@
 package com.uow.onScout;
 
+import java.io.File;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -76,7 +81,7 @@ public class ScouterController {
 	public String scoutManageDetail(@PathVariable("username") String username, Model model, HttpSession session) {
 		List<EmerContact> emerList = scouterService.getEmerContact(username);
 		UserInfo userInfo = scouterService.getScoutInfo(username);
-	
+		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("emerList", emerList);
 		return "Scouter/scoutInfoDetail";
@@ -122,6 +127,31 @@ public class ScouterController {
 		return new RedirectView("/onScout/scoutManage");
 	}
 	
+	@GetMapping("scouter/showPDF/{name}")
+    public StreamingResponseBody getSteamingFile(@PathVariable("name") String name, HttpServletResponse response) throws URISyntaxException {
+		String url = "static/pdf/" + name +".pdf";
+        File file = new File(getClass().getClassLoader().getResource(url).toURI());
+
+        //viewing in web browser
+        response.setContentType("application/pdf");
+        //for downloading the file directly if viewing is not possible
+        response.setHeader("Content-Disposition", "inline; filename=" + file.getName());
+
+        file = null;
+
+        //put the directory architecture according to your target directory
+        // generated during compilation in maven spring boot
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(url);
+
+        return outputStream -> {
+            int nRead;
+            byte[] data = new byte[1024];
+            while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+                outputStream.write(data, 0, nRead);
+            }
+            inputStream.close();
+        };
+    }
 	
 	
 	// ----------------API---------------------
