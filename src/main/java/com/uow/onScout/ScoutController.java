@@ -34,9 +34,8 @@ public class ScoutController {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		// Need a model contain all scout information 
 		// 
-		UserInfo scoutInfo;
-		scoutInfo = scoutService.getScoutInfo(username);
-		model.addAttribute("scoutList", scoutInfo);
+		UserInfo scoutInfo = scoutService.getScoutInfo(username);
+		model.addAttribute("scoutInfo", scoutInfo);
 		return "scout/scoutProfile";
 	}
 	
@@ -54,7 +53,7 @@ public class ScoutController {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		// Need a model contain all scout information 
 		UserInfo scoutInfo = scoutService.getScoutInfo(username);
-		model.addAttribute("scoutList", scoutInfo);
+		model.addAttribute("scoutInfo", scoutInfo);
 		return "scout/scoutPEdit";
 	}
 }
