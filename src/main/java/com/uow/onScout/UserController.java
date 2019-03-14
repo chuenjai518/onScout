@@ -33,6 +33,8 @@ public class UserController {
 		return new ResponseEntity<List<UserInfo>>(list, HttpStatus.OK);
 	}
 	
+
+	
 	@GetMapping("/")
 	public String index(Model model) {
 		return "redirect:/login";

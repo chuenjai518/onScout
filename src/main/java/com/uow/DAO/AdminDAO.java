@@ -59,5 +59,7 @@ public class AdminDAO {
 		String sql = "Update User set disable = 1 Where username = ?";
 		db.update(sql, username);
 	}
+	
+
 
 }
