@@ -35,7 +35,7 @@ public class ScoutController {
 		// Need a model contain all scout information 
 		// 
 //		UserInfo scoutInfo = scoutService.getScout(username);
-//		model.addAttribute("scoutList", scoutInfo);
+	//	model.addAttribute("scoutList", scoutInfo);
 		return "Scout/scoutProfile";
 	}
 	
