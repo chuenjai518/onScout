@@ -39,6 +39,12 @@
 .noPadding{
 	padding:0px !important;	
 }
+
+.noPaddingButtom{
+	padding-bottom: 0px;
+
+}
+
 .textJustify{
 	text-align: justify;
   	padding-left: 5px;
