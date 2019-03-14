@@ -21,12 +21,11 @@ public class ScoutDAO {
 	@Autowired
 	private JdbcTemplate db;
 	
-	public UserInfo getScout(String username) {
-		
+	public UserInfo getScoutInfo(String username) {
 		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI from User u left join PersonalInfo p on u.username = p.username Where u.username = ? and disable = 0 and roleID = 1";
 		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
-		try{
-			return this.db.queryForObject(sql, rowMapper, username);
+		try {
+		return this.db.queryForObject(sql, rowMapper, username);
 		} catch (EmptyResultDataAccessException e) {
 			return new UserInfo();
 		}
