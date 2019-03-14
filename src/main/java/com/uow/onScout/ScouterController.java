@@ -70,13 +70,13 @@ public class ScouterController {
 		// I need a model scoutList that contain 
 		// -getLastName() - getFirstName() - getGender() - getLatestMission() - getScoutID()
 		//
-		List<UserInfo> userList = scouterService.getAllUser();
-		model.addAttribute("userList", userList);
+		List<UserInfo> scoutList = scouterService.getAllUser();
+		model.addAttribute("scoutList", scoutList);
 		return "Scouter/scoutProcess";
 	}
 	
-	@GetMapping("scouter/scoutProcess/{scoutID}")
-	public String scoutProcess(@PathVariable("scoutID") Integer scoutID, Model model, HttpSession session) {
+	@GetMapping("scouter/scoutProcess/{username}")
+	public String scoutProcess(@PathVariable("username") String username, Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		List<UserInfo> userList = scouterService.getAllUser();
 		model.addAttribute("userList", userList);
@@ -123,9 +123,9 @@ public class ScouterController {
 		return "Scouter/editProfile";
 	}
 	
-	@PostMapping("scouter/editProfileProcess")
-	public String editProfileProcess(Model model, HttpSession session, @RequestParam String email, @RequestParam int phoneNum) {
-		scouterService.editProfileProcess((String)session.getAttribute("username"), email, phoneNum);
+	@PostMapping("scouter/editScouterProfileProcess")
+	public String editProfileProcess(Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
+		scouterService.editScoutProfileProcess((String)session.getAttribute("username"), userInfo);
 		return "redirect:/scouter/editProfile";
 	}
 	
