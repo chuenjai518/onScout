@@ -58,7 +58,7 @@ $(document).ready(function(){
 			<div class="container row">
 				<div class="col-lg-4 col-12">
 					<b>Date of Birth: </b>
-					<input type="text" th:field="*{dOB}" class="form-control" th:value="${userInfo.getDOB()}">
+					<input type="date" th:field="*{DOB}" class="form-control" th:value="${userInfo.getDOB()}">
 				</div>
 				
 				<div class="col-lg-5 col-12 text-left">
@@ -100,7 +100,7 @@ $(document).ready(function(){
 				</div>
 				<div class="col-lg-6 col-12 text-left">
 					<b>Date of Investiture: </b>
-					<input type="text" th:field="*{dOI}" class="form-control" th:value="${userInfo.getDOI()}">
+					<input type="date" th:field="*{DOI}" class="form-control" th:value="${userInfo.getDOI()}">
 				</div>
 			</div>
 			<br /> <br />

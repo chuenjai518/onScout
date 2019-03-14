@@ -81,8 +81,9 @@ public class ScouterDAO {
 	public void editScoutProfileProcess(String username, UserInfo userInfo) {
 		String sql = "Select count(*) From PersonalInfo where username = ?";
 		int count = db.queryForObject(sql, new Object[] { username }, Integer.class);
+		System.out.println("count: " + count);
 		if (count > 0) {
-			sql = "Update PersonalInfo set firstName = ?, lastName = ?, HKID = ?, DOB = ?, gender = ?, address = ?, phoneNum = ?, email = ?, region = ?, district = ?, scoutGroup = ?, DOI = ?";
+			sql = "Update PersonalInfo set firstName = ?, lastName = ?, HKID = ?, DOB = ?, gender = ?, address = ?, phoneNum = ?, email = ?, region = ?, district = ?, scoutGroup = ?, DOI = ? where username = ?";
 			db.update(sql, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(), userInfo.getDOB(), userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(), userInfo.getEmail(), userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(), userInfo.getDOI(), username);
 		}else {
 			sql = "INSERT INTO PersonalInfo(username, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI)" + 
