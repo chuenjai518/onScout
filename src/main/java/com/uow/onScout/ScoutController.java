@@ -29,14 +29,15 @@ public class ScoutController {
 		return "redirect:/scout/mainpage";
 	}
 	
-	@GetMapping("Scout/scoutProfile/{username}")
+	@GetMapping("scout/scoutProfile/{username}")
 	public String scoutProfile(Model model, HttpSession session, @PathVariable("username") String username) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		// Need a model contain all scout information 
 		// 
-//		UserInfo scoutInfo = scoutService.getScout(username);
-//		model.addAttribute("scoutList", scoutInfo);
-		return "Scout/scoutProfile";
+		System.out.println(username);
+		UserInfo scoutInfo = scoutService.getScout(username);
+		model.addAttribute("scoutList", scoutInfo);
+		return "scout/scoutProfile";
 	}
 	
 	@GetMapping("scout/mainpage")
