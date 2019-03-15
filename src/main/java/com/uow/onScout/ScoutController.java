@@ -40,15 +40,15 @@ public class ScoutController {
 		//Need Emergency contact
 		//Also need post mapping to change form information: Email and phone no. need change
 		List<EmerContact> emerContact = scoutService.getEmerContact(username);
-		model.addAttribute("emerContacr", emerContact);
+		model.addAttribute("emerContact", emerContact);
 		return "scout/scoutProfile";
 	}
 	
-	@PostMapping("scout/editScoutProfile/{username}")
+	@PostMapping("scout/scoutProfile/{username}")
 	public String editScoutProfileProcess(@PathVariable("username") String username, Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
 		scoutService.updateScoutInfo(userInfo.getEmail(), userInfo.getPhoneNum(), username);
 		System.out.println(userInfo.getEmail());
-		return "redirect:/scout/scoutProfile";
+		return "redirect:/scout/scoutProfile/{username}";
 	}
 	
 	@GetMapping("scout/mainpage")

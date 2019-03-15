@@ -82,7 +82,8 @@
 					style="font-size: 20px;" th:text="'Contact Information'"></div>
 			</div>
 			<br /> <br />
-			<form class="form-inline" method="POST" th:object="${scoutInfo}" th:action="@{/scout/scoutProfile/} + ${scoutInfo.getUsername()}">
+			<form class="form-inline" method="POST" th:object="${scoutInfo}"
+				th:action="@{/scout/scoutProfile/} + ${scoutInfo.getUsername()}">
 				<div class="form-group mb-2 col-sm-12 col-lg-auto">
 					<!--  th:field="*{phoneNum}" -->
 					<b><label for="ContactNo">Contact Number: </label></b> <input
@@ -94,8 +95,8 @@
 				<div class="form-group mx-sm-3 mb-2 col-sm-12 col-lg-auto">
 					<!--  th:field="*{email}"  -->
 					<b><label for="Email">Email: </label></b> <input type="text"
-						class="form-control" id="Email" th:value="${scoutInfo.getEmail()}" th:field="*{email}"
-						placeholder="Email..." disabled>
+						class="form-control" id="Email" th:value="${scoutInfo.getEmail()}"
+						th:field="*{email}" placeholder="Email..." disabled>
 				</div>
 				<button type="button" onclick="enable()"
 					class="btn btn-primary mb-2 col-lg-auto col-sm-6">Edit</button>
@@ -110,29 +111,29 @@
 					style="font-size: 20px;" th:text="'Emergency Contact'"></div>
 			</div>
 			<br /> <br />
-			<div class="container row">
-				<div class="col-lg-6 col-12">
+			<div class="container row"  th:each="emerContact: ${emerContact} ">
+				<div class="col-lg-3 col-12">
 					<b>Emergency Name: </b>
 					<!-- th:text="${emContact.getEmerName()}" -->
-					<text th:text="'Chan Chan Chan'"></text>
+					<text th:text="${emerContact.getEmerName()}"></text>
 				</div>
-				<div class="col-lg-6 col-12 text-left">
+				<div class="col-lg-3 col-12 text-left">
 					<b>Relationship: </b>
 					<!-- th:text="${emContact.getEmerRelation()}" -->
-					<text th:text="'Parent'"></text>
+					<text th:text="${emerContact.getEmerRelation()}"></text>
 				</div>
-			</div>
-			<br />
-			<div class="container row">
-				<div class="col-lg-6 col-12">
+				<div class="col-lg-3 col-12">
 					<b>Phone Number: </b>
 					<!-- th:text="${emContact.getEmerTel()}" -->
-					<text th:text="'13121231'"></text>
+					<text th:text="${emerContact.getEmerTel()}"></text>
 				</div>
-				<div class="col-lg-6 col-12">
+				<div class="col-lg-3 col-12">
 					<b>Contact Email: </b>
 					<!-- th:text="${emContact.getEmerAddress()}" -->
-					<text th:text="'wqeq@uow.mail.edu.au'"></text>
+					<text th:text="${emerContact.getEmerAddress()}"></text>
+				</div>
+				<div class="col-lg-12 col-12">
+				&nbsp;
 				</div>
 			</div>
 			<br /> <br />
