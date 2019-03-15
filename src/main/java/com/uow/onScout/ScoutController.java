@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.uow.Model.EmerContact;
 import com.uow.Model.User;
 import com.uow.Model.UserInfo;
 import com.uow.Service.ScoutService;
@@ -38,7 +39,16 @@ public class ScoutController {
 		model.addAttribute("scoutInfo", scoutInfo);
 		//Need Emergency contact
 		//Also need post mapping to change form information: Email and phone no. need change
+		List<EmerContact> emerContact = scoutService.getEmerContact(username);
+		model.addAttribute("emerContacr", emerContact);
 		return "scout/scoutProfile";
+	}
+	
+	@PostMapping("scout/editScoutProfile/{username}")
+	public String editScoutProfileProcess(@PathVariable("username") String username, Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
+		scoutService.updateScoutInfo(userInfo.getEmail(), userInfo.getPhoneNum(), username);
+		System.out.println(userInfo.getEmail());
+		return "redirect:/scout/scoutProfile";
 	}
 	
 	@GetMapping("scout/mainpage")
