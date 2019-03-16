@@ -1,17 +1,29 @@
 package com.uow.onScout;
 
+import java.io.File;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -25,6 +37,12 @@ import com.uow.Service.ScouterService;
 public class ScouterController {
 	@Autowired
 	ScouterService scouterService;
+	
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+	}
 	
 	
 	public boolean checkScouterLogin(HttpSession session) {
@@ -52,13 +70,13 @@ public class ScouterController {
 		// I need a model scoutList that contain 
 		// -getLastName() - getFirstName() - getGender() - getLatestMission() - getScoutID()
 		//
-		List<UserInfo> userList = scouterService.getAllUser();
-		model.addAttribute("userList", userList);
+		List<UserInfo> scoutList = scouterService.getAllUser();
+		model.addAttribute("scoutList", scoutList);
 		return "Scouter/scoutProcess";
 	}
 	
-	@GetMapping("scouter/scoutProcess/{scoutID}")
-	public String scoutProcess(@PathVariable("scoutID") Integer scoutID, Model model, HttpSession session) {
+	@GetMapping("scouter/scoutProcess/{username}")
+	public String scoutProcess(@PathVariable("username") String username, Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		List<UserInfo> userList = scouterService.getAllUser();
 		model.addAttribute("userList", userList);
@@ -71,20 +89,21 @@ public class ScouterController {
 		model.addAttribute("userList", userList);
 		return "Scouter/scoutManage";
 	}
-	
 	@GetMapping("scouter/scoutManage/{username}")
 	public String scoutManageDetail(@PathVariable("username") String username, Model model, HttpSession session) {
 		List<EmerContact> emerList = scouterService.getEmerContact(username);
 		UserInfo userInfo = scouterService.getScoutInfo(username);
+		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("emerList", emerList);
 		return "Scouter/scoutInfoDetail";
 	}
 	
 	@PostMapping("scouter/editScoutProfileProcess/{username}")
-	public String editScoutProfileProcess(@PathVariable("username") Integer username, Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
-		scouterService.editScoutProfileProcess((String)session.getAttribute("username"), userInfo);
-		return "redirect:/scouter/editProfile";
+	public String editScoutProfileProcess(@PathVariable("username") String username, Model model, HttpSession session, @ModelAttribute EmerContact emerTel, @ModelAttribute UserInfo userInfo) {
+		scouterService.editScoutProfileProcess(username, userInfo);
+		System.out.println(userInfo.getEmail());
+		return "redirect:/scouter/scoutManage";
 	}
 	
 	
@@ -100,13 +119,13 @@ public class ScouterController {
 	public String editProfile(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		UserInfo scouterInfo = scouterService.getScouterInfo((String)session.getAttribute("username"));
-		model.addAttribute("scouterInfo", scouterInfo);
+		model.addAttribute("userInfo", scouterInfo);
 		return "Scouter/editProfile";
 	}
 	
-	@PostMapping("scouter/editProfileProcess")
-	public String editProfileProcess(Model model, HttpSession session, @RequestParam String email, @RequestParam int phoneNum) {
-		scouterService.editProfileProcess((String)session.getAttribute("username"), email, phoneNum);
+	@PostMapping("scouter/editScouterProfileProcess")
+	public String editProfileProcess(Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
+		scouterService.editScoutProfileProcess((String)session.getAttribute("username"), userInfo);
 		return "redirect:/scouter/editProfile";
 	}
 	
@@ -120,6 +139,31 @@ public class ScouterController {
 		return new RedirectView("/onScout/scoutManage");
 	}
 	
+	@GetMapping("scouter/showPDF/{name}")
+    public StreamingResponseBody getSteamingFile(@PathVariable("name") String name, HttpServletResponse response) throws URISyntaxException {
+		String url = "static/pdf/" + name +".pdf";
+        File file = new File(getClass().getClassLoader().getResource(url).toURI());
+
+        //viewing in web browser
+        response.setContentType("application/pdf");
+        //for downloading the file directly if viewing is not possible
+        response.setHeader("Content-Disposition", "inline; filename=" + file.getName());
+
+        file = null;
+
+        //put the directory architecture according to your target directory
+        // generated during compilation in maven spring boot
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(url);
+
+        return outputStream -> {
+            int nRead;
+            byte[] data = new byte[1024];
+            while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+                outputStream.write(data, 0, nRead);
+            }
+            inputStream.close();
+        };
+    }
 	
 	
 	// ----------------API---------------------

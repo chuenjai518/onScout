@@ -22,7 +22,7 @@ public class AdminDAO {
 	private JdbcTemplate db;
 
 	public List<UserInfo> getAllUser() {
-		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region from User u left join PersonalInfo p on u.username = p.username Where disable = 0";
+		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI from User u left join PersonalInfo p on u.username = p.username Where disable = 0;";
 		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
 		return this.db.query(sql, rowMapper);
 	}
@@ -59,5 +59,7 @@ public class AdminDAO {
 		String sql = "Update User set disable = 1 Where username = ?";
 		db.update(sql, username);
 	}
+	
+
 
 }

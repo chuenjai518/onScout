@@ -8,12 +8,20 @@
     padding-bottom: 5px;
     padding-right: 5px;
 }
+.tickSize{
+	width:20px;
+	
+}
 .SPB{
 	top:10px;
 	position:absolute;
 	padding-left: 5px !important;
 	padding-right: 5px !important;
 	padding-bottom: 5px !important;
+}
+.infoRadius>h5{
+	padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .positionRelative{
@@ -31,10 +39,37 @@
 .noPadding{
 	padding:0px !important;	
 }
+
+.noPaddingButtom{
+	padding-bottom: 5px;
+
+}
+
 .textJustify{
 	text-align: justify;
   	padding-left: 5px;
     padding-right: 5px;
+}
+
+.listItem{
+	display:list-item !important;
+}
+
+.spaceIn{
+	padding-left:20px !important;
+}
+.spaceIn2{
+	padding-left:40px !important;
+}
+
+
+.textTask{
+
+	text-align: justify;
+	line-height: 105%;
+}
+.lineHeight{
+	padding-bottom: 15px;
 }
 .infoRadius{
 	border-radius: 5px;
@@ -43,16 +78,20 @@
 .textIn{
 	color: #F78764;
 }
+.textBigger{
+	padding-left:5px;
+	font-size: 20px;
+}
 
 .textSPA{
-	color: #84A681;
+	color: #6D886A;
 }
 .bgSPA{
-	background-color: #84A681;
+	background-color: #6D886A;
 }
 
 .textSSA{
-	color: #55a3ba;
+	color: #468699;
 }
 
 .textSAA{
@@ -60,7 +99,7 @@
 }
 
 .textCSA{
-	color: #a586ae;
+	color: #886E8F;
 }
 
 .textMain{
@@ -73,6 +112,7 @@
 
 /*Pop up*/
 .popup {
+  overflow-y:scroll;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -87,7 +127,5 @@
 /*Pop up*/
 
 /*Panel Start*/
-.panel-group{
-	padding-bottom: 10px;
-}
+
 /*Panel End*/

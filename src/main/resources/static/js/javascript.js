@@ -1,13 +1,40 @@
 $(document).ready(function(){
+	$("sAw").click(function() {
+       var id = $(this).attr('id');
+       console.log(id);
+     $("iframe").attr("src", "showPDF/"+id);     
+    });
+	$('#Award').click(function(){
+		 $.ajax({
+			 type: "POST",
+			 url: "http://localhost:8081/onScout/api/getSPAFinishDate/scout",   // 存取Json的網址
+             cache:false,
+             dataType: 'json',
+             // contentType: "application/json",
+             success: function (data) {
+            	 var str="<ul>";    
+            	 $.each(data,function(i,n){   
+            		console.log(n);
+            		//change #testSpan to the correct field
+            		//just copy and paste and n[{the column in ajax}]
+            		$("#testSpan").append(n['username']);    
+            	 });
+             },
+         });
+	});
 });
 function enable(){
 	if($('input').prop('disabled') == true){
 		$('input').prop('disabled',false);
 		$('#submit').prop('disabled',false);
+		$('#submit2').prop('disabled',false);
 	}else{
 		$('input').prop('disabled',true);
 		$('#submit').prop('disabled',true);
+		$('#submit2').prop('disabled',true);
 	}
 
 	
 }
+
+
