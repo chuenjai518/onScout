@@ -55,17 +55,14 @@ public class ScoutController {
 	public String mainpage(Model model, HttpSession session) {
 		
 		
-		return "Scout/mainpage";
+		return "scout/mainpage";
 	}
 	
 
-
-	@GetMapping("scout/scoutPEdit/{username}")
-	public String scoutPEdit(Model model, HttpSession session, @PathVariable("username") String username) {
-		// model.addAttribute("user", (User)session.getAttribute("user"));
-		// Need a model contain all scout information 
-		UserInfo scoutInfo = scoutService.getScoutInfo(username);
-		model.addAttribute("scoutInfo", scoutInfo);
-		return "scout/scoutPEdit";
+	@GetMapping("scout/scoutNav")
+	public String scoutNav(Model model, HttpSession session) {
+		//Need Scout Full Name and Unit
+		return "scout/scoutNav";
 	}
+
 }
