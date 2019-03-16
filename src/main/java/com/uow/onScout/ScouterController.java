@@ -80,7 +80,7 @@ public class ScouterController {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		List<UserInfo> userList = scouterService.getAllUser();
 		model.addAttribute("userList", userList);
-		return "Scouter/scoutProcess";
+		return "Scouter/scoutProcessDetail";
 	}
 	
 	@GetMapping("scouter/scoutManage")
