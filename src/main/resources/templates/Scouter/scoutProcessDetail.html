@@ -4,7 +4,7 @@
 <meta charset="BIG5">
 <title>Scouter Home</title>
 <div lang="en" th:replace="General/nav :: head"></div>
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<div class="d-flex" id="wrapper">
@@ -47,6 +47,8 @@
 
 		<!-- ------------------- -->
 		<!-- ^ This is Content ^ -->
+		<div th:include="Scout/awardTest">
+		</div>
 	</div>
 </body>
 
