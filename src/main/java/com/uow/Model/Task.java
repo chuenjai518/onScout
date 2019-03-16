@@ -1,5 +1,7 @@
 package com.uow.Model;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,6 +12,7 @@ public class Task {
 	private String taskDesc;
 	private int questID;
 	private int subTaskNum;
+	public List<SubTask> subTaskList;
 	
 	public int getTaskID() {
 		return taskID;
