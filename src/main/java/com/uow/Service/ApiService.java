@@ -16,4 +16,13 @@ public class ApiService {
 	public List<CompletedQuest> getSPAFinishDate(String username){
 		return apiDAO.getSPAFinishDate(username);
 	}
+	public List<CompletedQuest> getSSAFinishDate(String username){
+		return apiDAO.getSSAFinishDate(username);
+	}
+	public List<CompletedQuest> getSAAFinishDate(String username){
+		return apiDAO.getSAAFinishDate(username);
+	}
+	public List<CompletedQuest> getCSAFinishDate(String username){
+		return apiDAO.getCSAFinishDate(username);
+	}
 }

@@ -26,6 +26,7 @@
 					<table class="table" style="text-align: center;">
 						<thead class="bg-primary">
 							<tr>
+								<th scope="col">Username</th>
 								<th scope="col">Name</th>
 								<th scope="col">Gender</th>
 								<th scope="col">Email</th>
@@ -35,6 +36,7 @@
 						<tbody>
 							<!-- th:onclick="'location.href=\''+ @{/scouter/scoutProcessd/{scoutID} (id=${user.getScoutID()})}+'\''" -->
 							<tr th:each="user: ${userList}" th:onclick="'location.href=\''+ @{/scouter/scoutManage/{Username} (Username=${user.getUsername()})}+'\''">
+								<td th:text="${user.getUsername()}"></td>
 								<td th:text="${user.getLastName()}+ ' ' +${user.getFirstName()}"
 									scope="row"></td>
 								<td th:text="${user.getGender()}"></td>

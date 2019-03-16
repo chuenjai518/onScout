@@ -136,7 +136,7 @@ public class ScouterController {
 			model.addFlashAttribute("message", "Username is used!");
 			return new RedirectView("/onScout/scouter#addUser");
 		}
-		return new RedirectView("/onScout/scoutManage");
+		return new RedirectView("/onScout/scouter/scoutManage");
 	}
 	
 	@GetMapping("scouter/showPDF/{name}")
