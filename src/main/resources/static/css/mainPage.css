@@ -101,10 +101,15 @@
 .textSAA{
 	color: #9F4444;
 }
-
+.bgSAA{
+	background-color: #9F4444;
+}
 
 .textCSA{
 	color: #886E8F;
+}
+.bgCSA{
+	backgroung-color: #886E8F;
 }
 
 .textMain{
