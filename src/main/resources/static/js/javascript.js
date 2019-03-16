@@ -22,6 +22,18 @@ $(document).ready(function(){
              },
          });
 	});
+	$("#pathfinderAward").click(function() {
+		$("#pathfinderAwardInfo").show();
+	});
+	$("#standardAward").click(function() {
+		$("#standardAwardInfo").show();
+	});
+	$("#advancedAward").click(function() {
+		$("#advancedAwardInfo").show();
+	});
+	$("#cheifAward").click(function() {
+		$("#chiefInfo").show();
+	});
 });
 function enable(){
 	if($('input').prop('disabled') == true){
