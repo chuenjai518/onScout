@@ -106,7 +106,7 @@ $(document).ready(function() {
 					console.log(n);
 					// change #testSpan to the correct field
 					// just copy and paste and n[{the column in ajax}]
-=======
+
        var id = $(this).attr('id');
        console.log(id);
      $("iframe").attr("src", "showPDF/"+id);
