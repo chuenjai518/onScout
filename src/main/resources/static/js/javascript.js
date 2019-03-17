@@ -144,7 +144,7 @@ $(document).ready(function() {
             		console.log(n);
             		//change #testSpan to the correct field
             		//just copy and paste and n[{the column in ajax}]
->>>>>>> b5f58004d24ea052fb218c835877fd2e149fa0b1
+
 
             		qID = "SPA" + n['questID'];
             		console.log(qID);
