@@ -84,8 +84,8 @@ public class ScouterController {
 	@GetMapping("scouter/scoutProcess/{username}")
 	public String scoutProcess(@PathVariable("username") String username, Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
-		List<UserInfo> userList = scouterService.getAllUser();
-		model.addAttribute("userList", userList);
+		UserInfo user = scouterService.getScoutInfo(username);
+		model.addAttribute("user", user);
 		return "Scouter/scoutProcessDetail";
 	}
 	
@@ -170,6 +170,10 @@ public class ScouterController {
             inputStream.close();
         };
     }
+	
+	@PostMapping("scouter/editCompletedQuest")
+	public void editCompletedQuest(RedirectAttributes model, @RequestParam String username) {
+	}
 
 
 	
