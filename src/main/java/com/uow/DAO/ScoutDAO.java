@@ -44,4 +44,14 @@ public class ScoutDAO {
 		db.update(sql, email, phoneNum, username);
 	}
 	
+	public UserInfo getScoutNavInfo(String username) {
+		String sql = "Select u.username, CONCAT(firstName + ' ' + lastName) AS fullName, CONCAT(region +' ' + district + ' ' + scoutGroup) AS unit FROM User u left join PersonalInfo p on u.username = p.username Where u.username = ? and disable = 0 and roleID = 1";
+		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
+		try {
+		return this.db.queryForObject(sql, rowMapper, username);
+		} catch (EmptyResultDataAccessException e) {
+			return new UserInfo();
+		}	
+	} 
+	
 }
