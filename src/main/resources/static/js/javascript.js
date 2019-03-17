@@ -4,10 +4,30 @@ $(document).ready(function(){
        console.log(id);
      $("iframe").attr("src", "showPDF/"+id);     
     });
-	$('#Award1').click(function(){
+	$('.Award').click(function(){
+		console.log($(this).attr('id'));
+		var api = null;
+		switch($(this).attr('id')){
+		case "a1":
+			api="getSPAFinishDate";
+		break;
+		case "a2":
+			api="getSSAFinishDate";
+		break;
+		case "a3":
+			api="getSAAFinishDate";
+		break;
+		case "a4":
+			api="getCSAFinishDate";
+		break;
+		default:
+			break;
+			
+		}
+		url="http://localhost:8081/onScout/api/"+api+"/scout";
 		 $.ajax({
 			 type: "POST",
-			 url: "http://localhost:8081/onScout/api/getSPAFinishDate/scout",   // 存取Json的網址
+			 url: url,   // 存取Json的網址
              cache:false,
              dataType: 'json',
              // contentType: "application/json",
@@ -21,7 +41,8 @@ $(document).ready(function(){
             		qID = "SPA" + n['questID'];
             		console.log(qID);
             		
-            		$("#"+qID).find('span').html(n['finishDate']);    
+            		$("#"+qID).find('span').html(n['finishDate']);
+            		$("#"+qID).find('input').val(n['finishDate']);
             	 });
              },
          });
@@ -53,15 +74,25 @@ $(document).ready(function(){
 	});
 	$("#pathfinderAward").click(function() {
 		$("#pathfinderAwardInfo").show();
+		
 	});
 	$("#standardAward").click(function() {
-		$("#standardAwardInfo").show();
+		if($("#standardAwardInfo").attr('open') == true){
+			$("#standardAwardInfo").show();
+		}else
+			alert('Scout Not Complete the Previous Award Yet!')
 	});
 	$("#advancedAward").click(function() {
-		$("#advancedAwardInfo").show();
+		if($("#advancedAwardInfo").attr('open') == true){
+			$("#advancedAwardInfo").show();
+		}else
+			alert('Scout Not Complete the Previous Award Yet!')
 	});
 	$("#chiefAward").click(function() {
-		$("#chiefAwardInfo").show();
+		if($("#chiefAwardInfo").attr('open') == true){
+			$("#chiefAwardInfo").show();
+		}else
+			alert('Scout Not Complete the Previous Award Yet!')
 	});
 });
 function enable(){
