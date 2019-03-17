@@ -58,6 +58,6 @@ public class scoutProgressRestController {
 	public void editCompletedQuest(@RequestParam String username, @RequestParam int questID,
 			@RequestParam String finishDate) {
 		System.out.println(username + " " + questID + " " + finishDate);
-		//scouterService.editCompletedDate(username, questID, finishDate);
+		scouterService.editCompletedDate(username, questID, finishDate);
 	}
 }

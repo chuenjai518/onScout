@@ -98,7 +98,7 @@ public class ScouterDAO {
 		}
 	}
 
-	public void editCompletedDate(String username, int questID, Date finishDate) {
+	public void editCompletedDate(String username, int questID, String finishDate) {
 
 		String sql = "Select count(*) From CompletedQuest where username = ? and questID = ?";
 		int count = db.queryForObject(sql, new Object[] { username, questID }, Integer.class);
