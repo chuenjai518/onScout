@@ -17,7 +17,11 @@ $(document).ready(function(){
             		console.log(n);
             		//change #testSpan to the correct field
             		//just copy and paste and n[{the column in ajax}]
-            		$("#testSpan").append(n['username']);    
+            		
+            		qID = "SPA" + n['questID'];
+            		console.log(qID);
+            		
+            		$("#"+qID).append(n['finishDate']);    
             	 });
              },
          });
