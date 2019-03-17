@@ -26,4 +26,9 @@ public class ScoutService {
 	public void updateScoutInfo(String email, int phoneNum, String username) {
 		scoutDAO.updateScoutInfo(email, phoneNum, username);
 	}
+	
+	public UserInfo getScoutNavInfo(String username) {
+		return scoutDAO.getScoutNavInfo(username);
+	}
+
 }

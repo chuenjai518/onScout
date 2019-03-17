@@ -62,6 +62,8 @@ public class ScoutController {
 	@GetMapping("scout/scoutNav")
 	public String scoutNav(Model model, HttpSession session) {
 		//Need Scout Full Name and Unit
+		UserInfo scoutNavInfo = scoutService.getScoutNavInfo((String)session.getAttribute("username"));
+		model.addAttribute("scoutNavInfo",scoutNavInfo);
 		return "scout/scoutNav";
 	}
 
