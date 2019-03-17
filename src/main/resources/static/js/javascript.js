@@ -37,7 +37,7 @@ $(document).ready(function() {
 		questID = tempId.substring(3);
 		username = $('#username').attr('username');
 		date = $(this).parent().prev().val();
-		console.log(date);
+		console.log(username+","+questID+ "," + date);
 		if(date != ""){
 			$.ajax({
 				 type: "POST",
