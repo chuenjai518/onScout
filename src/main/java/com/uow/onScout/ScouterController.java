@@ -43,44 +43,44 @@ import com.uow.Service.ScouterService;
 public class ScouterController {
 	@Autowired
 	ScouterService scouterService;
-	
+
 	@InitBinder
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
-	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
-	
-	
+
 	public boolean checkScouterLogin(HttpSession session) {
 		boolean login = false;
-		if(session.getAttribute("username") != null) {
-			if((int)session.getAttribute("roleID") == 2) {
+		if (session.getAttribute("username") != null) {
+			if ((int) session.getAttribute("roleID") == 2) {
 				login = true;
 			}
 		}
 		return login;
 	}
-	
+
 	@GetMapping("scouter")
 	public String redirect(Model model, HttpSession session) {
-		if(!checkScouterLogin(session)) {
+		if (!checkScouterLogin(session)) {
 			return "redirect:/login";
 		}
 		return "redirect:/scouter/scoutProcess";
 	}
-	
+
 	@GetMapping("scouter/scoutProcess")
 	public String index(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		//
-		// I need a model scoutList that contain 
-		// -getLastName() - getFirstName() - getGender() - getLatestMission() - getScoutID()
+		// I need a model scoutList that contain
+		// -getLastName() - getFirstName() - getGender() - getLatestMission() -
+		// getScoutID()
 		//
 		List<UserInfo> scoutList = scouterService.getAllUser();
 		model.addAttribute("scoutList", scoutList);
 		return "Scouter/scoutProcess";
 	}
-	
+
 	@GetMapping("scouter/scoutProcess/{username}")
 	public String scoutProcess(@PathVariable("username") String username, Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
@@ -88,31 +88,32 @@ public class ScouterController {
 		model.addAttribute("user", user);
 		return "Scouter/scoutProcessDetail";
 	}
-	
+
 	@GetMapping("scouter/scoutManage")
 	public String scoutManage(Model model, HttpSession session) {
 		List<ScoutManage> userList = scouterService.getScoutManageList();
 		model.addAttribute("userList", userList);
 		return "Scouter/scoutManage";
 	}
+
 	@GetMapping("scouter/scoutManage/{username}")
 	public String scoutManageDetail(@PathVariable("username") String username, Model model, HttpSession session) {
 		List<EmerContact> emerList = scouterService.getEmerContact(username);
 		UserInfo userInfo = scouterService.getScoutInfo(username);
-		
+
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("emerList", emerList);
 		return "Scouter/scoutInfoDetail";
 	}
-	
+
 	@PostMapping("scouter/editScoutProfileProcess/{username}")
-	public String editScoutProfileProcess(@PathVariable("username") String username, Model model, HttpSession session, @ModelAttribute EmerContact emerTel, @ModelAttribute UserInfo userInfo) {
+	public String editScoutProfileProcess(@PathVariable("username") String username, Model model, HttpSession session,
+			@ModelAttribute EmerContact emerTel, @ModelAttribute UserInfo userInfo) {
 		scouterService.editScoutProfileProcess(username, userInfo);
 		System.out.println(userInfo.getEmail());
 		return "redirect:/scouter/scoutManage";
 	}
-	
-	
+
 	@GetMapping("scouter/viewAw")
 	public String viewAw(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
@@ -124,17 +125,17 @@ public class ScouterController {
 	@GetMapping("scouter/editProfile")
 	public String editProfile(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
-		UserInfo scouterInfo = scouterService.getScouterInfo((String)session.getAttribute("username"));
+		UserInfo scouterInfo = scouterService.getScouterInfo((String) session.getAttribute("username"));
 		model.addAttribute("userInfo", scouterInfo);
 		return "Scouter/editProfile";
 	}
-	
+
 	@PostMapping("scouter/editScouterProfileProcess")
 	public String editProfileProcess(Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
-		scouterService.editScoutProfileProcess((String)session.getAttribute("username"), userInfo);
+		scouterService.editScoutProfileProcess((String) session.getAttribute("username"), userInfo);
 		return "redirect:/scouter/editProfile";
 	}
-	
+
 	@PostMapping("scouter/createUser")
 	public RedirectView forgetPassword(RedirectAttributes model, @RequestParam String username) {
 		boolean exists = scouterService.createUserProcess(username);
@@ -144,40 +145,39 @@ public class ScouterController {
 		}
 		return new RedirectView("/onScout/scouter/scoutManage");
 	}
-	
+
 	@GetMapping("scouter/showPDF/{name}")
-    public StreamingResponseBody getSteamingFile(@PathVariable("name") String name, HttpServletResponse response) throws URISyntaxException {
-		String url = "static/pdf/" + name +".pdf";
-        File file = new File(getClass().getClassLoader().getResource(url).toURI());
+	public StreamingResponseBody getSteamingFile(@PathVariable("name") String name, HttpServletResponse response)
+			throws URISyntaxException {
+		String url = "static/pdf/" + name + ".pdf";
+		File file = new File(getClass().getClassLoader().getResource(url).toURI());
 
-        //viewing in web browser
-        response.setContentType("application/pdf");
-        //for downloading the file directly if viewing is not possible
-        response.setHeader("Content-Disposition", "inline; filename=" + file.getName());
+		// viewing in web browser
+		response.setContentType("application/pdf");
+		// for downloading the file directly if viewing is not possible
+		response.setHeader("Content-Disposition", "inline; filename=" + file.getName());
 
-        file = null;
+		file = null;
 
-        //put the directory architecture according to your target directory
-        // generated during compilation in maven spring boot
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(url);
+		// put the directory architecture according to your target directory
+		// generated during compilation in maven spring boot
+		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(url);
 
-        return outputStream -> {
-            int nRead;
-            byte[] data = new byte[1024];
-            while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
-                outputStream.write(data, 0, nRead);
-            }
-            inputStream.close();
-        };
-    }
-	
-	@PostMapping("scouter/editCompletedQuest")
-	public void editCompletedQuest(RedirectAttributes model, @RequestParam String username) {
+		return outputStream -> {
+			int nRead;
+			byte[] data = new byte[1024];
+			while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+				outputStream.write(data, 0, nRead);
+			}
+			inputStream.close();
+		};
 	}
 
+	@PostMapping("scouter/editCompletedQuest")
+	public void editCompletedQuest(@RequestParam String username, @RequestParam int questID,
+			@RequestParam Date finishDate) {
+		System.out.println(username + " " + questID + " " + finishDate);
+		scouterService.editCompletedDate(username, questID, finishDate);
+	}
 
-	
-
-	
-	
 }
