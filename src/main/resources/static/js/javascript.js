@@ -26,6 +26,28 @@ $(document).ready(function(){
              },
          });
 	});
+	$('#dateSubmit').click(function(){
+		 $.ajax({
+			 type: "POST",
+			 url: "http://localhost:8081/onScout/scouter/editCompletedQuest",   // 存取Json的網址
+            cache:false,
+            dataType: 'json',
+            // contentType: "application/json",
+            success: function (data) {
+           	 var str="<ul>";    
+           	 $.each(data,function(i,n){   
+           		console.log(n);
+           		//change #testSpan to the correct field
+           		//just copy and paste and n[{the column in ajax}]
+           		
+           		qID = "SPA" + n['questID'];
+           		console.log(qID);
+           		
+           		$("#"+qID).find('span').html(n['finishDate']);    
+           	 });
+            },
+        });
+	});
 	$("#pathfinderAward").click(function() {
 		$("#pathfinderAwardInfo").show();
 	});
