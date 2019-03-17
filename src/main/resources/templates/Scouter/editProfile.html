@@ -11,7 +11,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<form method="POST" th:object="${userInfo}" th:action="@{/scouter/editScouterProfileProcess/} + ${userInfo.getUsername()}">
+<form method="POST" th:object="${userInfo}" th:action="@{/scouter/editScouterProfileProcess/}">
 	<div class="d-flex" id="wrapper">
 	<br>
 		<nav th:include="General/scouterNav :: nav"></nav>
