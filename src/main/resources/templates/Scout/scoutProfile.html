@@ -111,7 +111,7 @@
 					style="font-size: 20px;" th:text="'Emergency Contact'"></div>
 			</div>
 			<br /> <br />
-			<div class="container row"  th:each="emerContact: ${emerContact} ">
+			<div class="container row" th:each="emerContact: ${emerContact} ">
 				<div class="col-lg-3 col-12">
 					<b>Emergency Name: </b>
 					<!-- th:text="${emContact.getEmerName()}" -->
@@ -132,9 +132,23 @@
 					<!-- th:text="${emContact.getEmerAddress()}" -->
 					<text th:text="${emerContact.getEmerAddress()}"></text>
 				</div>
-				<div class="col-lg-12 col-12">
-				&nbsp;
+				<div class="col-lg-12 col-12">&nbsp;</div>
+			</div>
+			<br />
+			<hr />
+			<div class="container row">
+				<div class="col-12 text-center font-weight-bolder"
+					style="font-size: 20px;" th:text="'Generate Application Form'">
 				</div>
+			</div>
+			<br />
+			<div class="container row">
+				<span class="col-lg-4">&nbsp;</span> <a
+					class="col-lg-4 text-center font-italic border-primary rounded aborWid"
+					style="color:white;" 
+					href="#"
+					th:onclick="'location.href=\''+ @{/downloadForm/{username} (username=${scoutNavInfo.getUsername()})}+'\''"
+					download>Generate Application Form</a> <span class="col-lg-4">&nbsp;</span>
 			</div>
 			<br /> <br />
 		</div>

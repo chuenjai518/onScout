@@ -1,8 +1,8 @@
-$(document).ready(function(){
+$(document).ready(function() {
 	$("sAw").click(function() {
        var id = $(this).attr('id');
        console.log(id);
-     $("iframe").attr("src", "showPDF/"+id);     
+     $("iframe").attr("src", "showPDF/"+id);
     });
 	$('.Award').click(function(){
 		console.log($(this).attr('id'));
@@ -22,7 +22,7 @@ $(document).ready(function(){
 		break;
 		default:
 			break;
-			
+
 		}
 		url="http://localhost:8081/onScout/api/"+api+"/scout";
 		 $.ajax({
@@ -32,15 +32,15 @@ $(document).ready(function(){
              dataType: 'json',
              // contentType: "application/json",
              success: function (data) {
-            	 var str="<ul>";    
-            	 $.each(data,function(i,n){   
+            	 var str="<ul>";
+            	 $.each(data,function(i,n){
             		console.log(n);
             		//change #testSpan to the correct field
             		//just copy and paste and n[{the column in ajax}]
-            		
+
             		qID = "SPA" + n['questID'];
             		console.log(qID);
-            		
+
             		$("#"+qID).find('span').html(n['finishDate']);
             		$("#"+qID).find('input').val(n['finishDate']);
             	 });
@@ -65,16 +65,16 @@ $(document).ready(function(){
 				 },
 	            // contentType: "application/json",
 	            success: function (data) {
-	           	  
+
 	            },
 	        });
 		}else
 			alert("Please input completed date ")
-		 
+
 	});
 	$("#pathfinderAward").click(function() {
 		$("#pathfinderAwardInfo").show();
-		
+
 	});
 	$("#standardAward").click(function() {
 		if($("#standardAwardInfo").attr('open') == true){
@@ -95,18 +95,15 @@ $(document).ready(function(){
 			alert('Scout Not Complete the Previous Award Yet!')
 	});
 });
-function enable(){
-	if($('input').prop('disabled') == true){
-		$('input').prop('disabled',false);
-		$('#submit').prop('disabled',false);
-		$('#submit2').prop('disabled',false);
-	}else{
-		$('input').prop('disabled',true);
-		$('#submit').prop('disabled',true);
-		$('#submit2').prop('disabled',true);
+function enable() {
+	if ($('input').prop('disabled') == true) {
+		$('input').prop('disabled', false);
+		$('#submit').prop('disabled', false);
+		$('#submit2').prop('disabled', false);
+	} else {
+		$('input').prop('disabled', true);
+		$('#submit').prop('disabled', true);
+		$('#submit2').prop('disabled', true);
 	}
 
-	
 }
-
-
