@@ -23,6 +23,12 @@ public class scoutProgressRestController {
 		return userList;
 	}
 	
+	@RequestMapping("api/userInfo/{username}")
+	public UserInfo getUserInfo(@PathVariable String username){
+		
+		return apiService.getUserInfo(username);
+	}
+	
 	@RequestMapping("api/getSPAFinishDate/{username}")
 	public List<CompletedQuest> getSPACompletedQuest(@PathVariable String username){
 		
