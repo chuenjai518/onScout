@@ -4,7 +4,7 @@ $(document).ready(function(){
        console.log(id);
      $("iframe").attr("src", "showPDF/"+id);     
     });
-	$('#Award').click(function(){
+	$('#Award1').click(function(){
 		 $.ajax({
 			 type: "POST",
 			 url: "http://localhost:8081/onScout/api/getSPAFinishDate/scout",   // 存取Json的網址
@@ -17,7 +17,11 @@ $(document).ready(function(){
             		console.log(n);
             		//change #testSpan to the correct field
             		//just copy and paste and n[{the column in ajax}]
-            		$("#testSpan").append(n['username']);    
+            		
+            		qID = "SPA" + n['questID'];
+            		console.log(qID);
+            		
+            		$("#"+qID).append(n['finishDate']);    
             	 });
              },
          });

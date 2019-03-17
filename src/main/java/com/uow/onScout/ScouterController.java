@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,11 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.itextpdf.text.pdf.PdfAcroForm;
+import com.itextpdf.text.pdf.PdfDocument;
+import com.itextpdf.text.pdf.PdfFormField;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.uow.Model.EmerContact;
 import com.uow.Model.ScoutManage;
 import com.uow.Model.User;
@@ -164,11 +170,8 @@ public class ScouterController {
             inputStream.close();
         };
     }
-	
-	
-	// ----------------API---------------------
-//	@PostMapping("scouter/api/pathfinder")
-//	public ResponseEntity
+
+
 	
 
 	
