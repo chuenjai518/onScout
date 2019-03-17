@@ -49,10 +49,10 @@
 					</div>
 					<div class="offset-1 col-1 text-left container">
 						<div class="text14 col-3 font-weight-bold">Scout</div>
-						<!-- th:text="${scoutInfo.getUsername()}" -->
-						<div class="text14 col-3" th:text="'Scout Name'"></div>
-						<!-- th:text="${scoutInfo.getRegion()} + ' ' + ${scoutInfo.getDistrict()} + ' ' + ${scoutInfo.getScoutGroup()}" -->
-						<div class="text14 col-3" th:text="'Unit: ' + 'XXXXX XXX XXX'" ></div>
+						<!-- th:text=" + ${scoutNavInfo.getUsername()}" -->
+						<div class="text14 col-3" th:text="'Scout Name' + ${scoutNavInfo.getUsername()}"></div>
+						<!-- th:text="${scoutNavInfo.getRegion()} + ' ' + ${scoutNavInfo.getDistrict()} + ' ' + ${scoutNavInfo.getScoutGroup()}" -->
+						<div class="text14 col-3" th:text="'Unit: ' + ${scoutNavInfo.getRegion()} + ' ' + ${scoutNavInfo.getDistrict()} + ' ' + ${scoutNavInfo.getScoutGroup()}" ></div>
 					</div>
 				</div>
 				<a class="nav-link text14 text-center font-weight-bold" href="#"
