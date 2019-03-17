@@ -224,6 +224,13 @@ iframe{
 	font-size:14px;
 }
 
+.aborWid{
+    border-style:solid;
+    border-width:medium;
+    background-color:#8d4b67;
+}
+}
+
 <!-- Hover Nav -->
 .navbarNav {
   position: relative;
@@ -262,7 +269,7 @@ iframe{
 	background-color: #3e8e41;
 }
 .input-group > .form-control, .input-group > .form-control-plaintext, .input-group > .custom-select, .input-group > .custom-file{
-	width:4rem;
+	width:4.5rem;
 }
 .input-group > .input-group-append > .btn, .input-group > .input-group-append > .input-group-text, .input-group > .input-group-prepend:not(:first-child) > .btn, .input-group > .input-group-prepend:not(:first-child) > .input-group-text, .input-group > .input-group-prepend:first-child > .btn:not(:first-child), .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
 width:2rem;
