@@ -224,6 +224,13 @@ iframe{
 	font-size:14px;
 }
 
+.aborWid{
+    border-style:solid;
+    border-width:medium;
+    background-color:#8d4b67;
+}
+}
+
 <!-- Hover Nav -->
 .navbarNav {
   position: relative;
