@@ -41,6 +41,10 @@ public class ScoutController {
 		//Also need post mapping to change form information: Email and phone no. need change
 		List<EmerContact> emerContact = scoutService.getEmerContact(username);
 		model.addAttribute("emerContact", emerContact);
+
+		UserInfo scoutNavInfo = scoutService.getScoutNavInfo(username);
+		model.addAttribute("scoutNavInfo",scoutNavInfo);
+		
 		return "scout/scoutProfile";
 	}
 	
@@ -58,13 +62,5 @@ public class ScoutController {
 		return "scout/mainpage";
 	}
 	
-
-	@GetMapping("scout/scoutNav")
-	public String scoutNav(Model model, HttpSession session) {
-		//Need Scout Full Name and Unit
-		UserInfo scoutNavInfo = scoutService.getScoutNavInfo((String)session.getAttribute("username"));
-		model.addAttribute("scoutNavInfo",scoutNavInfo);
-		return "scout/scoutNav";
-	}
 
 }
