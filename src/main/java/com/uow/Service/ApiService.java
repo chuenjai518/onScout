@@ -58,6 +58,7 @@ public class ApiService {
 		PdfReader pdfReader = new PdfReader(file.getPath());
 		PdfStamper pdfStamper = new PdfStamper(pdfReader, baos);
 		AcroFields fields = pdfStamper.getAcroFields();
+		
 		UserInfo user = getUserInfo(username);
 		
 		SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy");

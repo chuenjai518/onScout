@@ -57,4 +57,14 @@ public class ScouterService {
 	public void editCompletedDate(String username, int questID, Date finishDate) {
 		scouterDAO.editCompletedDate(username, questID, finishDate);
 	}
+	
+	public boolean checkSSA(String username) {
+		return scouterDAO.checkSSA(username);
+	}
+	public boolean checkSAA(String username) {
+		return scouterDAO.checkSAA(username);
+	}
+	public boolean checkCSA(String username) {
+		return scouterDAO.checkCSA(username);
+	}
 }

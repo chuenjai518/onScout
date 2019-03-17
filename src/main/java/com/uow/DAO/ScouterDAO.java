@@ -17,17 +17,16 @@ import com.uow.Model.User;
 import com.uow.Model.UserInfo;
 import com.uow.Model.UserInfoRowMapper;
 
-
 @Repository
 public class ScouterDAO {
 
 	@Autowired
 	private JdbcTemplate db;
-	
+
 	public UserInfo getScouterInfo(String username) {
 		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI from User u left join PersonalInfo p on u.username = p.username Where u.username = ? and disable = 0 and roleID = 2";
 		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
-		try{
+		try {
 			return this.db.queryForObject(sql, rowMapper, username);
 		} catch (EmptyResultDataAccessException e) {
 			return new UserInfo();
@@ -39,12 +38,12 @@ public class ScouterDAO {
 		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
 		return this.db.query(sql, rowMapper);
 	}
-	
+
 	public UserInfo getScoutInfo(String username) {
 		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI from User u left join PersonalInfo p on u.username = p.username Where u.username = ? and disable = 0 and roleID = 1";
 		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
 		try {
-		return this.db.queryForObject(sql, rowMapper, username);
+			return this.db.queryForObject(sql, rowMapper, username);
 		} catch (EmptyResultDataAccessException e) {
 			return new UserInfo();
 		}
@@ -55,13 +54,13 @@ public class ScouterDAO {
 		RowMapper<ScoutManage> rowMapper = new ScoutManageRowMapper();
 		return this.db.query(sql, rowMapper);
 	}
-	
-	public List<EmerContact> getEmerContact(String username){
+
+	public List<EmerContact> getEmerContact(String username) {
 		String sql = "Select u.username, emerName, emerAddress, emerRelation, emerTel from User u left join UserEmer um on u.username = um.username left join EmerContact ec on um.emerContactID = ec.emerContactID Where u.username = ? and disable = 0";
 		RowMapper<EmerContact> rowMapper = new EmerContactRowMapper();
 		return this.db.query(sql, rowMapper, username);
 	}
-	
+
 	public boolean createUserProcess(User user) {
 		boolean exists = false;
 		String sql = "SELECT count(*) FROM User where username = ?";
@@ -73,37 +72,73 @@ public class ScouterDAO {
 		}
 		return exists;
 	}
-	
+
 	public void editProfileProcess(String username, String email, int phoneNum) {
 		String sql = "Update PersonalInfo SET email = ?, phoneNum = ? where username = ?";
 		db.update(sql, email, phoneNum, username);
 	}
-	
+
 	public void editScoutProfileProcess(String username, UserInfo userInfo) {
 		String sql = "Select count(*) From PersonalInfo where username = ?";
 		int count = db.queryForObject(sql, new Object[] { username }, Integer.class);
 		System.out.println("count: " + count);
 		if (count > 0) {
 			sql = "Update PersonalInfo set firstName = ?, lastName = ?, HKID = ?, DOB = ?, gender = ?, address = ?, phoneNum = ?, email = ?, region = ?, district = ?, scoutGroup = ?, DOI = ? where username = ?";
-			db.update(sql, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(), userInfo.getDOB(), userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(), userInfo.getEmail(), userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(), userInfo.getDOI(), username);
-		}else {
-			sql = "INSERT INTO PersonalInfo(username, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI)" + 
-					"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			db.update(sql, username, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(), userInfo.getDOB(), userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(), userInfo.getEmail(), userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(), userInfo.getDOI());
+			db.update(sql, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(), userInfo.getDOB(),
+					userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(), userInfo.getEmail(),
+					userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(), userInfo.getDOI(),
+					username);
+		} else {
+			sql = "INSERT INTO PersonalInfo(username, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI)"
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			db.update(sql, username, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(),
+					userInfo.getDOB(), userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(),
+					userInfo.getEmail(), userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(),
+					userInfo.getDOI());
 		}
 	}
-	
+
 	public void editCompletedDate(String username, int questID, Date finishDate) {
-		
+
 		String sql = "Select count(*) From CompletedQuest where username = ? and questID = ?";
 		int count = db.queryForObject(sql, new Object[] { username, questID }, Integer.class);
 		if (count > 0) {
 			sql = "Update CompletedQuest set finishDate = ? where username = ? and questID = ?";
 			db.update(sql, finishDate, username, questID);
-		}else {
+		} else {
 			sql = "Insert into CompletedQuest(finishDate, username, questID) " + "VALUES(?,?,?)";
 			db.update(sql, finishDate, username, questID);
 		}
-		
+
+	}
+
+	public boolean checkSSA(String username) {
+		boolean open = false;
+		String sql = "Select count(*) From CompletedQuest where username = ? and questID = 10000";
+		int count = db.queryForObject(sql, new Object[] { username }, Integer.class);
+		if (count > 0) {
+			open = true;
+		}
+		return open;
+	}
+
+	public boolean checkSAA(String username) {
+		boolean open = false;
+		String sql = "Select count(*) From CompletedQuest where username = ? and questID = 20000";
+		int count = db.queryForObject(sql, new Object[] { username }, Integer.class);
+		if (count > 0) {
+			open = true;
+		}
+		return open;
+	}
+
+	public boolean checkCSA(String username) {
+		boolean open = false;
+		String sql = "Select count(*) From CompletedQuest where username = ? and questID = 30000";
+		int count = db.queryForObject(sql, new Object[] { username }, Integer.class);
+		if (count > 0) {
+			open = true;
+		}
+		return open;
 	}
 }
