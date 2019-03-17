@@ -21,7 +21,7 @@ $(document).ready(function(){
             		qID = "SPA" + n['questID'];
             		console.log(qID);
             		
-            		$("#"+qID).append(n['finishDate']);    
+            		$("#"+qID).find('span').html(n['finishDate']);    
             	 });
              },
          });
