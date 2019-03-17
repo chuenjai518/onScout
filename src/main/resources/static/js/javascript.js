@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	$("sAw").click(function() {
+<<<<<<< HEAD
 		var id = $(this).attr('id');
 		console.log(id);
 		$("iframe").attr("src", "showPDF/" + id);
@@ -105,20 +106,54 @@ $(document).ready(function() {
 					console.log(n);
 					// change #testSpan to the correct field
 					// just copy and paste and n[{the column in ajax}]
+=======
+       var id = $(this).attr('id');
+       console.log(id);
+     $("iframe").attr("src", "showPDF/"+id);
+    });
+	$('.Award').click(function(){
+		console.log($(this).attr('id'));
+		var api = null;
+		switch($(this).attr('id')){
+		case "a1":
+			api="getSPAFinishDate";
+		break;
+		case "a2":
+			api="getSSAFinishDate";
+		break;
+		case "a3":
+			api="getSAAFinishDate";
+		break;
+		case "a4":
+			api="getCSAFinishDate";
+		break;
+		default:
+			break;
 
-					qID = "SPA" + n['questID'];
-					console.log(qID);
+		}
+		url="http://localhost:8081/onScout/api/"+api+"/scout";
+		 $.ajax({
+			 type: "POST",
+			 url: url,   // 存取Json的網址
+             cache:false,
+             dataType: 'json',
+             // contentType: "application/json",
+             success: function (data) {
+            	 var str="<ul>";
+            	 $.each(data,function(i,n){
+            		console.log(n);
+            		//change #testSpan to the correct field
+            		//just copy and paste and n[{the column in ajax}]
+>>>>>>> b5f58004d24ea052fb218c835877fd2e149fa0b1
 
-					var date = n['finishDate'].split('-');
-					var year = date[0];
-					var month = date[1];
-					var day = date[2];
-					
-					date = day + "/" + month +"/"+year;
-					$("#" + qID).find('span').html(date);
-				});
-			},
-		});
+            		qID = "SPA" + n['questID'];
+            		console.log(qID);
+
+            		$("#"+qID).find('span').html(n['finishDate']);
+            		$("#"+qID).find('input').val(n['finishDate']);
+            	 });
+             },
+         });
 	});
 	$('.dateSubmit').click(function(){
 		tempId = $(this).parent().parent().parent().attr('id');
@@ -138,24 +173,34 @@ $(document).ready(function() {
 				 },
 	            // contentType: "application/json",
 	            success: function (data) {
-	           	  
+
 	            },
 	        });
 		}else
 			alert("Please input completed date ")
-		 
+
 	});
 	$("#pathfinderAward").click(function() {
 		$("#pathfinderAwardInfo").show();
+
 	});
 	$("#standardAward").click(function() {
-		$("#standardAwardInfo").show();
+		if($("#standardAwardInfo").attr('open') == true){
+			$("#standardAwardInfo").show();
+		}else
+			alert('Scout Not Complete the Previous Award Yet!')
 	});
 	$("#advancedAward").click(function() {
-		$("#advancedAwardInfo").show();
+		if($("#advancedAwardInfo").attr('open') == true){
+			$("#advancedAwardInfo").show();
+		}else
+			alert('Scout Not Complete the Previous Award Yet!')
 	});
 	$("#chiefAward").click(function() {
-		$("#chiefAwardInfo").show();
+		if($("#chiefAwardInfo").attr('open') == true){
+			$("#chiefAwardInfo").show();
+		}else
+			alert('Scout Not Complete the Previous Award Yet!')
 	});
 });
 function enable() {
