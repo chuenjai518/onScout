@@ -85,6 +85,9 @@ public class ScouterController {
 	public String scoutProcess(@PathVariable("username") String username, Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
 		UserInfo user = scouterService.getScoutInfo(username);
+		model.addAttribute("openSSA", scouterService.checkSSA(username));
+		model.addAttribute("openSAA", scouterService.checkSAA(username));
+		model.addAttribute("openCSA", scouterService.checkCSA(username));
 		model.addAttribute("user", user);
 		return "Scouter/scoutProcessDetail";
 	}
