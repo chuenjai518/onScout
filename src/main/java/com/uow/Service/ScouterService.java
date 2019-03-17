@@ -54,7 +54,7 @@ public class ScouterService {
 		scouterDAO.editScoutProfileProcess(username, userinfo);
 	}
 	
-	public void editCompletedDate(String username, int questID, Date finishDate) {
+	public void editCompletedDate(String username, int questID, String finishDate) {
 		scouterDAO.editCompletedDate(username, questID, finishDate);
 	}
 	
