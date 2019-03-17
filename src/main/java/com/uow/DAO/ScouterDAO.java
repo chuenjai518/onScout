@@ -1,5 +1,6 @@
 package com.uow.DAO;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +91,19 @@ public class ScouterDAO {
 					"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			db.update(sql, username, userInfo.getFirstName(), userInfo.getLastName(), userInfo.getHKID(), userInfo.getDOB(), userInfo.getGender(), userInfo.getAddress(), userInfo.getPhoneNum(), userInfo.getEmail(), userInfo.getRegion(), userInfo.getDistrict(), userInfo.getScoutGroup(), userInfo.getDOI());
 		}
+	}
+	
+	public void editCompletedDate(String username, int questID, Date finishDate) {
+		
+		String sql = "Select count(*) From CompletedQuest where username = ? and questID = ?";
+		int count = db.queryForObject(sql, new Object[] { username, questID }, Integer.class);
+		if (count > 0) {
+			sql = "Update CompletedQuest set finishDate = ? where username = ? and questID = ?";
+			db.update(sql, finishDate, username, questID);
+		}else {
+			sql = "Insert into CompletedQuest(finishDate, username, questID) " + "VALUES(?,?,?)";
+			db.update(sql, finishDate, username, questID);
+		}
+		
 	}
 }

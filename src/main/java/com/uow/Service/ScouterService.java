@@ -1,5 +1,6 @@
 package com.uow.Service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,9 @@ public class ScouterService {
 	
 	public void editScoutProfileProcess(String username, UserInfo userinfo) {
 		scouterDAO.editScoutProfileProcess(username, userinfo);
+	}
+	
+	public void editCompletedDate(String username, int questID, Date finishDate) {
+		scouterDAO.editCompletedDate(username, questID, finishDate);
 	}
 }

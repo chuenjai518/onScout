@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -58,9 +59,11 @@ public class ApiService {
 		PdfStamper pdfStamper = new PdfStamper(pdfReader, baos);
 		AcroFields fields = pdfStamper.getAcroFields();
 		UserInfo user = getUserInfo(username);
+		
+		SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy");
 	
 		fields.setField("fill_2", user.getLastName() + " " + user.getFirstName());
-		fields.setField("fill_3", user.getDOB().toString());
+		fields.setField("fill_3", dt1.format(user.getDOB()).toString());
 		
 		Date today =  new Date();
 		int age = today.getYear() - user.getDOB().getYear();
@@ -76,7 +79,7 @@ public class ApiService {
 		String newHKID = HKID.substring(0, Math.min(HKID.length(), 4));
 		fields.setField("fill_6", newHKID);
 		fields.setField("fill_7", user.getUsername());
-		fields.setField("fill_8", user.getDOI().toString());
+		fields.setField("fill_8", dt1.format(user.getDOI()).toString());
 		fields.setField("fill_9", user.getRegion());
 		fields.setField("fill_10", user.getDistrict());
 		fields.setField("fill_11", user.getScoutGroup());
