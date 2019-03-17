@@ -32,6 +32,31 @@ $(document).ready(function() {
 			},
 		});
 	});
+	$('.dateSubmit').click(function(){
+		tempId = $(this).parent().parent().parent().attr('id');
+		questID = tempId.substring(3);
+		username = $('#username').attr('username');
+		date = $(this).parent().prev().val();
+		console.log(date);
+		if(date != ""){
+			$.ajax({
+				 type: "POST",
+				 url: "http://localhost:8081/onScout/scouter/editCompletedQuest",   // 存取Json的網址
+				 cache:false,
+				 data: {
+					 "questID": questID,
+					 "username": username,
+					 "finishDate": date,
+				 },
+	            // contentType: "application/json",
+	            success: function (data) {
+	           	  
+	            },
+	        });
+		}else
+			alert("Please input completed date ")
+		 
+	});
 	$("#pathfinderAward").click(function() {
 		$("#pathfinderAwardInfo").show();
 	});

@@ -40,6 +40,12 @@ public class ApiDAO {
 		return this.db.query(sql, rowMapper, username);
 	}
 	
+//	public List<CompletedQuest> getFinal(String username){
+//		String sql = "SELECT questID, FinishDate, username FROM CompletedQuest where username = ? and questID > 40000 and questID < 50000";
+//		RowMapper<CompletedQuest> rowMapper = new CompletedQuestRowMapper();
+//		return this.db.query(sql, rowMapper, username);
+//	}
+	
 	public UserInfo getUserInfo(String username){
 		String sql = "Select u.username, roleID, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI from User u left join PersonalInfo p on u.username = p.username Where u.username = ? and disable = 0 and roleID = 1";
 		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
