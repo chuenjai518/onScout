@@ -31,8 +31,8 @@ $(document).ready(function(){
 	$("#advancedAward").click(function() {
 		$("#advancedAwardInfo").show();
 	});
-	$("#cheifAward").click(function() {
-		$("#chiefInfo").show();
+	$("#chiefAward").click(function() {
+		$("#chiefAwardInfo").show();
 	});
 });
 function enable(){
