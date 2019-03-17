@@ -4,10 +4,98 @@ $(document).ready(function() {
 		console.log(id);
 		$("iframe").attr("src", "showPDF/" + id);
 	});
-	$('#Award1').click(function() {
+	$('#a1').click(function() {
+		var user = $('#username').val();
 		$.ajax({
 			type : "POST",
-			url : "http://localhost:8081/onScout/api/getSPAFinishDate/scout", // 存取Json的網址
+			url : "http://localhost:8081/onScout/api/getSPAFinishDate/"+user, // 存取Json的網址
+			cache : false,
+			dataType : 'json',
+			// contentType: "application/json",
+			success : function(data) {
+				var str = "<ul>";
+				$.each(data, function(i, n) {
+					console.log(n);
+					// change #testSpan to the correct field
+					// just copy and paste and n[{the column in ajax}]
+
+					qID = "SPA" + n['questID'];
+					console.log(qID);
+
+					var date = n['finishDate'].split('-');
+					var year = date[0];
+					var month = date[1];
+					var day = date[2];
+					
+					date = day + "/" + month +"/"+year;
+					$("#" + qID).find('span').html(date);
+				});
+			},
+		});
+	});
+	$('#a2').click(function() {
+		var user = $('#username').val();
+		$.ajax({
+			type : "POST",
+			url : "http://localhost:8081/onScout/api/getSSAFinishDate/"+user, // 存取Json的網址
+			cache : false,
+			dataType : 'json',
+			// contentType: "application/json",
+			success : function(data) {
+				var str = "<ul>";
+				$.each(data, function(i, n) {
+					console.log(n);
+					// change #testSpan to the correct field
+					// just copy and paste and n[{the column in ajax}]
+
+					qID = "SPA" + n['questID'];
+					console.log(qID);
+
+					var date = n['finishDate'].split('-');
+					var year = date[0];
+					var month = date[1];
+					var day = date[2];
+					
+					date = day + "/" + month +"/"+year;
+					$("#" + qID).find('span').html(date);
+				});
+			},
+		});
+	});
+	$('#a3').click(function() {
+		var user = $('#username').val();
+		$.ajax({
+			type : "POST",
+			url : "http://localhost:8081/onScout/api/getSAAFinishDate/"+user, // 存取Json的網址
+			cache : false,
+			dataType : 'json',
+			// contentType: "application/json",
+			success : function(data) {
+				var str = "<ul>";
+				$.each(data, function(i, n) {
+					console.log(n);
+					// change #testSpan to the correct field
+					// just copy and paste and n[{the column in ajax}]
+
+					qID = "SPA" + n['questID'];
+					console.log(qID);
+
+					var date = n['finishDate'].split('-');
+					var year = date[0];
+					var month = date[1];
+					var day = date[2];
+					
+					date = day + "/" + month +"/"+year;
+					$("#" + qID).find('span').html(date);
+				});
+			},
+		});
+	});
+	$('#a4').click(function() {
+		var user = $('#username').val();
+		$.ajax({
+			type : "POST",
+			url : "http://localhost:8081/onScout/api/getCSAFinishDate/"+user, // 存取Json的網址
 			cache : false,
 			dataType : 'json',
 			// contentType: "application/json",
