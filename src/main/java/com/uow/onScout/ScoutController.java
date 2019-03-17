@@ -57,7 +57,7 @@ public class ScoutController {
 	
 	@GetMapping("scout/mainpage")
 	public String mainpage(Model model, HttpSession session) {
-		
+		model.addAttribute("username", (String)session.getAttribute("username"));
 		
 		return "scout/mainpage";
 	}

@@ -176,11 +176,6 @@ public class ScouterController {
 		};
 	}
 
-	@PostMapping("scouter/editCompletedQuest")
-	public void editCompletedQuest(@RequestParam String username, @RequestParam int questID,
-			@RequestParam Date finishDate) {
-		System.out.println(username + " " + questID + " " + finishDate);
-		scouterService.editCompletedDate(username, questID, finishDate);
-	}
+	
 
 }

@@ -1,9 +1,11 @@
 package com.uow.onScout;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,5 +53,11 @@ public class scoutProgressRestController {
 	public List<CompletedQuest> getCSACompletedQuest(@PathVariable String username){
 		
 		return apiService.getCSAFinishDate(username);
+	}
+	@RequestMapping("scouter/editCompletedQuest")
+	public void editCompletedQuest(@RequestParam String username, @RequestParam int questID,
+			@RequestParam String finishDate) {
+		System.out.println(username + " " + questID + " " + finishDate);
+		scouterService.editCompletedDate(username, questID, finishDate);
 	}
 }
