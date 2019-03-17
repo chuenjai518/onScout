@@ -37,10 +37,13 @@
 			Association of Hong Kong</a>
 		<div class="navbarNav" id="navbarNav">
 			<ul class="navbar-nav ml-auto">
-				<li class="item"><a class="nav-link"
-					href="/onScout/scout/scoutProfile/{username}">Profile <i
+				<li class="item">
+				<!-- href="/onScout/scout/scoutProfile/{username} (username=${scoutNavInfo.getUsername()})" -->
+				<a class="nav-link" href="#" th:onclick="'location.href=\''+ @{/scout/scoutProfile/{username} (username=${scoutNavInfo.getUsername()})}+'\''"
+					>Profile <i
 						id="logo" class="fa fa-user-circle"></i>
-				</a></li>
+				</a>
+				</li>
 			</ul>
 			<div class="navbarNav-content navbar-brand">
 				<div class="container row">
@@ -50,7 +53,7 @@
 					<div class="offset-1 col-1 text-left container">
 						<div class="text14 col-3 font-weight-bold">Scout</div>
 						<!-- th:text=" + ${scoutNavInfo.getUsername()}" -->
-						<div class="text14 col-3" th:text="'Scout Name' + ${scoutNavInfo.getUsername()}"></div>
+						<div class="text14 col-3" th:text="${scoutNavInfo.getLastName()} + ' ' + ${scoutInfo.getFirstName()}"></div>
 						<!-- th:text="${scoutNavInfo.getRegion()} + ' ' + ${scoutNavInfo.getDistrict()} + ' ' + ${scoutNavInfo.getScoutGroup()}" -->
 						<div class="text14 col-3" th:text="'Unit: ' + ${scoutNavInfo.getRegion()} + ' ' + ${scoutNavInfo.getDistrict()} + ' ' + ${scoutNavInfo.getScoutGroup()}" ></div>
 					</div>
