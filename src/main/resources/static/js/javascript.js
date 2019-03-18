@@ -121,14 +121,16 @@ $(document).ready(function() {
 	});
 	
 	$("#changePassword").click(function(){
-		var username = $("#username").attr('text');
+		var username = $("#username").attr('value');
+		console.log(username);
 		var pw = $("#newPassword").val();
+		console.log(pw);
 		$.ajax({
 			 type: "POST",
 			 url: "http://localhost:8081/onScout/changePassword",   // 存取Json的網址
 			 cache:false,
 			 data: {
-				 "password": pw,
+				 "changePassword": pw,
 				 "username": username,
 			 },
            // contentType: "application/json",

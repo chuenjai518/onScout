@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<div lang="en" th:replace="Scout/scoutNav:: head"></div>
+<div lang="en" th:replace="General/nav:: head"></div>
 <meta charset="utf-8">
 <title>Scout Profile</title>
 <!-- <nav th:include="General/nav :: nav"></nav> -->
@@ -20,7 +20,7 @@
 				<div class="col-12 col-lg-6 text-center mt-2"
 					style="font-size: 20px;">
 					<b>Username: </b>
-					<text id="username" th:text="${scoutInfo.getUsername()}"></text>
+					<text id="username" th:value="${scoutInfo.getUsername()}" th:text="${scoutInfo.getUsername()}"></text>
 				</div>
 				<div class="col-12 col-lg-4 text-center mt-2"
 					style="font-size: 20px;">
@@ -149,14 +149,15 @@
 					th:onclick="'location.href=\''+ @{/downloadForm/{username} (username=${scoutNavInfo.getUsername()})}+'\''">Generate
 					Application Form</a> <span class="col-lg-4">&nbsp;</span>
 			</div>
+			<br />
+			<hr/>
 			<div class="container row">
 				<div class="col-12 text-center font-weight-bolder"
 					style="font-size: 20px;" th:text="'Change Password'"></div>
 			</div>
 			<br />
-			<hr/>
 			<div class="container row">
-				<span class="col-lg-4">&nbsp;</span> <a id="changePassword" href=""
+				<span class="col-lg-4">&nbsp;</span> <a id="changePassword" href="#"
 					class="col-lg-4 text-center font-italic border-primary rounded aborWid"
 					style="color: white;">Change Password</a> <span class="col-lg-4">&nbsp;</span>
 			</div>
