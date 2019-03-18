@@ -106,7 +106,9 @@ public class ScouterDAO {
 		int count = db.queryForObject(sql, new Object[] { username }, Integer.class);
 		if (count > 0) {
 			open = true;
+		
 		}
+		System.out.println(open);
 		return open;
 	}
 
@@ -140,25 +142,42 @@ public class ScouterDAO {
 		} else {
 			sql = "Insert into CompletedQuest(finishDate, username, questID) " + "VALUES(?,?,?)";
 			db.update(sql, finishDate, username, questID);
-			questID = questID - (questID % 10);
-			checkSubTask(username, questID);
+			if(questID%10000==0) {
+				
+			}else if(questID%1000==0) {
+				questID = questID - (questID % 10000);
+				checkAward(username, questID);
+			}else if(questID%100==0) {
+				questID = questID - (questID % 1000);
+				checkCategory(username, questID);
+			}else if(questID%10==0) {
+				questID = questID - (questID % 100);
+				checkTask(username, questID);
+			}else {
+				questID = questID - (questID % 10);
+				checkSubTask(username, questID);
+			}
+			
 		}
-		
 
 	}
 
 	public void checkSubTask(String username, int questID) {
 		System.out.println("Check SubTask");
 		String date;
+		System.out.println("Check SubTask5 " + questID);
 		String missionNumSQL = "Select missionNum From SubTask where questID = ?";
 		int missionNum = db.queryForObject(missionNumSQL, Integer.class, questID);
+		System.out.println("Check SubTask4 " + missionNum);
 		int missionEnd = questID + 9;
 		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and username = ?";
 		int count = db.queryForObject(countSQL, Integer.class, questID, missionEnd, username);
 		if(count >= missionNum) {
+			System.out.println("Check SubTask2");
 			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
 			date = db.queryForObject(latestDateSQL, String.class, questID, missionEnd, username);
 			editCompletedDate(username, questID, date);
+			System.out.println("Check SubTask3");
 			questID = questID - (questID % 100);
 			checkTask(username, questID);
 		}
