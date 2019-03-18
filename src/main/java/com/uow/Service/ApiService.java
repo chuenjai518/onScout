@@ -76,21 +76,23 @@ public class ApiService {
 		PdfStamper pdfStamper = new PdfStamper(pdfReader, baos);
 		AcroFields fields = pdfStamper.getAcroFields();
 	
-		
+	
 		UserInfo user = getUserInfo(username);
 		List<CompletedQuest> questList = apiDAO.getFinal(username);
 		
 		SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy");
-	
+		System.out.println("|----------Checker 1");
 		fields.setField("fill_2", user.getLastName() + " " + user.getFirstName());
+		System.out.println("|----------Checker 2");
 		fields.setField("fill_3", dt1.format(user.getDOB()).toString());
-		
+		System.out.println("|----------Checker 5");
 		Date today =  new Date();
 		int age = today.getYear() - user.getDOB().getYear();
 		user.getDOB().setYear(today.getYear());
 		if(today.before(user.getDOB())) {
 			age--;
 		}
+		
 		fields.setField("fill_4", String.valueOf(age));
 		
 		fields.setField("fill_5", user.getGender());
@@ -121,7 +123,7 @@ public class ApiService {
 		fields.setField("fill_75", findDateByQuestID(41520,questList));
 		fields.setField("fill_76", findDateByQuestID(41610,questList));
 		fields.setField("fill_77", findDateByQuestID(41620,questList));
-		
+		System.out.println("|----------Checker 3");
 		fields.setField("fill_78", findDateByQuestID(42110,questList));
 		fields.setField("fill_79", findDateByQuestID(42120,questList));
 		fields.setField("fill_80", findDateByQuestID(42210,questList));
@@ -150,6 +152,7 @@ public class ApiService {
 		
 
 		pdfStamper.setFormFlattening(false);
+		System.out.println("|----------Checker 4");
 		pdfStamper.close();
 		pdfReader.close();
 		 return baos.toByteArray();
