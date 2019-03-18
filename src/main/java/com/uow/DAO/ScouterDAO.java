@@ -141,4 +141,20 @@ public class ScouterDAO {
 		}
 		return open;
 	}
+	
+	public String checkTask(String username, int questID) {
+		String result = "";
+		String subTaskNumSQL = "Select subTaskNum From Task where questID = ?";
+		int subTaskNum = db.queryForObject(subTaskNumSQL, Integer.class, questID);
+		int taskEnd = questID + 99;
+		String countSQL = "Select count(*) From Task where questID >= ? and questID < ? and username = ?";
+		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
+		if(count == subTaskNum) {
+			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
+			result = "Completed on " + db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
+		}else {
+			result = "Not yet complete";
+		}
+		return result;
+	}
 }
