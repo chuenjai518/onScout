@@ -119,6 +119,24 @@ $(document).ready(function() {
 		}else
 			alert('Scout Not Complete the Previous Award Yet!')
 	});
+	
+	$("#changePassword").click(function(){
+		var username = $("#username").attr('id');
+		var pw = $("#newPassword").val();
+		$.ajax({
+			 type: "POST",
+			 url: "http://localhost:8081/onScout/changePassword",   // 存取Json的網址
+			 cache:false,
+			 data: {
+				 "password": pw,
+				 "username": username,
+			 },
+           // contentType: "application/json",
+           success: function (data) {
+        	   alert("Password Changed");
+           },
+       });
+	});
 });
 function enable() {
 	if ($('input').prop('disabled') == true) {

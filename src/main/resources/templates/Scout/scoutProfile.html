@@ -20,7 +20,7 @@
 				<div class="col-12 col-lg-6 text-center mt-2"
 					style="font-size: 20px;">
 					<b>Username: </b>
-					<text th:text="${scoutInfo.getUsername()}"></text>
+					<text id="username" th:text="${scoutInfo.getUsername()}"></text>
 				</div>
 				<div class="col-12 col-lg-4 text-center mt-2"
 					style="font-size: 20px;">
@@ -145,10 +145,23 @@
 			<div class="container row">
 				<span class="col-lg-4">&nbsp;</span> <a
 					class="col-lg-4 text-center font-italic border-primary rounded aborWid"
-					style="color:white;" 
-					href="#"
-					th:onclick="'location.href=\''+ @{/downloadForm/{username} (username=${scoutNavInfo.getUsername()})}+'\''"
-					>Generate Application Form</a> <span class="col-lg-4">&nbsp;</span>
+					style="color: white;" href="#"
+					th:onclick="'location.href=\''+ @{/downloadForm/{username} (username=${scoutNavInfo.getUsername()})}+'\''">Generate
+					Application Form</a> <span class="col-lg-4">&nbsp;</span>
+			</div>
+			<div class="container row">
+				<div class="col-12 text-center font-weight-bolder"
+					style="font-size: 20px;" th:text="'Change Password'"></div>
+			</div>
+			<br />
+			<div class="container row">
+				<span class="col-lg-4">&nbsp;</span> <a id="changePassword"
+					class="col-lg-4 text-center font-italic border-primary rounded aborWid"
+					style="color: white;">Change Password</a> <span class="col-lg-4">&nbsp;</span>
+			</div>
+			<div class="container row">
+				<input id="newPassword" type="password" class="col-lg-4 form-control" id="Contact"
+					placeholder="Change Password.." >
 			</div>
 			<br /> <br />
 		</div>
