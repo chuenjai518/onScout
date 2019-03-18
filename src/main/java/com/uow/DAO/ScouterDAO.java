@@ -147,7 +147,7 @@ public class ScouterDAO {
 		String subTaskNumSQL = "Select subTaskNum From Task where questID = ?";
 		int subTaskNum = db.queryForObject(subTaskNumSQL, Integer.class, questID);
 		int taskEnd = questID + 99;
-		String countSQL = "Select count(*) From Task where questID >= ? and questID < ? and username = ?";
+		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and mod(questID, 10) = 0 and username = ?";
 		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
 		if(count == subTaskNum) {
 			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
