@@ -85,19 +85,19 @@ $(document).ready(function() {
 
 	});
 	$("#standardAward").click(function() {
-		if($("#standardAwardInfo").attr('open') == true){
+		if($("#standardAwardInfo").attr('open') == "open"){
 			$("#standardAwardInfo").show();
 		}else
 			alert('Scout Not Complete the Previous Award Yet!')
 	});
 	$("#advancedAward").click(function() {
-		if($("#advancedAwardInfo").attr('open') == true){
+		if($("#advancedAwardInfo").attr('open') == "open"){
 			$("#advancedAwardInfo").show();
 		}else
 			alert('Scout Not Complete the Previous Award Yet!')
 	});
 	$("#chiefAward").click(function() {
-		if($("#chiefAwardInfo").attr('open') == true){
+		if($("#chiefAwardInfo").attr('open') == "open"){
 			$("#chiefAwardInfo").show();
 		}else
 			alert('Scout Not Complete the Previous Award Yet!')
