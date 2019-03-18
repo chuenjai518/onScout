@@ -1,6 +1,6 @@
 
 <span th:fragment="award4">
-	<div class="popup" id="chiefAwardInfo">
+	<div th:open="${openCSA}" class="popup" id="chiefAwardInfo">
 		<br> <br>
 		<div class="container p-3 rounded col-sm-11 col-md-9 col-lg-7">
 			<div class="shadow  bg-white rounded positionRelative">
@@ -16,11 +16,9 @@
 							src="/onScout/images/chiefScout'sAward.png">
 					</div>
 					<div class="offset-1 col-8">
-						<div class="container">
-							<span class="col-3 textCSA noPadding">Data Completed: </span> <span
-								class="col-3 textIn noPadding"></span> <span
-								class="offset-1 col-2 textCSA noPadding ">Award Issue
-								Date: </span> <span class="col-3 textIn noPadding"></span>
+						<div class="container" id="CSA40000">
+							<div class="col-6 textCSA noPadding">Data Completed: <span
+								class="textIn noPadding"></span>  </div>
 						</div>
 						<br>
 						<div class="col-11 bgCSA infoRadius text-white textJustify">Suitable

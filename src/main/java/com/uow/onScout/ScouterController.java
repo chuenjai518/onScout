@@ -87,8 +87,7 @@ public class ScouterController {
 		UserInfo user = scouterService.getScoutInfo(username);
 		model.addAttribute("openSSA", scouterService.checkSSA(username));
 		model.addAttribute("openSAA", scouterService.checkSAA(username));
-//		model.addAttribute("openCSA", scouterService.checkCSA(username));
-		model.addAttribute("openCSA", true);
+		model.addAttribute("openCSA", scouterService.checkCSA(username));
 		model.addAttribute("user", user);
 		return "Scouter/scoutProcessDetail";
 	}
