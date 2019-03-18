@@ -60,6 +60,11 @@ public class AdminDAO {
 		db.update(sql, username);
 	}
 	
+	public void changePassword(String username, String password) {
+		String sql = "Update User set password = ? Where username = ?";
+		db.update(sql, password, username);
+	}
+	
 
 
 }

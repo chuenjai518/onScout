@@ -36,4 +36,8 @@ public class AdminService {
 		adminDAO.disableUser(username);
 	}
 	
+	public void changePassword(String username, String password) {
+		adminDAO.changePassword(username, password);
+	}
+	
 }
