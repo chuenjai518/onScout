@@ -130,7 +130,7 @@ $(document).ready(function() {
 			 url: "http://localhost:8081/onScout/changePassword",   // 存取Json的網址
 			 cache:false,
 			 data: {
-				 "changePassword": pw,
+				 "password": pw,
 				 "username": username,
 			 },
            // contentType: "application/json",

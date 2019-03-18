@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.itextpdf.text.DocumentException;
 import com.uow.Model.*;
+import com.uow.Service.AdminService;
 import com.uow.Service.ApiService;
 import com.uow.Service.ScouterService;
 @RestController
 public class scoutProgressRestController {
 	@Autowired
 	ScouterService scouterService;
+	@Autowired
+	AdminService adminService;
 	@Autowired
 	ApiService apiService;
 	
@@ -67,6 +70,12 @@ public class scoutProgressRestController {
 			@RequestParam String finishDate) {
 		System.out.println(username + " " + questID + " " + finishDate);
 		scouterService.editCompletedDate(username, questID, finishDate);
+	}
+	
+	@RequestMapping("changePassword")
+	public void editCompletedQuest(@RequestParam String username, @RequestParam String password) {
+		System.out.println(username + " " + password);
+		adminService.changePassword(username, password);
 	}
 	
 	

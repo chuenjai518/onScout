@@ -94,11 +94,7 @@ public class UserController {
 		return "redirect:/login";
 	}
 	
-	@RequestMapping("changePassword")
-	public void editCompletedQuest(@RequestParam String username, @RequestParam String password) {
-		System.out.println(username + " " + password);
-		adminService.changePassword(username, password);
-	}
+
 
 	@PostMapping("loginProcess")
 	public RedirectView loginProcess(@ModelAttribute User temp, RedirectAttributes model, HttpSession session) {
