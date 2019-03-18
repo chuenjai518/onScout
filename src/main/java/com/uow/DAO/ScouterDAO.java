@@ -142,19 +142,33 @@ public class ScouterDAO {
 		return open;
 	}
 	
-	public String checkTask(String username, int questID) {
-		String result = "";
+	public void checkTask(String username, int questID) {
+		Date date;
 		String subTaskNumSQL = "Select subTaskNum From Task where questID = ?";
 		int subTaskNum = db.queryForObject(subTaskNumSQL, Integer.class, questID);
 		int taskEnd = questID + 99;
 		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and mod(questID, 10) = 0 and username = ?";
 		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
-		if(count == subTaskNum) {
+		if(count >= subTaskNum) {
 			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
-			result = "Completed on " + db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
-		}else {
-			result = "Not yet complete";
+			date = db.queryForObject(latestDateSQL, Date.class, questID, taskEnd, username);
+			String updateDateSQL = "Insert INto CompletedQuest(questID, FinishDate, username) " + "VALUES(?,?,?)";
+			db.update(updateDateSQL,questID, date,username);
 		}
-		return result;
+	}
+	
+	public void checkCategory(String username, int questID) {
+		Date date;
+		String TaskNumSQL = "Select taskNum From Category where questID = ?";
+		int subTaskNum = db.queryForObject(TaskNumSQL, Integer.class, questID);
+		int taskEnd = questID + 99;
+		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and mod(questID, 10) = 0 and username = ?";
+		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
+		if(count >= subTaskNum) {
+			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
+			date = db.queryForObject(latestDateSQL, Date.class, questID, taskEnd, username);
+			String updateDateSQL = "Insert INto CompletedQuest(questID, FinishDate, username) " + "VALUES(?,?,?)";
+			db.update(updateDateSQL,questID, date,username);
+		}
 	}
 }
