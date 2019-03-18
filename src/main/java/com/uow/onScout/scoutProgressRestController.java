@@ -1,7 +1,13 @@
 package com.uow.onScout;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.itextpdf.text.DocumentException;
 import com.uow.Model.*;
 import com.uow.Service.ApiService;
 import com.uow.Service.ScouterService;
@@ -60,4 +68,6 @@ public class scoutProgressRestController {
 		System.out.println(username + " " + questID + " " + finishDate);
 		scouterService.editCompletedDate(username, questID, finishDate);
 	}
+	
+	
 }

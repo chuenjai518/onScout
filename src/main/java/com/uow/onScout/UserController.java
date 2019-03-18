@@ -118,7 +118,7 @@ public class UserController {
 			throws IOException, DocumentException, URISyntaxException {
 
 //		new FileOutputStream(file.getParent()+"Form.pdf")
-
+		
 		OutputStream out = response.getOutputStream();
 
 		String path = "static/pdf/Form-PT18.pdf";
@@ -127,6 +127,7 @@ public class UserController {
 		pdfOutputStream.write(pdfByteArray);
 		pdfOutputStream.writeTo(out);
 		pdfOutputStream.close();
+		
 
 	}
 
