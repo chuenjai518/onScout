@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -81,6 +82,9 @@ public class UserController {
 		if (session.getAttribute("user") != null) {
 			session.removeAttribute("user");
 		}
+		if (session.getAttribute("username") != null) {
+			session.removeAttribute("username");
+		}
 		return "redirect:/login";
 	}
 
@@ -88,6 +92,12 @@ public class UserController {
 	public String forgetPassword(Model model, @RequestParam String username) {
 		adminService.forgetPassword(username);
 		return "redirect:/login";
+	}
+	
+	@RequestMapping("changePassword")
+	public void editCompletedQuest(@RequestParam String username, @RequestParam String password) {
+		System.out.println(username + " " + password);
+		adminService.changePassword(username, password);
 	}
 
 	@PostMapping("loginProcess")
@@ -114,6 +124,8 @@ public class UserController {
 		}
 
 	}
+	
+	
 
 	@GetMapping("downloadForm/{username}")
 	public void downloadForm(@PathVariable("username") String username, HttpServletResponse response)
@@ -130,7 +142,6 @@ public class UserController {
 		pdfOutputStream.writeTo(out);
 		pdfOutputStream.close();
 		
-
 
 	}
 
