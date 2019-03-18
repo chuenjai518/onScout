@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.util.ResourceUtils;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.AcroFields;
+import com.itextpdf.text.pdf.PdfAcroForm;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 import com.uow.DAO.ApiDAO;
@@ -48,6 +50,21 @@ public class ApiService {
 	public UserInfo getUserInfo(String username){
 		return apiDAO.getUserInfo(username);
 	}
+	
+	public String findDateByQuestID(int questID, List<CompletedQuest> questList) {
+		String date = "";
+		Iterator<CompletedQuest> iterator = questList.iterator();
+		while(iterator.hasNext()) {
+			CompletedQuest quest = iterator.next();
+			if(quest.getQuestID() == questID) {
+				SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy");
+				date = dt1.format(quest.getFinishDate()).toString();
+				
+			}
+		}
+		System.out.println("Got Date: " + date);
+		return date;
+	}
 
 	public byte[] pdfGerenate(String username, String templatePath)
 			throws DocumentException, IOException, URISyntaxException {
@@ -58,8 +75,10 @@ public class ApiService {
 		PdfReader pdfReader = new PdfReader(file.getPath());
 		PdfStamper pdfStamper = new PdfStamper(pdfReader, baos);
 		AcroFields fields = pdfStamper.getAcroFields();
+	
 		
 		UserInfo user = getUserInfo(username);
+		List<CompletedQuest> questList = apiDAO.getFinal(username);
 		
 		SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy");
 	
@@ -69,7 +88,6 @@ public class ApiService {
 		Date today =  new Date();
 		int age = today.getYear() - user.getDOB().getYear();
 		user.getDOB().setYear(today.getYear());
-		System.out.println(today.toString() + " " + user.getDOB().toString() + " " +today.before(user.getDOB()));
 		if(today.before(user.getDOB())) {
 			age--;
 		}
@@ -87,6 +105,49 @@ public class ApiService {
 		fields.setField("fill_13", user.getAddress());
 		fields.setField("fill_14", String.valueOf(user.getPhoneNum()));
 		fields.setField("fill_15", user.getEmail());
+		
+	
+		fields.setField("fill_64", findDateByQuestID(41110,questList));
+		fields.setField("fill_65", findDateByQuestID(41120,questList), findDateByQuestID(41120,questList));
+		fields.setField("fill_66", findDateByQuestID(41130,questList));
+		fields.setField("fill_67", findDateByQuestID(41210,questList));
+		fields.setField("fill_68", findDateByQuestID(41220,questList));
+		fields.setField("fill_69", findDateByQuestID(41230,questList));
+		fields.setField("fill_70", findDateByQuestID(41310,questList));
+		fields.setField("fill_71", findDateByQuestID(41320,questList));
+		fields.setField("fill_72", findDateByQuestID(41410,questList));
+		fields.setField("fill_73", findDateByQuestID(41420,questList));
+		fields.setField("fill_74", findDateByQuestID(41510,questList));
+		fields.setField("fill_75", findDateByQuestID(41520,questList));
+		fields.setField("fill_76", findDateByQuestID(41610,questList));
+		fields.setField("fill_77", findDateByQuestID(41620,questList));
+		
+		fields.setField("fill_78", findDateByQuestID(42110,questList));
+		fields.setField("fill_79", findDateByQuestID(42120,questList));
+		fields.setField("fill_80", findDateByQuestID(42210,questList));
+		fields.setField("fill_83", findDateByQuestID(42220,questList));
+		fields.setField("fill_84", findDateByQuestID(42310,questList));
+		fields.setField("fill_85", findDateByQuestID(42410,questList));
+		fields.setField("fill_88", findDateByQuestID(42420,questList));
+		
+		fields.setField("fill_89", findDateByQuestID(43110,questList));
+		fields.setField("fill_90", findDateByQuestID(43120,questList));
+		fields.setField("fill_91", findDateByQuestID(43130,questList));
+		fields.setField("fill_92", findDateByQuestID(43210,questList));
+		fields.setField("fill_95", findDateByQuestID(43220,questList));
+		fields.setField("fill_96", findDateByQuestID(43310,questList));
+		fields.setField("fill_99", findDateByQuestID(43320,questList));
+		
+		fields.setField("fill_100", findDateByQuestID(44110,questList));
+		fields.setField("fill_101", findDateByQuestID(44210,questList));
+		fields.setField("fill_104", findDateByQuestID(44220,questList));
+		fields.setField("fill_105", findDateByQuestID(44310,questList));
+		fields.setField("fill_106", findDateByQuestID(44320,questList));
+		
+		fields.setField("fill_107", findDateByQuestID(45100,questList));
+		fields.setField("fill_108", findDateByQuestID(45200,questList));
+		
+		
 
 		pdfStamper.setFormFlattening(false);
 		pdfStamper.close();
