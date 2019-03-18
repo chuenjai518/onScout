@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("sAw").click(function() {
+	$(".sAw").click(function() {
 		var id = $(this).attr('id');
 		console.log(id);
 		$("iframe").attr("src", "showPDF/" + id);
