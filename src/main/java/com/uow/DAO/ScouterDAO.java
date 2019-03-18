@@ -163,34 +163,32 @@ public class ScouterDAO {
 	}
 
 	public void checkSubTask(String username, int questID) {
-		System.out.println("Check SubTask");
 		String date;
-		System.out.println("Check SubTask5 " + questID);
 		String missionNumSQL = "Select missionNum From SubTask where questID = ?";
 		int missionNum = db.queryForObject(missionNumSQL, Integer.class, questID);
-		System.out.println("Check SubTask4 " + missionNum);
+		System.out.println("Check SubTask - " + missionNum);
 		int missionEnd = questID + 9;
 		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and username = ?";
 		int count = db.queryForObject(countSQL, Integer.class, questID, missionEnd, username);
+		System.out.println("Check SubTask - Count: " + count);
 		if(count >= missionNum) {
-			System.out.println("Check SubTask2");
 			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
 			date = db.queryForObject(latestDateSQL, String.class, questID, missionEnd, username);
 			editCompletedDate(username, questID, date);
-			System.out.println("Check SubTask3");
 			questID = questID - (questID % 100);
 			checkTask(username, questID);
 		}
 	}
 
 	public void checkTask(String username, int questID) {
-		System.out.println("Check Task");
 		String date;
 		String subTaskNumSQL = "Select subTaskNum From Task where questID = ?";
 		int subTaskNum = db.queryForObject(subTaskNumSQL, Integer.class, questID);
+		System.out.println("Check Task - " + subTaskNum);
 		int taskEnd = questID + 99;
 		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and mod(questID, 10) = 0 and username = ?";
 		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
+		System.out.println("Check Task - Count: " + count);
 		if(count >= subTaskNum) {
 			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
 			date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
@@ -201,13 +199,15 @@ public class ScouterDAO {
 	}
 
 	public void checkCategory(String username, int questID) {
-		System.out.println("Check Category");
+		
 		String date;
 		String TaskNumSQL = "Select taskNum From Category where questID = ?";
 		int subTaskNum = db.queryForObject(TaskNumSQL, Integer.class, questID);
+		System.out.println("Check Category - " + subTaskNum);
 		int taskEnd = questID + 999;
 		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and mod(questID, 100) = 0 and username = ?";
 		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
+		System.out.println("Check Category - Count: " + count);
 		if(count >= subTaskNum) {
 			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
 			date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
@@ -218,13 +218,15 @@ public class ScouterDAO {
 	}
 
 	public void checkAward(String username, int questID) {
-		System.out.println("Check Award");
+		
 		String date;
 		String TaskNumSQL = "Select categoryNum From Award where questID = ?";
 		int subTaskNum = db.queryForObject(TaskNumSQL, Integer.class, questID);
+		System.out.println("Check Award - " + subTaskNum);
 		int taskEnd = questID + 9999;
 		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and mod(questID, 1000) = 0 and username = ?";
 		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
+		System.out.println("Check Award - Count: " + count);
 		if(count >= subTaskNum) {
 			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
 			date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);

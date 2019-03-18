@@ -8,7 +8,8 @@ $(document).ready(function() {
 		console.log($(this).attr('id'));
 		var api = null;
 		var user = $('#username').attr('username');
-		switch($(this).attr('id')){
+		var id = $(this).attr('id');
+		switch(id){
 		case "a1":
 			api="getSPAFinishDate";
 		break;
@@ -38,9 +39,25 @@ $(document).ready(function() {
             		console.log(n);
             		// change #testSpan to the correct field
             		// just copy and paste and n[{the column in ajax}]
+            		var name;
+            		switch(id){
+            		case "a1":
+            			name="SPA";
+            		break;
+            		case "a2":
+            			name="SSA";
+            		break;
+            		case "a3":
+            			name="SAA";
+            		break;
+            		case "a4":
+            			name="CSA";
+            		break;
+            		default:
+            			break;
+            		}
 
-
-            		qID = "SPA" + n['questID'];
+            		qID = name + n['questID'];
             		console.log(qID);
 
             		$("#"+qID).find('span').html(n['finishDate']);
