@@ -142,6 +142,23 @@ public class ScouterDAO {
 		return open;
 	}
 	
+	public void checkSubTask(String username, int questID) {
+		Date date;
+		String missionNumSQL = "Select missionNum From SubTask where questID = ?";
+		int missionNum = db.queryForObject(missionNumSQL, Integer.class, questID);
+		int missionEnd = questID + 9;
+		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and username = ?";
+		int count = db.queryForObject(countSQL, Integer.class, questID, missionEnd, username);
+		if(count >= missionNum) {
+			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
+			date = db.queryForObject(latestDateSQL, Date.class, questID, missionEnd, username);
+			String updateDateSQL = "Insert Into CompletedQuest(questID, FinishDate, username) " + "VALUES(?,?,?)";
+			db.update(updateDateSQL,questID, date,username);
+			questID = questID - (questID % 100);
+			checkAward(username, questID);
+		}
+	}
+	
 	public void checkTask(String username, int questID) {
 		String date;
 		String subTaskNumSQL = "Select subTaskNum From Task where questID = ?";
@@ -188,21 +205,6 @@ public class ScouterDAO {
 		}
 	}
 	
-	public void checkSubTask(String username, int questID) {
-		Date date;
-		String missionNumSQL = "Select missionNum From SubTask where questID = ?";
-		int missionNum = db.queryForObject(missionNumSQL, Integer.class, questID);
-		int missionEnd = questID + 9;
-		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and username = ?";
-		int count = db.queryForObject(countSQL, Integer.class, questID, missionEnd, username);
-		if(count >= missionNum) {
-			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
-			date = db.queryForObject(latestDateSQL, Date.class, questID, missionEnd, username);
-			String updateDateSQL = "Insert Into CompletedQuest(questID, FinishDate, username) " + "VALUES(?,?,?)";
-			db.update(updateDateSQL,questID, date,username);
-			questID = questID - (questID % 100);
-			checkAward(username, questID);
-		}
-	}
+	
 	
 }
