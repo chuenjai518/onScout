@@ -30,11 +30,26 @@ public class ScoutController {
 		return "redirect:/scout/mainpage";
 	}
 	
-	@GetMapping("scout/scoutProfile/{username}")
-	public String scoutProfile(Model model, HttpSession session, @PathVariable("username") String username) {
-		// model.addAttribute("user", (User)session.getAttribute("user"));
+	public boolean checkScoutLogin(HttpSession session) {
+		boolean login = false;
+		if (session.getAttribute("username") != null) {
+			if ((int) session.getAttribute("roleID") == 1) {
+				login = true;
+			}
+		}
+		return login;
+	}
+	
+	@GetMapping("scout/scoutProfile")
+	public String scoutProfile(Model model, HttpSession session) {
+		// model.addAttribute("user", );
 		// Need a model contain all scout information 
 		// 
+		
+		if (!checkScoutLogin(session)) {
+			return "redirect:/login";
+		}
+		String username = (String)session.getAttribute("username");
 		UserInfo scoutInfo = scoutService.getScoutInfo(username);
 		model.addAttribute("scoutInfo", scoutInfo);
 		//Need Emergency contact
@@ -48,15 +63,23 @@ public class ScoutController {
 		return "scout/scoutProfile";
 	}
 	
-	@PostMapping("scout/scoutProfile/{username}")
-	public String editScoutProfileProcess(@PathVariable("username") String username, Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
+	@PostMapping("scout/scoutProfile")
+	public String editScoutProfileProcess( Model model, HttpSession session, @ModelAttribute UserInfo userInfo) {
+		String username = (String)session.getAttribute("username");
 		scoutService.updateScoutInfo(userInfo.getEmail(), userInfo.getPhoneNum(), username);
 		System.out.println(userInfo.getEmail());
-		return "redirect:/scout/scoutProfile/{username}";
+		return "redirect:/scout/scoutProfile";
 	}
 	
 	@GetMapping("scout/mainpage")
 	public String mainpage(Model model, HttpSession session) {
+		
+		if (!checkScoutLogin(session)) {
+			return "redirect:/login";
+		}
+		model.addAttribute("openSSA", true);
+		model.addAttribute("openSAA", true);
+		model.addAttribute("openCSA", true);
 		model.addAttribute("username", (String)session.getAttribute("username"));
 		
 		return "scout/mainpage";
