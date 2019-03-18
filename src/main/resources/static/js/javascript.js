@@ -121,7 +121,7 @@ $(document).ready(function() {
 	});
 	
 	$("#changePassword").click(function(){
-		var username = $("#username").attr('id');
+		var username = $("#username").attr('text');
 		var pw = $("#newPassword").val();
 		$.ajax({
 			 type: "POST",
