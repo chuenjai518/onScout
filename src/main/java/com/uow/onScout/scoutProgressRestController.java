@@ -72,6 +72,12 @@ public class scoutProgressRestController {
 		scouterService.editCompletedDate(username, questID, finishDate);
 	}
 	
+	@RequestMapping("checkForm")
+	public boolean checkForm(@RequestParam String username) {
+		System.out.println(username);
+		return apiService.checkCSACompleted(username);
+	}
+	
 	@RequestMapping("changePassword")
 	public void editCompletedQuest(@RequestParam String username, @RequestParam String password) {
 		System.out.println(username + " " + password);

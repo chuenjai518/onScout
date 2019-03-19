@@ -4,6 +4,29 @@ $(document).ready(function() {
 		console.log(id);
 		$("iframe").attr("src", "showPDF/" + id);
 	});
+	
+	$("#generateForm").click(function(event){
+		event.preventDefault();
+		var username = $("#username").attr('value');
+		$.ajax({
+			 type: "POST",
+			 url: "http://localhost:8081/onScout/checkForm",   // 存取Json的網址
+			 cache:false,
+			 data: {
+				 "username": username,
+			 },
+          // contentType: "application/json",
+          success: function (data) {
+        	  
+        	  if(!data){
+        		  alert("You have not complete Chief Scout's Award");
+        	  }else{
+        		  alert("You have completed Chief Scout's Award!");
+        	  }
+       	   
+          },
+      });
+	});
 	$('.Award').click(function(){
 		console.log($(this).attr('id'));
 		var api = null;

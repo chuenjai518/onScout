@@ -132,6 +132,8 @@ public class ScouterDAO {
 		return open;
 	}
 	
+
+	
 	public void editCompletedDate(String username, int questID, String finishDate) {
 
 		String sql = "Select count(*) From CompletedQuest where username = ? and questID = ?";
@@ -267,7 +269,7 @@ public class ScouterDAO {
 					pass = false;
 				}
 			}else if(checkElective3 > 0) {
-				int checkPreviousElective = db.queryForObject(checkElectiveSQL, Integer.class, username, (currAward - 10000 + 1500));
+				int checkPreviousElective = db.queryForObject(checkElectiveSQL, Integer.class, username, (currAward - 10000 + 1600));
 				if(checkPreviousElective > 0) {
 					questID = questID - 10000;
 					pass = checkElective(username, questID);

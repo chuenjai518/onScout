@@ -67,6 +67,9 @@ public class ScouterService {
 	public boolean checkCSA(String username) {
 		return scouterDAO.checkCSA(username);
 	}
+	
+	
+	
 	public void checkTask(String username, int questID) {
 		scouterDAO.checkTask(username, questID);
 	}

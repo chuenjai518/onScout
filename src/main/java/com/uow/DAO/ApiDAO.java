@@ -55,4 +55,14 @@ public class ApiDAO {
 			return new UserInfo();
 		}
 	}
+	
+	public boolean checkCSACompleted(String username) {
+		boolean open = false;
+		String sql = "Select count(*) From CompletedQuest where username = ? and questID = 40000";
+		int count = db.queryForObject(sql, new Object[] { username }, Integer.class);
+		if (count > 0) {
+			open = true;
+		}
+		return open;
+	}
 }
