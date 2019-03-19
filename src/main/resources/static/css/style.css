@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Cleveland"; /*a name to be used later*/
-  src: url("http://localhost:8080/cartopia/font/Cleveland.ttf"); /*URL to font*/
+  src: url("http://localhost:8081/onScout/font/Cleveland.ttf"); /*URL to font*/
 }
 
 .brandFont {
