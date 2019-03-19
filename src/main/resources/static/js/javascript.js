@@ -5,6 +5,8 @@ $(document).ready(function() {
 		$("iframe").attr("src", "showPDF/" + id);
 	});
 	
+
+	
 	$("#generateForm").click(function(event){
 		event.preventDefault();
 		var username = $("#username").attr('value');
@@ -165,7 +167,55 @@ $(document).ready(function() {
 	$('.delUser').on('click',function(){
 		return confirm('Confirm Delete User?');
 	});
+	$(".viewAward").click(function(){
+		var id = $(this).attr('id');
+		var name = null;
+		switch(id){
+		case "a1":
+			name="10000";
+		break;
+		case "a2":
+			name="20000";
+		break;
+		case "a3":
+			name="30000";
+		break;
+		case "a4":
+			name="40000";
+		break;
+		default:
+			break;
+		}
+		$.ajax({
+			 type: "POST",
+			 url: "http://localhost:8081/onScout/scouter/totalNumOfAward",   // 存取Json的網址
+			 cache:false,
+			 data: {
+				 "questID":name
+			 },
+           // contentType: "application/json",
+           success: function (data) {
+        	   $("#content").empty();
+        	   $.each(data,function(i,n){
+        		   url = "window.location='http://localhost:8081/onScout/scouter/scoutProcess/" + n['username'] +"'";
+        		   var string = "<tr onclick="+url+">";
+        		   string+="<td>" + n['username']+"</td>";
+        		   string+="<td>" + n['lastName']+" "+n['firstName']+"</td>";
+        		   string+="<td>" + n['gender']+"</td>";
+        		   string+="</tr>";
+        		   $("#content").append(string);
+        	   })
+           },
+       });
+	})
 });
+
+function goToProgress(username) {
+	
+	alert(username);
+	window.location("http://localhost:8081/onScout/scouter/scoutProcess/" + username);
+}
+
 function enable() {
 	if ($('input').prop('disabled') == true) {
 		$('input').prop('disabled', false);

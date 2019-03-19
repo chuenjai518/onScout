@@ -206,5 +206,11 @@ public class ScouterController {
 		return "Scouter/AwardCompleted";
 	}
 	
-
+	@GetMapping("scouter/AwardCompleted")
+	public String totalNumofEachAward(Model model, HttpSession session) {
+		if (!checkScouterLogin(session)) {
+			return "redirect:/login";
+		}
+		return "Scouter/totalNumofEachAward";
+	}
 }
