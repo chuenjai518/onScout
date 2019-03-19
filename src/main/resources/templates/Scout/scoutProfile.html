@@ -83,7 +83,7 @@
 			</div>
 			<br /> <br />
 			<form class="form-inline" method="POST" th:object="${scoutInfo}"
-				th:action="@{/scout/scoutProfile/} + ${scoutInfo.getUsername()}">
+				th:action="@{/scout/scoutProfile/}">
 				<div class="form-group mb-2 col-sm-12 col-lg-auto">
 					<!--  th:field="*{phoneNum}" -->
 					<b><label for="ContactNo">Contact Number: </label></b> <input

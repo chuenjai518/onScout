@@ -82,6 +82,11 @@ public class ScoutController {
 		model.addAttribute("openCSA", true);
 		model.addAttribute("username", (String)session.getAttribute("username"));
 		
+
+		String username = (String)session.getAttribute("username");
+		UserInfo scoutNavInfo = scoutService.getScoutNavInfo(username);
+		model.addAttribute("scoutNavInfo",scoutNavInfo);
+		
 		return "scout/mainpage";
 	}
 	
