@@ -90,8 +90,22 @@
 					<br /> <br />
 					<div class="container row">
 						<div class="col-lg-2 col-12">
-							<b>Unit: </b> <input type="text" th:field="*{region}"
-								class="form-control" th:value="${userInfo.getRegion()}">
+							<b>Unit: </b> <select th:field="*{region}"
+								class="form-control">
+								<option th:text="${userInfo.getRegion()}" th:value="${userInfo.getRegion()}" selected></option>
+								<span th:if="${userInfo.getRegion() != 'KR'}">
+									<option th:value="KR">KR</option>
+								</span>
+								<span th:if="${userInfo.getRegion() != 'HKIR'}">
+								<option th:value="HKIR">HKIR</option>
+								</span>
+								<span th:if="${userInfo.getRegion() != 'NTR'}">
+								<option th:value="NTR">NTR</option>
+								</span>
+								<span th:if="${userInfo.getRegion() != 'NTER'}">
+								<option th:value="NTER">NTER</option>
+								</span>
+							</select>
 						</div>
 						<div class="col-lg-2 col-12">
 							<b>District: </b> <input type="text" th:field="*{district}"
@@ -180,7 +194,7 @@
 			style="color: white;" href="#" id="generateForm" target="_blank"
 			th:onclick="'location.href=\''+ @{/downloadForm/{username} (username=${userInfo.getUsername()})}+'\''">Generate
 			Application Form</a> <span class="col-lg-4">&nbsp;</span>
-		
+
 	</div><br><br>
 	</div>
 
