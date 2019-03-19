@@ -33,7 +33,7 @@
 					<tbody>
 						<!-- <tr th:each="user : ${userList}" th:onclick="'location.href=/admin/user/read/\''+${user.getUserID()}+'\'"> -->
 						<tr th:each="user: ${userList}">
-							<td scope="col"><a
+							<td scope="col"><a class="delUser"
 								th:href="@{admin/delUser/}+ ${user.getUsername()}"><i
 									id="logo" class="fas fa-user-minus"></i></a>
 							</td>
