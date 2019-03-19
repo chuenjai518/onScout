@@ -49,5 +49,10 @@ public class AdminController {
 		adminService.disableUser(username);
 		return "redirect:/admin";
 	}
+	@GetMapping("scouter/delUser/{username}")
+	public String scouterDeleteUser(@PathVariable("username") String username, Model model) {
+		adminService.disableUser(username);
+		return "redirect:/scouter/scoutManage";
+	}
 
 }
