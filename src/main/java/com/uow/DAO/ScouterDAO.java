@@ -141,6 +141,22 @@ public class ScouterDAO {
 		if (count > 0) {
 			sql = "Update CompletedQuest set finishDate = ? where username = ? and questID = ?";
 			db.update(sql, finishDate, username, questID);
+			if(questID%10000==0) {
+				
+			}else if(questID%1000==0) {
+				questID = questID - (questID % 10000);
+				checkAward(username, questID);
+			}else if(questID%100==0) {
+				questID = questID - (questID % 1000);
+				checkCategory(username, questID);
+			}else if(questID%10==0) {
+				questID = questID - (questID % 100);
+				checkTask(username, questID);
+			}else {
+				questID = questID - (questID % 10);
+				checkSubTask(username, questID);
+			}
+			
 		} else {
 			sql = "Insert into CompletedQuest(finishDate, username, questID) " + "VALUES(?,?,?)";
 			db.update(sql, finishDate, username, questID);
@@ -174,10 +190,11 @@ public class ScouterDAO {
 		int count = db.queryForObject(countSQL, Integer.class, questID, missionEnd, username);
 		System.out.println("Check SubTask - Count: " + count);
 		if(count >= missionNum) {
-			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
+			String latestDateSQL = "Select FinishDate From CompletedQuest where questID > ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
 			date = db.queryForObject(latestDateSQL, String.class, questID, missionEnd, username);
 			editCompletedDate(username, questID, date);
 			questID = questID - (questID % 100);
+			editCompletedDate(username, questID, date);
 			checkTask(username, questID);
 		}
 	}
@@ -192,10 +209,11 @@ public class ScouterDAO {
 		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
 		System.out.println("Check Task - Count: " + count);
 		if(count >= subTaskNum) {
-			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
+			String latestDateSQL = "Select FinishDate From CompletedQuest where questID > ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
 			date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
 			editCompletedDate(username, questID, date);
 			questID = questID - questID%1000;
+			editCompletedDate(username, questID, date);
 			checkCategory(username, questID);
 		}
 	}
@@ -211,10 +229,11 @@ public class ScouterDAO {
 		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
 		System.out.println("Check Category - Count: " + count);
 		if(count >= subTaskNum) {
-			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
+			String latestDateSQL = "Select FinishDate From CompletedQuest where questID > ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
 			date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
 			editCompletedDate(username, questID, date);
 			questID = questID - questID%10000;
+			editCompletedDate(username, questID, date);
 			checkAward(username, questID);
 		}
 	}
@@ -231,7 +250,7 @@ public class ScouterDAO {
 			int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
 			System.out.println("Check Award - Count: " + count);
 			if(count >= subTaskNum) {
-				String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
+				String latestDateSQL = "Select FinishDate From CompletedQuest where questID > ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
 				date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
 				editCompletedDate(username, questID, date);
 			}
