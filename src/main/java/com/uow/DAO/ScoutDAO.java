@@ -34,7 +34,7 @@ public class ScoutDAO {
 	}
 	
 	public List<EmerContact> getEmerContact(String username){
-		String sql = "Select u.username, emerName, emerAddress, emerRelation, emerTel from User u left join UserEmer um on u.username = um.username left join EmerContact ec on um.emerContactID = ec.emerContactID Where u.username = ? and disable = 0";
+		String sql = "Select u.username, emerName, emerRelation, emerTel from User u left join UserEmer um on u.username = um.username left join EmerContact ec on um.emerContactID = ec.emerContactID Where u.username = ? and disable = 0";
 		RowMapper<EmerContact> rowMapper = new EmerContactRowMapper();
 		return this.db.query(sql, rowMapper, username);
 	}
