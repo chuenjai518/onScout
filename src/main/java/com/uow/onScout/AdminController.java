@@ -24,9 +24,21 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 
+	public boolean checkAdminLogin(HttpSession session) {
+		boolean login = false;
+		if (session.getAttribute("username") != null) {
+			if ((int) session.getAttribute("roleID") == 3) {
+				login = true;
+			}
+		}
+		return login;
+	}
 	@GetMapping("admin")
 	public String index(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
+		if (!checkAdminLogin(session)) {
+			return "redirect:/login";
+		}
 		List<UserInfo> userList = adminService.getAllUser();
 		User user = new User();
 		model.addAttribute("addUser", user);
@@ -36,6 +48,7 @@ public class AdminController {
 
 	@PostMapping("admin/createUser")
 	public RedirectView adminCreateUser(RedirectAttributes model, @ModelAttribute User user) {
+		
 		boolean exists = adminService.createUserProcess(user);
 		if (exists) {
 			model.addFlashAttribute("message", "Username is used!");
