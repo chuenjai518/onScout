@@ -91,7 +91,7 @@
 					<div class="container row">
 						<div class="col-lg-2 col-12">
 							<b>Unit: </b> <select th:field="*{region}"
-								class="form-control">
+								class="form-control" disabled>
 								<option th:text="${userInfo.getRegion()}" th:value="${userInfo.getRegion()}" selected></option>
 								<span th:if="${userInfo.getRegion() != 'KR'}">
 									<option th:value="KR">KR</option>
