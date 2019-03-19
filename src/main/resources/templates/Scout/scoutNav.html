@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head th:fragment="head">
-<meta charset="utf-8" />
-<link th:href="@{/css/mainPage.css}" rel="stylesheet" type="text/css" />
-<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" />
+  <head th:fragment="head">
+    <meta charset="utf-8" />
+    <link th:href="@{/css/mainPage.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" />
 
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-	crossorigin="anonymous" />
-<link rel="stylesheet" th:href="@{/css/style.css}" />
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
-<script th:src="@{/js/javascript.js}"></script>
-</head>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script th:src="@{/js/javascript.js}"></script>
+  </head>
 <div th:fragment="nav">
 	<!-- class="navbar-expand-lg" -->
 	<nav class="navbar navbar-dark bg-light">
@@ -60,7 +62,7 @@
 							th:unless="${scoutNavInfo.getRoleID()==1}">Admin</div>
 						<!-- th:text=" + ${scoutNavInfo.getUsername()}" -->
 						<div class="text14 col-3"
-							th:text="${scoutNavInfo.getLastName()} + ' ' + ${scoutInfo.getFirstName()}"></div>
+							th:text="${scoutNavInfo.getLastName()} + ' ' + ${scoutNavInfo.getFirstName()}"></div>
 						<!-- th:text="${scoutNavInfo.getRegion()} + ' ' + ${scoutNavInfo.getDistrict()} + ' ' + ${scoutNavInfo.getScoutGroup()}" -->
 						<div class="text14 col-3"
 							th:text="'Unit: ' + ${scoutNavInfo.getRegion()} + ' ' + ${scoutNavInfo.getDistrict()} + ' ' + ${scoutNavInfo.getScoutGroup()}"></div>
