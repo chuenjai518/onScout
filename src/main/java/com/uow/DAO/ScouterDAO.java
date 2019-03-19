@@ -218,22 +218,66 @@ public class ScouterDAO {
 	}
 
 	public void checkAward(String username, int questID) {
-		
-		String date;
-		String TaskNumSQL = "Select categoryNum From Award where questID = ?";
-		int subTaskNum = db.queryForObject(TaskNumSQL, Integer.class, questID);
-		System.out.println("Check Award - " + subTaskNum);
-		int taskEnd = questID + 9999;
-		String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and mod(questID, 1000) = 0 and username = ?";
-		int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
-		System.out.println("Check Award - Count: " + count);
-		if(count >= subTaskNum) {
-			String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
-			date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
-			editCompletedDate(username, questID, date);
+		boolean checkElective = checkElective(username, questID);
+		if(checkElective) {
+			String date;
+			String TaskNumSQL = "Select categoryNum From Award where questID = ?";
+			int subTaskNum = db.queryForObject(TaskNumSQL, Integer.class, questID);
+			System.out.println("Check Award - " + subTaskNum);
+			int taskEnd = questID + 9999;
+			String countSQL = "Select count(*) From CompletedQuest where questID >= ? and questID < ? and mod(questID, 1000) = 0 and username = ?";
+			int count = db.queryForObject(countSQL, Integer.class, questID, taskEnd, username);
+			System.out.println("Check Award - Count: " + count);
+			if(count >= subTaskNum) {
+				String latestDateSQL = "Select FinishDate From CompletedQuest where questID >= ? and questID < ? and username = ? ORDER BY FinishDate DESC limit 1";
+				date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
+				editCompletedDate(username, questID, date);
+			}
+		}else {
+			System.out.println("Wrong Elective!");
 		}
 	}
 
-
-
+	public boolean checkElective(String username, int questID) {
+		int currAward = questID - (questID % 10000);
+		boolean pass = true;
+		String checkElectiveSQL = "SELECT COUNT(*) FROM CompletedQuest WHERE username = ? AND questID = ?;";
+		int checkElective1 = db.queryForObject(checkElectiveSQL, Integer.class, username, (currAward + 1400));
+		int checkElective2 = db.queryForObject(checkElectiveSQL, Integer.class, username, (currAward + 1500));
+		int checkElective3 = db.queryForObject(checkElectiveSQL, Integer.class, username, (currAward + 1600));
+		if(currAward == 10000) {
+			pass = true;
+		}else if(currAward > 10000) {	
+			if(checkElective1 > 0) {
+				int checkPreviousElective = db.queryForObject(checkElectiveSQL, Integer.class, username, (currAward - 10000 + 1400));
+				if(checkPreviousElective > 0) {
+					questID = questID - 10000;
+					pass = checkElective(username, questID);
+				}else {
+					System.out.println("Wrong Elective 4!");
+					pass = false;
+				}
+			}else if(checkElective2 > 0) {
+				int checkPreviousElective = db.queryForObject(checkElectiveSQL, Integer.class, username, (currAward - 10000 + 1500));
+				if(checkPreviousElective > 0) {
+					questID = questID - 10000;
+					pass = checkElective(username, questID);
+				}else {
+					System.out.println("Wrong Elective 5!");
+					pass = false;
+				}
+			}else if(checkElective3 > 0) {
+				int checkPreviousElective = db.queryForObject(checkElectiveSQL, Integer.class, username, (currAward - 10000 + 1500));
+				if(checkPreviousElective > 0) {
+					questID = questID - 10000;
+					pass = checkElective(username, questID);
+				}else {
+					System.out.println("Wrong Elective 6!");
+					pass = false;
+				}
+			}
+		}
+		return pass;
+	}
+	
 }
