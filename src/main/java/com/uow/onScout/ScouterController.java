@@ -77,6 +77,7 @@ public class ScouterController {
 		// -getLastName() - getFirstName() - getGender() - getLatestMission() -
 		// getScoutID()
 		//
+		
 		List<UserInfo> scoutList = scouterService.getAllUser();
 		model.addAttribute("scoutList", scoutList);
 		return "Scouter/scoutProcess";
