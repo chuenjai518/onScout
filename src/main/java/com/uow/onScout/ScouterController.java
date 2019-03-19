@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -106,6 +107,7 @@ public class ScouterController {
 
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("emerList", emerList);
+		model.addAttribute("emer", new EmerContact());
 		return "Scouter/scoutInfoDetail";
 	}
 
@@ -115,6 +117,13 @@ public class ScouterController {
 		scouterService.editScoutProfileProcess(username, userInfo);
 		System.out.println(userInfo.getEmail());
 		return "redirect:/scouter/scoutManage";
+	}
+	
+	@PostMapping("scouter/editEmer/{username}")
+	public String editEmerContact(@PathVariable("username") String username, @ModelAttribute EmerContact emer) {
+		System.out.println(emer.getEmerID());
+		scouterService.editEmerContact(emer, username);
+		return "redirect:/scouter/scoutManage/" + username;
 	}
 
 	@GetMapping("scouter/viewAw")

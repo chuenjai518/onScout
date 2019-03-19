@@ -2,9 +2,9 @@ package com.uow.Model;
 
 public class EmerContact {
 
+	private int emerID;
 	private String username;
 	private String emerName;
-	private String emerAddress;
 	private String emerRelation;
 	private int emerTel;
 	
@@ -20,12 +20,6 @@ public class EmerContact {
 	public void setEmerName(String emerName) {
 		this.emerName = emerName;
 	}
-	public String getEmerAddress() {
-		return emerAddress;
-	}
-	public void setEmerAddress(String emerAddress) {
-		this.emerAddress = emerAddress;
-	}
 	public String getEmerRelation() {
 		return emerRelation;
 	}
@@ -37,5 +31,11 @@ public class EmerContact {
 	}
 	public void setEmerTel(int emerTel) {
 		this.emerTel = emerTel;
+	}
+	public int getEmerID() {
+		return emerID;
+	}
+	public void setEmerID(int emerID) {
+		this.emerID = emerID;
 	}
 }

@@ -56,7 +56,7 @@ public class ScouterDAO {
 	}
 
 	public List<EmerContact> getEmerContact(String username) {
-		String sql = "Select u.username, emerName, emerAddress, emerRelation, emerTel from User u left join UserEmer um on u.username = um.username left join EmerContact ec on um.emerContactID = ec.emerContactID Where u.username = ? and disable = 0";
+		String sql = "Select u.username, ec.emerContactID, emerName, emerRelation, emerTel from User u left join UserEmer um on u.username = um.username left join EmerContact ec on um.emerContactID = ec.emerContactID Where u.username = ? and disable = 0";
 		RowMapper<EmerContact> rowMapper = new EmerContactRowMapper();
 		return this.db.query(sql, rowMapper, username);
 	}
@@ -280,6 +280,22 @@ public class ScouterDAO {
 			}
 		}
 		return pass;
+	}
+	
+	public void editEmerContact(EmerContact emer, String username) {
+		String sql ="";
+		if(emer.getEmerID() == 0) {
+			sql="Insert Into EmerContact(emerName, emerRelation, emerTel) " + "Values(?,?,?)" ;
+			db.update(sql,emer.getEmerName(), emer.getEmerRelation(), emer.getEmerTel());
+			sql="Select emerContactID From EmerContact Order By emerContactID Desc limit 1";
+			int emerID = db.queryForObject(sql, Integer.class);
+			sql="Insert Into UserEmer(username, emerContactID) " + "Values(?,?)" ;
+			db.update(sql,username, emerID);
+		}else {
+			sql="Update EmerContact set emerName = ?, emerRelation = ?, emerTel=? where emerContactID = ?";
+			db.update(sql, emer.getEmerName(), emer.getEmerRelation(), emer.getEmerTel(), emer.getEmerID());
+		}
+		
 	}
 	
 }

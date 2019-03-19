@@ -33,6 +33,10 @@ public class ScouterService {
 		return scouterDAO.getEmerContact(username);
 	}
 	
+	public void editEmerContact(EmerContact emer, String username) {
+		scouterDAO.editEmerContact(emer, username);
+	}
+	
 	
 	public boolean createUserProcess(String username) {
 		User user = new User();
