@@ -84,5 +84,11 @@ public class scoutProgressRestController {
 		adminService.changePassword(username, password);
 	}
 	
+	@RequestMapping("scouter/totalNumOfAward")
+	public List<UserInfo> totalNumOfAward(@RequestParam int questID) {
+		List<UserInfo> userList = scouterService.showCompletedScout(questID);
+		return userList;
+	}
+	
 	
 }
