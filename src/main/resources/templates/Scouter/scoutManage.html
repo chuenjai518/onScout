@@ -26,6 +26,7 @@
 					<table class="table" style="text-align: center;">
 						<thead class="bg-primary">
 							<tr>
+								<th scope="col"></th>
 								<th scope="col">Username</th>
 								<th scope="col">Name</th>
 								<th scope="col">Gender</th>
@@ -35,7 +36,11 @@
 						</thead>
 						<tbody>
 							<!-- th:onclick="'location.href=\''+ @{/scouter/scoutProcessd/{scoutID} (id=${user.getScoutID()})}+'\''" -->
-							<tr th:each="user: ${userList}" th:onclick="'location.href=\''+ @{/scouter/scoutManage/{Username} (Username=${user.getUsername()})}+'\''">
+							<tr th:each="user: ${userList}"
+								th:onclick="'location.href=\''+ @{/scouter/scoutManage/{Username} (Username=${user.getUsername()})}+'\''">
+								<td scope="col"><a class="delUser"
+									th:href="@{/scouter/delUser/}+ ${user.getUsername()}"><i
+										id="logo" class="fas fa-user-minus"></i></a></td>
 								<td th:text="${user.getUsername()}"></td>
 								<td th:text="${user.getLastName()}+ ' ' +${user.getFirstName()}"
 									scope="row"></td>
@@ -74,9 +79,8 @@
 										required>
 								</div>
 							</div>
-							<span style="color:red" class="errorText"
-							th:text="${message != null} ? ${message} : ''"></span>
-							<br>
+							<span style="color: red" class="errorText"
+								th:text="${message != null} ? ${message} : ''"></span> <br>
 							<br>
 							<button type="submit" class="btn btn-primary col-sm-12">Submit</button>
 							<a th:href="@{scoutManage}" class="btn btn-link col-sm-12">Cancel</a>
