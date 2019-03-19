@@ -184,7 +184,13 @@ public class ScouterController {
 			inputStream.close();
 		};
 	}
-
+	
+	@GetMapping("scouter/AwardCompleted/{questID}")
+	public String showCompletedScout(Model model, HttpSession session, @PathVariable("questID") int questID) {
+		List<UserInfo> completedScout = scouterService.showCompletedScout(questID);
+		model.addAttribute("completedScout", completedScout);
+		return "Scouter/AwardCompleted";
+	}
 	
 
 }

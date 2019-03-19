@@ -317,4 +317,11 @@ public class ScouterDAO {
 		
 	}
 	
+	public List<UserInfo> showCompletedScout(int questID) {
+		int awardID = questID - questID % 10000;
+		String sql="SELECT p.username, firstName, lastName, HKID, DOB, gender, address, phoneNum, email, region, district, scoutGroup, DOI  FROM CompletedQuest c, PersonalInfo p WHERE c.username = p.username and questID = ?;";
+		RowMapper<UserInfo> rowMapper = new UserInfoRowMapper();
+		return this.db.query(sql, rowMapper, awardID);
+	}
+	
 }
