@@ -71,13 +71,10 @@ public class ScouterController {
 
 	@GetMapping("scouter/scoutProcess")
 	public String index(Model model, HttpSession session) {
-		// model.addAttribute("user", (User)session.getAttribute("user"));
-		//
-		// I need a model scoutList that contain
-		// -getLastName() - getFirstName() - getGender() - getLatestMission() -
-		// getScoutID()
-		//
 		
+		if (!checkScouterLogin(session)) {
+			return "redirect:/login";
+		}
 		List<UserInfo> scoutList = scouterService.getAllUser();
 		model.addAttribute("scoutList", scoutList);
 		return "Scouter/scoutProcess";
@@ -86,6 +83,9 @@ public class ScouterController {
 	@GetMapping("scouter/scoutProcess/{username}")
 	public String scoutProcess(@PathVariable("username") String username, Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
+		if (!checkScouterLogin(session)) {
+			return "redirect:/login";
+		}
 		UserInfo user = scouterService.getScoutInfo(username);
 		model.addAttribute("openSSA", scouterService.checkSSA(username));
 		model.addAttribute("openSAA", scouterService.checkSAA(username));
@@ -96,6 +96,9 @@ public class ScouterController {
 
 	@GetMapping("scouter/scoutManage")
 	public String scoutManage(Model model, HttpSession session) {
+		if (!checkScouterLogin(session)) {
+			return "redirect:/login";
+		}
 		List<ScoutManage> userList = scouterService.getScoutManageList();
 		model.addAttribute("userList", userList);
 		return "Scouter/scoutManage";
@@ -103,6 +106,9 @@ public class ScouterController {
 
 	@GetMapping("scouter/scoutManage/{username}")
 	public String scoutManageDetail(@PathVariable("username") String username, Model model, HttpSession session) {
+		if (!checkScouterLogin(session)) {
+			return "redirect:/login";
+		}
 		List<EmerContact> emerList = scouterService.getEmerContact(username);
 		UserInfo userInfo = scouterService.getScoutInfo(username);
 
@@ -130,6 +136,9 @@ public class ScouterController {
 	@GetMapping("scouter/viewAw")
 	public String viewAw(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
+		if (!checkScouterLogin(session)) {
+			return "redirect:/login";
+		}
 		List<UserInfo> userList = scouterService.getAllUser();
 		model.addAttribute("userList", userList);
 		return "Scouter/viewAw";
@@ -138,6 +147,9 @@ public class ScouterController {
 	@GetMapping("scouter/editProfile")
 	public String editProfile(Model model, HttpSession session) {
 		// model.addAttribute("user", (User)session.getAttribute("user"));
+		if (!checkScouterLogin(session)) {
+			return "redirect:/login";
+		}
 		UserInfo scouterInfo = scouterService.getScouterInfo((String) session.getAttribute("username"));
 		model.addAttribute("userInfo", scouterInfo);
 		return "Scouter/editProfile";
@@ -151,6 +163,7 @@ public class ScouterController {
 
 	@PostMapping("scouter/createUser")
 	public RedirectView forgetPassword(RedirectAttributes model, @RequestParam String username) {
+	
 		boolean exists = scouterService.createUserProcess(username);
 		if (exists) {
 			model.addFlashAttribute("message", "Username is used!");
@@ -185,6 +198,7 @@ public class ScouterController {
 			inputStream.close();
 		};
 	}
+	
 
 	
 

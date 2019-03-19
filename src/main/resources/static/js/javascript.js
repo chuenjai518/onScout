@@ -162,6 +162,9 @@ $(document).ready(function() {
            },
        });
 	});
+	$('.delUser').on('click',function(){
+		return confirm('Confirm Delete User?');
+	});
 });
 function enable() {
 	if ($('input').prop('disabled') == true) {

@@ -39,7 +39,7 @@
 						<div class="col-12 col-lg-6 text-center mt-4"
 							style="font-size: 20px;">
 							<b>Username: </b>
-							<text th:text="${userInfo.getUsername()}"></text>
+							<text th:value="${userInfo.getUsername()}" th:text="${userInfo.getUsername()}" id="username"></text>
 						</div>
 						<div class="col-12 col-sm-6 col-lg-3 text-center mt-2"
 							style="font-size: 20px;">
@@ -137,48 +137,60 @@
 						<div class="col-12 text-center font-weight-bolder"
 							style="font-size: 20px;" th:text="'Emergency Contact'"></div>
 					</div>
-					</form>
-					<br /> <br /> <span th:each="emer: ${emerList}">
-						<div class="container ">
+	</form>
+	<br />
+	<br />
+	<span th:each="emer: ${emerList}">
+		<div class="container ">
 
-							<form method="POST" th:object="${emerContact}"
-								th:action="@{/scouter/editEmer/}+ ${userInfo.getUsername()}">
-								<div class="form-row">
-									<div class="form-group col-lg-2 col-12">
-									<input type="hidden"
-											class="form-control" name="emerID" th:value="${emer.getEmerID()}">
-										<b>Emergency Name: </b> <input type="text"
-											class="form-control" name="emerName" th:value="${emer.getEmerName()}">
-									</div>
-									<div class="form-group col-lg-2 col-12 text-left">
-										<b>Relationship: </b> <input type="text" name="emerRelation" class="form-control"
-											th:value="${emer.getEmerRelation()}">
-									</div>
-									<div class="form-group col-lg-4 col-12">
-										<b>Emergency Contact Number: </b> <input type="text" name="emerTel"
-											class="form-control" th:value="${emer.getEmerTel()}">
-									</div>
-									<div class="form-group col-lg-2 mt-2">
-										<button type="button" onclick="enable()"
-											class="btn btn-primary">Edit Profile</button>
-									</div>
-									<div class="form-group col-lg-2 mt-2">
-										<button type="submit" id="submit2"class="btn btn-success"
-											disable>Submit</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</span> <br /> <br />
+			<form method="POST" th:object="${emerContact}"
+				th:action="@{/scouter/editEmer/}+ ${userInfo.getUsername()}">
+				<div class="form-row">
+					<div class="form-group col-lg-2 col-12">
+						<input type="hidden" class="form-control" name="emerID"
+							th:value="${emer.getEmerID()}"> <b>Emergency Name: </b> <input
+							type="text" class="form-control" name="emerName"
+							th:value="${emer.getEmerName()}">
+					</div>
+					<div class="form-group col-lg-2 col-12 text-left">
+						<b>Relationship: </b> <input type="text" name="emerRelation"
+							class="form-control" th:value="${emer.getEmerRelation()}">
+					</div>
+					<div class="form-group col-lg-4 col-12">
+						<b>Emergency Contact Number: </b> <input type="text"
+							name="emerTel" class="form-control"
+							th:value="${emer.getEmerTel()}">
+					</div>
+					<div class="form-group col-lg-2 mt-2">
+						<button type="button" onclick="enable()" class="btn btn-primary">Edit
+							Profile</button>
+					</div>
+					<div class="form-group col-lg-2 mt-2">
+						<button type="submit" id="submit2" class="btn btn-success" disable>Submit</button>
+					</div>
 				</div>
-
-				<br />
-			</div>
-
-
-			<!-- ------------------- -->
-			<!-- ^ This is Content ^ -->
+			</form>
 		</div>
-	
+	</span>
+	<br />
+	<br />
+	<div class="container row">
+		<span class="col-lg-4">&nbsp;</span> <a
+			class="col-lg-4 text-center font-italic border-primary rounded aborWid"
+			style="color: white;" href="#" id="generateForm" target="_blank"
+			th:onclick="'location.href=\''+ @{/downloadForm/{username} (username=${userInfo.getUsername()})}+'\''">Generate
+			Application Form</a> <span class="col-lg-4">&nbsp;</span>
+		
+	</div><br><br>
+	</div>
+
+	<br />
+	</div>
+
+
+	<!-- ------------------- -->
+	<!-- ^ This is Content ^ -->
+	</div>
+
 </body>
 </html>

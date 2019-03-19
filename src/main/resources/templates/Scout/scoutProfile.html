@@ -112,25 +112,20 @@
 			</div>
 			<br /> <br />
 			<div class="container row" th:each="emerContact: ${emerContact} ">
-				<div class="col-lg-3 col-12">
+				<div class="col-lg-4 col-12">
 					<b>Emergency Name: </b>
 					<!-- th:text="${emContact.getEmerName()}" -->
 					<text th:text="${emerContact.getEmerName()}"></text>
 				</div>
-				<div class="col-lg-3 col-12 text-left">
+				<div class="col-lg-4 col-12 text-left">
 					<b>Relationship: </b>
 					<!-- th:text="${emContact.getEmerRelation()}" -->
 					<text th:text="${emerContact.getEmerRelation()}"></text>
 				</div>
-				<div class="col-lg-3 col-12">
+				<div class="col-lg-4 col-12">
 					<b>Phone Number: </b>
 					<!-- th:text="${emContact.getEmerTel()}" -->
 					<text th:text="${emerContact.getEmerTel()}"></text>
-				</div>
-				<div class="col-lg-3 col-12">
-					<b>Contact Email: </b>
-					<!-- th:text="${emContact.getEmerAddress()}" -->
-					<text th:text="${emerContact.getEmerAddress()}"></text>
 				</div>
 				<div class="col-lg-12 col-12">&nbsp;</div>
 			</div>
