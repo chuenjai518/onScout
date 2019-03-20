@@ -194,7 +194,7 @@ public class ScouterDAO {
 			date = db.queryForObject(latestDateSQL, String.class, questID, missionEnd, username);
 			editCompletedDate(username, questID, date);
 			questID = questID - (questID % 100);
-			editCompletedDate(username, questID, date);
+			//editCompletedDate(username, questID, date);
 			checkTask(username, questID);
 		}
 	}
@@ -213,13 +213,12 @@ public class ScouterDAO {
 			date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
 			editCompletedDate(username, questID, date);
 			questID = questID - questID%1000;
-			editCompletedDate(username, questID, date);
+			//editCompletedDate(username, questID, date);
 			checkCategory(username, questID);
 		}
 	}
 
 	public void checkCategory(String username, int questID) {
-		
 		String date;
 		String TaskNumSQL = "Select taskNum From Category where questID = ?";
 		int subTaskNum = db.queryForObject(TaskNumSQL, Integer.class, questID);
@@ -233,7 +232,7 @@ public class ScouterDAO {
 			date = db.queryForObject(latestDateSQL, String.class, questID, taskEnd, username);
 			editCompletedDate(username, questID, date);
 			questID = questID - questID%10000;
-			editCompletedDate(username, questID, date);
+			//editCompletedDate(username, questID, date);
 			checkAward(username, questID);
 		}
 	}
