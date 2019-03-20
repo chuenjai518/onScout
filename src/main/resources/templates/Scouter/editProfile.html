@@ -20,7 +20,7 @@ $(document).ready(function(){
 		<div class="container-fluid">
 		<div class="row justify-content-center mb-1">
 			<div class="col-12">
-				<h1 style="text-align: center;">Scout Information</h1>
+				<h1 style="text-align: center;">Scouter Information</h1>
 			</div>
 		
 			<div class="col-lg-2 text-center">
@@ -82,14 +82,29 @@ $(document).ready(function(){
 			<hr />
 			<div class="container row">
 				<div class="col-12 text-center  font-weight-bolder"
-					style="font-size: 20px;" th:text="'Scout Information'"></div>
+					style="font-size: 20px;" th:text="'Scouter Information'"></div>
 			</div>
 			<br /> <br />
 			<div class="container row">
-				<div class="col-lg-2 col-12">
-					<b>Unit: </b>
-					<input type="text" th:field="*{region}" class="form-control" th:value="${userInfo.getRegion()}">
-				</div>
+				
+						<div class="col-lg-2 col-12">
+							<b>Unit: </b> <select th:field="*{region}"
+								class="form-control" disabled>
+								<option th:text="${userInfo.getRegion()}" th:value="${userInfo.getRegion()}" selected></option>
+								<span th:if="${userInfo.getRegion() != 'KR'}">
+									<option th:value="KR">KR</option>
+								</span>
+								<span th:if="${userInfo.getRegion() != 'HKIR'}">
+								<option th:value="HKIR">HKIR</option>
+								</span>
+								<span th:if="${userInfo.getRegion() != 'NTR'}">
+								<option th:value="NTR">NTR</option>
+								</span>
+								<span th:if="${userInfo.getRegion() != 'NTER'}">
+								<option th:value="NTER">NTER</option>
+								</span>
+							</select>
+						</div>
 				<div class="col-lg-2 col-12">
 					<b>District: </b>
 					<input type="text" th:field="*{district}" class="form-control" th:value="${userInfo.getDistrict()}">
@@ -98,10 +113,10 @@ $(document).ready(function(){
 					<b>Scout Gruop: </b>
 					<input type="text" th:field="*{scoutGroup}" class="form-control" th:value="${userInfo.getScoutGroup()}">
 				</div>
-				<div class="col-lg-6 col-12 text-left">
-					<b>Date of Investiture: </b>
-					<input type="text" th:field="*{dOI}" class="form-control" th:value="${userInfo.getDOI()}">
-				</div>
+						<div class="col-lg-6 col-12 text-left">
+							<b>Date of Investiture: </b> <input type="date" th:field="*{DOI}"
+								class="form-control" th:value="${userInfo.getDOI()}">
+						</div>
 			</div>
 			<br /> <br />
 			<hr />
