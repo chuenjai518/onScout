@@ -12,7 +12,7 @@ $(document).ready(function() {
 		var username = $("#username").attr('value');
 		$.ajax({
 			 type: "POST",
-			 url: "http://localhost:8081/onScout/checkForm",   // 存取Json的網址
+			 url: "http://chuenpi.tk:8081/onScout/checkForm",   // 存取Json的網址
 			 cache:false,
 			 data: {
 				 "username": username,
@@ -51,7 +51,7 @@ $(document).ready(function() {
 			break;
 
 		}
-		url="http://localhost:8081/onScout/api/"+api+"/"+user;
+		url="http://chuenpi.tk:8081/onScout/api/"+api+"/"+user;
 		 $.ajax({
 			 type: "POST",
 			 url: url,   // 存取Json的網址
@@ -100,7 +100,7 @@ $(document).ready(function() {
 		if(date != ""){
 			$.ajax({
 				 type: "POST",
-				 url: "http://localhost:8081/onScout/scouter/editCompletedQuest",   // 存取Json的網址
+				 url: "http://chuenpi.tk:8081/onScout/scouter/editCompletedQuest",   // 存取Json的網址
 				 cache:false,
 				 data: {
 					 "questID": questID,
@@ -152,7 +152,7 @@ $(document).ready(function() {
 		console.log(pw);
 		$.ajax({
 			 type: "POST",
-			 url: "http://localhost:8081/onScout/changePassword",   // 存取Json的網址
+			 url: "http://chuenpi.tk:8081/onScout/changePassword",   // 存取Json的網址
 			 cache:false,
 			 data: {
 				 "password": pw,
@@ -188,7 +188,7 @@ $(document).ready(function() {
 		}
 		$.ajax({
 			 type: "POST",
-			 url: "http://localhost:8081/onScout/scouter/totalNumOfAward",   // 存取Json的網址
+			 url: "http://chuenpi.tk:8081/onScout/scouter/totalNumOfAward",   // 存取Json的網址
 			 cache:false,
 			 data: {
 				 "questID":name
@@ -197,7 +197,7 @@ $(document).ready(function() {
            success: function (data) {
         	   $("#content").empty();
         	   $.each(data,function(i,n){
-        		   url = "window.location='http://localhost:8081/onScout/scouter/scoutProcess/" + n['username'] +"'";
+        		   url = "window.location='http://chuenpi.tk:8081/onScout/scouter/scoutProcess/" + n['username'] +"'";
         		   var string = "<tr onclick="+url+">";
         		   string+="<td>" + n['username']+"</td>";
         		   string+="<td>" + n['lastName']+" "+n['firstName']+"</td>";
@@ -213,7 +213,7 @@ $(document).ready(function() {
 function goToProgress(username) {
 	
 	alert(username);
-	window.location("http://localhost:8081/onScout/scouter/scoutProcess/" + username);
+	window.location("http://chuenpi.tk:8081/onScout/scouter/scoutProcess/" + username);
 }
 
 function enable() {

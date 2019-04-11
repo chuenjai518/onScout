@@ -9,6 +9,7 @@ public class CompletedQuest {
 	private int questID;
 	private Date FinishDate;
 	private String username;
+	
 	public int getQuestID() {
 		return questID;
 	}
